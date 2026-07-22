@@ -1,0 +1,46 @@
+# Decision Records
+
+Decision records preserve governance decisions, rationale, alternatives, consequences, and provenance.
+
+## Status lifecycle
+
+Decision statuses are `Proposed`, `Accepted`, `Rejected`, `Deferred`, and `Superseded`.
+
+A Draft PR can contain a `Proposed` decision. A decision becomes `Accepted` only through merged repository content or a later accepted decision record. A later decision must not silently rewrite an earlier one; it must supersede, amend, or leave the earlier record unchanged.
+
+## Numbering convention
+
+Decision IDs use `DEC-0001`, `DEC-0002`, and so on. IDs are never reused.
+
+## Required metadata
+
+Each decision record contains:
+
+- ID
+- Title
+- Status
+- Date
+- Decision authority
+- Context
+- Decision
+- Rationale
+- Alternatives considered
+- Consequences
+- Related artifacts
+- Supersedes
+- Superseded by
+- Follow-up actions
+
+Decision records for governance-affecting PRs should also identify source PR, branch, source head SHA, and merge SHA where available. A decision record must not predict the future squash merge SHA of the PR that introduces it.
+
+## Decision records versus current state
+
+Decision records are historical governance records. [CURRENT_STATE.md](../CURRENT_STATE.md) is a mutable summary. If they disagree, inspect merged repository content and decision provenance before updating either file.
+
+## How to add a decision
+
+Create a new `DEC-####-short-title.md` file from [decision-template.md](../templates/decision-template.md). Link the PR, commits, and source files that support the decision.
+
+## How to supersede a decision
+
+Create a new decision record, set the old record's `Superseded by` field in the same PR when appropriate, and explain what changed. Do not reuse the old ID.
