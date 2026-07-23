@@ -3,7 +3,7 @@
 - Milestone ID: `M1.2`
 - Title: Process IR Machine-Readiness Hardening
 - Status: Proposed
-- Implementation status: Deferred in current phase
+- Implementation status: In progress
 
 ## Objective
 
@@ -38,12 +38,13 @@ Convert the accepted M1 semantic contract into a machine-ready contract design w
 
 ## Acceptance basis
 
-M1.2 is not accepted. M1 semantic acceptance is satisfied by merged PR #2, but M1.2 remains deferred until this future milestone is explicitly started.
+M1.2 is not completed. M1 semantic acceptance is satisfied by merged PR #2. M1.2 has consciously started through the narrow M1.2.1 RecordEnvelope and revision-semantics design work tracked by [Issue #16](https://github.com/ThresholdOps/MotiveForce/issues/16). M1.2.1 is accepted and completed as design-contract work through [PR #22](https://github.com/ThresholdOps/MotiveForce/pull/22), but other M1.2 Issues remain deferred.
 
 ## Related PRs
 
 - Merged [PR #2](https://github.com/ThresholdOps/MotiveForce/pull/2) defines the accepted M1 semantic contract.
-- [PR #3](https://github.com/ThresholdOps/MotiveForce/pull/3) registers this future milestone record.
+- [PR #3](https://github.com/ThresholdOps/MotiveForce/pull/3) registers this milestone record.
+- [PR #22](https://github.com/ThresholdOps/MotiveForce/pull/22) completes M1.2.1 design-contract work.
 
 ## Related commits
 
@@ -52,18 +53,18 @@ M1.2 is not accepted. M1 semantic acceptance is satisfied by merged PR #2, but M
 
 ## Decisions created
 
-None yet. Future M1.2 decisions must be recorded through project-memory decision records or explicitly linked follow-up PRs.
+- [DEC-0005](../decisions/DEC-0005-record-envelope-revision-semantics.md), Accepted.
 
 ## Outcome
 
-Proposed and deferred in the current phase.
+Proposed and in progress at the program level. M1.2.1 design work is completed, M1.2 as a whole is not completed, and no runtime implementation has started.
 
 ## Follow-up
 
-- [Issue #16](https://github.com/ThresholdOps/MotiveForce/issues/16): record envelope and revision semantics.
+- [Issue #16](https://github.com/ThresholdOps/MotiveForce/issues/16): record envelope and revision semantics, completed as M1.2.1 design work.
 - [Issue #17](https://github.com/ThresholdOps/MotiveForce/issues/17): deterministic compiler replay contract.
 - [Issue #18](https://github.com/ThresholdOps/MotiveForce/issues/18): diagnostic severity and aggregation.
-- [Issue #19](https://github.com/ThresholdOps/MotiveForce/issues/19): AnalystDecision staleness and invalidation.
+- [Issue #19](https://github.com/ThresholdOps/MotiveForce/issues/19): AnalystDecision staleness, invalidation, revalidation, and controlled authority carry-forward. This remains open, deferred, and not started; it is non-blocking for M1.2.1 design acceptance but blocking before implementation of authoritative current effective-status derivation or controlled carry-forward.
 - [Issue #20](https://github.com/ThresholdOps/MotiveForce/issues/20): mapping-rule references and BPMN profile propagation.
 - [Issue #21](https://github.com/ThresholdOps/MotiveForce/issues/21): expanded Process IR contract test matrix.
 - [Issue #8](https://github.com/ThresholdOps/MotiveForce/issues/8): detailed partial-compilation dependency policy retained from earlier open-item registration.

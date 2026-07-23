@@ -23,6 +23,20 @@
 - **CompilationResult**: Accepted M1 Semantic Compiler output separate from `ProcessIRPackage`.
 - **KernelValidationReport**: Accepted M1 downstream BPMN Kernel validation artifact.
 - **target_bpmn_profile**: Accepted M1 profile reference used to scope mapping eligibility, compiled semantic output, and BPMN Kernel validation.
+- **logical record**: Accepted M1.2.1 concept; one conceptual Process IR record across revisions, identified by `record_id`.
+- **record revision**: Accepted M1.2.1 concept; one immutable version of a logical record, identified by `revision_id`.
+- **released revision**: Accepted M1.2.1 concept; a revision with stable `revision_id` included in an addressable package or published as an independently addressable record.
+- **RecordEnvelope**: Accepted M1.2.1 common metadata, identity, provenance, integrity, and lineage structure attached to a typed Process IR payload.
+- **RevisionLineage**: Accepted M1.2.1 same-record directed acyclic graph among exact revisions of one `record_id`.
+- **RecordDerivationGraph**: Accepted M1.2.1 cross-record graph preserving derivation, split, transformation, or semantic-merge provenance without transferring authority.
+- **status-basis record**: Accepted M1.2.1 separate revisioned record used to derive effective status for a subject revision.
+- **reviewed preservation assertion**: Accepted M1.2.1 exact revisioned basis record or equivalent semantic record that confirms a prior four-axis value-state assessment remains unchanged across a successor revision.
+- **external authoritative basis**: Accepted M1.2.1 external evidence, authority, context, rule, condition, policy, mapping, profile, source, or other basis outside Process IR that affects authoritative output and must be made exact without inventing a Process IR revision ID.
+- **historical/as-of derivation**: Accepted M1.2.1 effective-status derivation against an exact closed basis set for a stated SemanticContext and as-of effective time.
+- **authoritative current effective status**: Accepted M1.2.1 current-status result that requires exact bases plus an accepted staleness and invalidation policy when current authority depends on potentially changed bases.
+- **exact revision reference**: Accepted M1.2.1 reference to a specific immutable `revision_id`.
+- **effective status**: Accepted M1.2.1 derived lifecycle status for a record revision in a semantic context; not a self-authorizing stored fact.
+- **revision impact**: Accepted M1.2.1 classification of what changed between revisions.
 - **authoritative**: Accepted within the relevant authority boundary, such as merged content, human business decision, compiler mapping eligibility, or kernel validation.
 - **proposed**: Draft or candidate content not yet accepted.
 - **accepted**: Adopted by merged repository content, accepted decision record, or authorized human decision in a stated context.

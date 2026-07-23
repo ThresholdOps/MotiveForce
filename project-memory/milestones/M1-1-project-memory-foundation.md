@@ -37,7 +37,7 @@ Create a durable, reviewable, repository-native project memory for MøtiveFōrce
 
 M1.1 is completed by merge of [PR #3](https://github.com/ThresholdOps/MotiveForce/pull/3). Before that merge, the PR content was Draft and non-authoritative.
 
-The reviewed PR #3 source head before this final governance amendment was [`24ae8c7ed0487148de2c19a135e7033a03fcad55`](https://github.com/ThresholdOps/MotiveForce/commit/24ae8c7ed0487148de2c19a135e7033a03fcad55). The final source head after amend and push is recorded in PR #3 metadata. This repository content intentionally does not predict PR #3's future squash merge SHA.
+The reviewed PR #3 source head before the final governance amendment was [`24ae8c7ed0487148de2c19a135e7033a03fcad55`](https://github.com/ThresholdOps/MotiveForce/commit/24ae8c7ed0487148de2c19a135e7033a03fcad55). The final source head was [`71343343971c0a867fbade401f26503e87782cc1`](https://github.com/ThresholdOps/MotiveForce/commit/71343343971c0a867fbade401f26503e87782cc1). The PR #3 squash merge commit was [`caff0ba6f33cc0243d78dd61c091968a218a25f8`](https://github.com/ThresholdOps/MotiveForce/commit/caff0ba6f33cc0243d78dd61c091968a218a25f8).
 
 ## Related PRs
 
@@ -51,6 +51,8 @@ The reviewed PR #3 source head before this final governance amendment was [`24ae
 
 - Original project-memory source head [`19bc7a56cd68ea66310d92c0093178fe414fddac`](https://github.com/ThresholdOps/MotiveForce/commit/19bc7a56cd68ea66310d92c0093178fe414fddac)
 - Reviewed project-memory head before final governance amendment [`24ae8c7ed0487148de2c19a135e7033a03fcad55`](https://github.com/ThresholdOps/MotiveForce/commit/24ae8c7ed0487148de2c19a135e7033a03fcad55)
+- Final PR #3 source head [`71343343971c0a867fbade401f26503e87782cc1`](https://github.com/ThresholdOps/MotiveForce/commit/71343343971c0a867fbade401f26503e87782cc1)
+- PR #3 squash merge commit [`caff0ba6f33cc0243d78dd61c091968a218a25f8`](https://github.com/ThresholdOps/MotiveForce/commit/caff0ba6f33cc0243d78dd61c091968a218a25f8)
 
 ## Decisions created
 
@@ -62,7 +64,6 @@ Project-memory governance is accepted. Issue governance is accepted. `memory_sch
 
 ## Follow-up
 
-- Record the PR #3 squash merge commit in the next governance-affecting project-memory PR if material.
 - Continue M1.2 and M2 as deferred future governance/design work.
 
 ## Follow-up Issues
