@@ -20,7 +20,8 @@ Completed milestone:
 
 Proposed future milestones:
 
-- M1.2 Process IR Machine-Readiness Hardening is proposed as future design work for making the accepted Process IR contract ready for machine representation; implementation is deferred in the current phase.
+- M1.2 Process IR Machine-Readiness Hardening is proposed design work for making the accepted Process IR contract ready for machine representation. It has consciously started through M1.2.1 only; implementation remains limited to documentation and governance. M1.2 as a whole is not completed.
+- M1.2.1 RecordEnvelope and Revision Semantics Contract is completed as accepted design-contract work through [PR #22](https://github.com/ThresholdOps/MotiveForce/pull/22), [DEC-0005](decisions/DEC-0005-record-envelope-revision-semantics.md), and [REV-0004](reviews/M1-2-1-record-envelope-semantic-design-review-3.md). It does not create code, schema, runtime components, or executable validation.
 - M2 Machine Schema and Contract Validation is proposed as future schema and validation work after M1 acceptance and M1.2 decisions; implementation is deferred in the current phase.
 
 ## Explicit non-goals for the current phase
@@ -58,7 +59,7 @@ Decision status and implementation status are independent:
 | Item | Decision status | Implementation status | Tracking |
 | --- | --- | --- | --- |
 | Process IR contract | Accepted | Completed | Merged [PR #2](https://github.com/ThresholdOps/MotiveForce/pull/2), [`54d5e81`](https://github.com/ThresholdOps/MotiveForce/commit/54d5e814601788574d13761561867ce5982cc88c) |
-| Project-memory governance | Accepted | Completed | [PR #3](https://github.com/ThresholdOps/MotiveForce/pull/3), [DEC-0004](decisions/DEC-0004-project-memory-governance.md) |
+| Project-memory governance | Accepted | Completed | [PR #3](https://github.com/ThresholdOps/MotiveForce/pull/3), [`caff0ba`](https://github.com/ThresholdOps/MotiveForce/commit/caff0ba6f33cc0243d78dd61c091968a218a25f8), [DEC-0004](decisions/DEC-0004-project-memory-governance.md) |
 | Final Process IR validation path | Open | Deferred in current phase | [Issue #4](https://github.com/ThresholdOps/MotiveForce/issues/4); M1 acceptance dependency is satisfied |
 | Machine-readable Process IR schema contract | Open | Deferred in current phase | [Issue #5](https://github.com/ThresholdOps/MotiveForce/issues/5), [M2](milestones/M2-machine-schema-contract-validation.md) |
 | Analyst identity representation | Open | Deferred in current phase | [Issue #6](https://github.com/ThresholdOps/MotiveForce/issues/6) |
@@ -71,10 +72,10 @@ Decision status and implementation status are independent:
 | Process Workbench technology | Open | Deferred in current phase | [Issue #13](https://github.com/ThresholdOps/MotiveForce/issues/13) |
 | draw.io / diagrams.net adapter strategy | Open | Deferred in current phase | [Issue #14](https://github.com/ThresholdOps/MotiveForce/issues/14) |
 | Knowledge-graph timing and governance | Open | Deferred in current phase | [Issue #15](https://github.com/ThresholdOps/MotiveForce/issues/15) |
-| Process IR record envelope and revision semantics | Open | Deferred in current phase | [Issue #16](https://github.com/ThresholdOps/MotiveForce/issues/16), [M1.2](milestones/M1-2-process-ir-machine-readiness.md) |
+| Process IR record envelope and revision semantics | Accepted | Completed for design contract; runtime implementation not started | [Issue #16](https://github.com/ThresholdOps/MotiveForce/issues/16), [PR #22](https://github.com/ThresholdOps/MotiveForce/pull/22), [M1.2](milestones/M1-2-process-ir-machine-readiness.md), [M1.2.1](milestones/M1-2-1-record-envelope-revision-semantics.md), [DEC-0005](decisions/DEC-0005-record-envelope-revision-semantics.md) |
 | Deterministic Semantic Compiler replay contract | Open | Deferred in current phase | [Issue #17](https://github.com/ThresholdOps/MotiveForce/issues/17), [M1.2](milestones/M1-2-process-ir-machine-readiness.md) |
 | Diagnostic severity and aggregation rules | Open | Deferred in current phase | [Issue #18](https://github.com/ThresholdOps/MotiveForce/issues/18), [M1.2](milestones/M1-2-process-ir-machine-readiness.md) |
-| AnalystDecision staleness and invalidation rules | Open | Deferred in current phase | [Issue #19](https://github.com/ThresholdOps/MotiveForce/issues/19), [M1.2](milestones/M1-2-process-ir-machine-readiness.md) |
+| AnalystDecision staleness and invalidation rules | Open | Deferred in current phase; design not started | [Issue #19](https://github.com/ThresholdOps/MotiveForce/issues/19), [M1.2](milestones/M1-2-process-ir-machine-readiness.md). Non-blocking for M1.2.1 design acceptance and exact historical/as-of derivation design; hard blocker before implementation of authoritative current effective-status derivation, AnalystDecision staleness/invalidation/revalidation, or controlled authority carry-forward. |
 | Mapping-rule references and BPMN profile propagation | Open | Deferred in current phase | [Issue #20](https://github.com/ThresholdOps/MotiveForce/issues/20), [M1.2](milestones/M1-2-process-ir-machine-readiness.md) |
 | Expanded Process IR contract test matrix | Open | Deferred in current phase | [Issue #21](https://github.com/ThresholdOps/MotiveForce/issues/21), [M1.2](milestones/M1-2-process-ir-machine-readiness.md) |
 

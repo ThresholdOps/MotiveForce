@@ -61,7 +61,7 @@ A decision may be `Open` while implementation is `Deferred in current phase`. De
 - Decisions: `DEC-0001`
 - History events: `HIST-0001`
 - Changes: `CHG-0001`
-- Milestones: `M0`, `M1`, `M1.1`, `M1.2`, `M2`
+- Milestones: `M0`, `M1`, `M1.1`, `M1.2`, `M1.2.1`, `M2`
 - Reviews: `REV-0001`
 
 IDs are never reused. Later records supersede earlier ones instead of silently rewriting them.
@@ -146,14 +146,19 @@ This repository is public. Project memory MUST NOT include confidential company 
 - [DEC-0002: Agent, Compiler, Kernel Authority](decisions/DEC-0002-agent-compiler-kernel-authority.md)
 - [DEC-0003: Process IR Before Kernel](decisions/DEC-0003-process-ir-before-kernel.md)
 - [DEC-0004: Project Memory Governance](decisions/DEC-0004-project-memory-governance.md)
+- [DEC-0005: Record Envelope and Revision Semantics](decisions/DEC-0005-record-envelope-revision-semantics.md)
 - [Milestones](milestones/README.md)
 - [M0 Concept Definition](milestones/M0-concept-definition.md)
 - [M1 Process IR Contract](milestones/M1-process-ir-contract.md)
 - [M1.1 Project Memory Foundation](milestones/M1-1-project-memory-foundation.md)
 - [M1.2 Process IR Machine-Readiness Hardening](milestones/M1-2-process-ir-machine-readiness.md)
+- [M1.2.1 RecordEnvelope and Revision Semantics Contract](milestones/M1-2-1-record-envelope-revision-semantics.md)
 - [M2 Machine Schema and Contract Validation](milestones/M2-machine-schema-contract-validation.md)
 - [Reviews](reviews/README.md)
 - [M1 Process IR Semantic Review](reviews/M1-process-ir-semantic-review.md)
+- [M1.2.1 RecordEnvelope Semantic and Design Review](reviews/M1-2-1-record-envelope-semantic-design-review.md)
+- [M1.2.1 RecordEnvelope Semantic and Design Re-Review](reviews/M1-2-1-record-envelope-semantic-design-review-2.md)
+- [M1.2.1 RecordEnvelope Final Semantic and Design Review](reviews/M1-2-1-record-envelope-semantic-design-review-3.md)
 - [Decision Template](templates/decision-template.md)
 - [Milestone Template](templates/milestone-template.md)
 - [Review Template](templates/review-template.md)
