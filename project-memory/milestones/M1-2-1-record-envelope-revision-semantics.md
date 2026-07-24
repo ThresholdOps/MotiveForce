@@ -6,7 +6,7 @@
 - Milestone status: Completed
 - Implementation status: Design contract completed; runtime implementation not started
 - Tracking Issue: [Issue #16](https://github.com/ThresholdOps/MotiveForce/issues/16)
-- Completed by [PR #22](https://github.com/ThresholdOps/MotiveForce/pull/22), branch `design/m1-2-1-record-envelope-revision-semantics`. Repository authority is established through PR #22 merge; the repository content does not predict its future squash merge SHA.
+- Completed by [PR #22](https://github.com/ThresholdOps/MotiveForce/pull/22), branch `design/m1-2-1-record-envelope-revision-semantics`, squash-merged as [`034cdcd4c680d23bcd68b8ad959d0c4163532d9c`](https://github.com/ThresholdOps/MotiveForce/commit/034cdcd4c680d23bcd68b8ad959d0c4163532d9c).
 
 ## Objective
 
@@ -69,7 +69,9 @@ M1.2.1 is `Accepted / Completed` through merge of PR #22. No runtime implementat
 ## Related commits
 
 - Base `main` at [`caff0ba6f33cc0243d78dd61c091968a218a25f8`](https://github.com/ThresholdOps/MotiveForce/commit/caff0ba6f33cc0243d78dd61c091968a218a25f8).
-- Initial PR #22 source head [`eb1472cd110fb6b601cfbfcb68553976343df969`](https://github.com/ThresholdOps/MotiveForce/commit/eb1472cd110fb6b601cfbfcb68553976343df969). Final source head after amend is recorded in PR #22 metadata.
+- Initial PR #22 source head [`eb1472cd110fb6b601cfbfcb68553976343df969`](https://github.com/ThresholdOps/MotiveForce/commit/eb1472cd110fb6b601cfbfcb68553976343df969).
+- Final PR #22 source head [`c969aa842ad4c4565eb7fcafd51b54d32c3520f4`](https://github.com/ThresholdOps/MotiveForce/commit/c969aa842ad4c4565eb7fcafd51b54d32c3520f4).
+- Squash merge commit [`034cdcd4c680d23bcd68b8ad959d0c4163532d9c`](https://github.com/ThresholdOps/MotiveForce/commit/034cdcd4c680d23bcd68b8ad959d0c4163532d9c).
 
 ## Decisions created
 
@@ -83,4 +85,4 @@ Completed as an accepted design contract. No implementation has started.
 
 - Keep downstream schema work deferred to M2.
 - Keep Issue #19 open for detailed AnalystDecision staleness, invalidation, revalidation, and controlled authority carry-forward policy.
-- Record the PR #22 squash merge SHA in a later governance-affecting project-memory update if material.
+- PR #22 squash merge provenance is synchronized by the M1.2.2 governance-affecting update.

@@ -29,4 +29,5 @@ A milestone record introduced by a PR may record the PR number, branch, reviewed
 - [M1.1: Project Memory Foundation](M1-1-project-memory-foundation.md)
 - [M1.2: Process IR Machine-Readiness Hardening](M1-2-process-ir-machine-readiness.md)
 - [M1.2.1: RecordEnvelope and Revision Semantics Contract](M1-2-1-record-envelope-revision-semantics.md)
+- [M1.2.2: Deterministic Semantic Compiler Replay Contract](M1-2-2-deterministic-semantic-compiler-replay.md), Accepted / Completed through merge of PR #23.
 - [M2: Machine Schema and Contract Validation](M2-machine-schema-contract-validation.md)

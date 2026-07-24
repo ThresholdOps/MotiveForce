@@ -37,6 +37,14 @@
 - **exact revision reference**: Accepted M1.2.1 reference to a specific immutable `revision_id`.
 - **effective status**: Accepted M1.2.1 derived lifecycle status for a record revision in a semantic context; not a self-authorizing stored fact.
 - **revision impact**: Accepted M1.2.1 classification of what changed between revisions.
+- **semantic replay**: Accepted M1.2.2 re-execution of the Semantic Compiler from the exact replay-affecting basis captured for an original compilation.
+- **replay input closure**: Accepted M1.2.2 complete set of exact semantic records, policies, compiler identity, mapping rules, target profile, and execution parameters that can affect Semantic Compiler output.
+- **CompilationReplayManifest**: Accepted M1.2.2 artifact identifying one complete exact replay input closure and the original compiler outputs to compare.
+- **CompilerImplementationRef**: Accepted M1.2.2 immutable reference sufficient to identify the compiler implementation and semantic build basis used by an execution.
+- **MappingRulesetRef**: Accepted M1.2.2 exact immutable identity of the mapping rules used for replay; detailed rule semantics remain Issue #20.
+- **ReplayVerificationResult**: Accepted M1.2.2 comparison report that records the exact comparison basis and distinguishes semantic match, mismatch, incomplete closure, changed-basis non-comparability, and replay failure.
+- **semantic equivalence**: Accepted M1.2.2 equality under the minimum semantic projection defined by the exact applicable replay-contract revision, independent of serialization, presentation, and observational metadata.
+- **observational metadata**: Accepted M1.2.2 runtime information such as timings, host, process, worker, or trace identifiers that must not affect semantic output unless explicitly classified as replay-affecting.
 - **authoritative**: Accepted within the relevant authority boundary, such as merged content, human business decision, compiler mapping eligibility, or kernel validation.
 - **proposed**: Draft or candidate content not yet accepted.
 - **accepted**: Adopted by merged repository content, accepted decision record, or authorized human decision in a stated context.
