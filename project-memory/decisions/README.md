@@ -51,4 +51,5 @@ Create a new decision record, set the old record's `Superseded by` field in the 
 - [DEC-0002: Agent, Compiler, and Kernel Authority](DEC-0002-agent-compiler-kernel-authority.md)
 - [DEC-0003: Process IR Before Kernel](DEC-0003-process-ir-before-kernel.md)
 - [DEC-0004: Project Memory Governance](DEC-0004-project-memory-governance.md)
-- [DEC-0005: Record Envelope and Revision Semantics](DEC-0005-record-envelope-revision-semantics.md), Proposed.
+- [DEC-0005: Record Envelope and Revision Semantics](DEC-0005-record-envelope-revision-semantics.md), Accepted.
+- [DEC-0006: Deterministic Semantic Compiler Replay](DEC-0006-deterministic-semantic-compiler-replay.md), Accepted through merge of PR #23.

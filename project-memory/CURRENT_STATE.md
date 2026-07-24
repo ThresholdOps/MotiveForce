@@ -1,7 +1,7 @@
 # Current State
 
-- Last verified: 2026-07-23T15:23:10Z
-- Verification source: GitHub PR metadata for [PR #1](https://github.com/ThresholdOps/MotiveForce/pull/1), [PR #2](https://github.com/ThresholdOps/MotiveForce/pull/2), [PR #3](https://github.com/ThresholdOps/MotiveForce/pull/3), repository Issues #4-#21, `origin/main`, [README.md](../README.md), [docs/PROCESS_IR_CONTRACT.md](../docs/PROCESS_IR_CONTRACT.md), and `project-memory/`.
+- Last verified: 2026-07-24T15:31:13Z
+- Verification source: GitHub PR metadata, branch ref, and commit list for [PR #23](https://github.com/ThresholdOps/MotiveForce/pull/23); repository Issues [#8](https://github.com/ThresholdOps/MotiveForce/issues/8) and [#17](https://github.com/ThresholdOps/MotiveForce/issues/17)-[#21](https://github.com/ThresholdOps/MotiveForce/issues/21); `origin/main`; accepted [M1](../docs/PROCESS_IR_CONTRACT.md) and [M1.2.1](../docs/PROCESS_IR_RECORD_ENVELOPE_CONTRACT.md) contracts; accepted [DEC-0005](decisions/DEC-0005-record-envelope-revision-semantics.md); and `project-memory/`.
 
 ## Project status
 
@@ -23,30 +23,33 @@ The merged README states the boundary: the LLM interprets source material, the S
 
 ## Active milestone
 
-- M1.2 Process IR Machine-Readiness Hardening: proposed design milestone. It has consciously started through M1.2.1 only; no runtime implementation has started. M1.2 as a whole is not completed.
-- M1.2.1 RecordEnvelope and Revision Semantics Contract: accepted and completed as design-contract work through [PR #22](https://github.com/ThresholdOps/MotiveForce/pull/22). Human final review [REV-0004](reviews/M1-2-1-record-envelope-semantic-design-review-3.md) approved semantic head [`b4c29bb8505db099feeb58afc3ec5755f90e85e8`](https://github.com/ThresholdOps/MotiveForce/commit/b4c29bb8505db099feeb58afc3ec5755f90e85e8) and authorized bounded finalization. Runtime implementation has not started.
+- M1.2 Process IR Machine-Readiness Hardening: proposed and in progress at the design-program level. M1.2.1 and M1.2.2 are completed as design-contract work, no next M1.2 item is started, no runtime implementation has started, and M1.2 as a whole is not completed.
+- M1.2.1 RecordEnvelope and Revision Semantics Contract: accepted and completed as design-contract work through [PR #22](https://github.com/ThresholdOps/MotiveForce/pull/22), squash-merged as [`034cdcd4c680d23bcd68b8ad959d0c4163532d9c`](https://github.com/ThresholdOps/MotiveForce/commit/034cdcd4c680d23bcd68b8ad959d0c4163532d9c). Human final review [REV-0004](reviews/M1-2-1-record-envelope-semantic-design-review-3.md) approved semantic head [`b4c29bb8505db099feeb58afc3ec5755f90e85e8`](https://github.com/ThresholdOps/MotiveForce/commit/b4c29bb8505db099feeb58afc3ec5755f90e85e8). Runtime implementation has not started.
+- M1.2.2 Deterministic Semantic Compiler Replay Contract: accepted and completed as design-contract work through merge of [PR #23](https://github.com/ThresholdOps/MotiveForce/pull/23). Human review [REV-0005](reviews/M1-2-2-deterministic-semantic-compiler-replay-review.md) requested one bounded correction; final review [REV-0006](reviews/M1-2-2-deterministic-semantic-compiler-replay-review-2.md) approved semantic head [`a411692f9a0b4ac754a1a0dd3cfbc3832ae3df08`](https://github.com/ThresholdOps/MotiveForce/commit/a411692f9a0b4ac754a1a0dd3cfbc3832ae3df08), closed `REV5-FIND-001`, and approved DEC-0006. Runtime implementation has not started.
 - M2 Machine Schema and Contract Validation: proposed future milestone, implementation deferred in the current phase.
 
 ## Active governance work
 
-- [Issue #16](https://github.com/ThresholdOps/MotiveForce/issues/16) tracks M1.2.1 design work and is completed by PR #22 merge.
-- Open Issues [#4](https://github.com/ThresholdOps/MotiveForce/issues/4)-[#21](https://github.com/ThresholdOps/MotiveForce/issues/21) track deferred and future actionable work created or reused under accepted project-memory governance.
+- [Issue #16](https://github.com/ThresholdOps/MotiveForce/issues/16) is closed as completed by PR #22 merge.
+- [Issue #17](https://github.com/ThresholdOps/MotiveForce/issues/17) is completed through merge of [PR #23](https://github.com/ThresholdOps/MotiveForce/pull/23) and is closed after successful merge.
+- Other open Issues [#4](https://github.com/ThresholdOps/MotiveForce/issues/4)-[#15](https://github.com/ThresholdOps/MotiveForce/issues/15) and [#18](https://github.com/ThresholdOps/MotiveForce/issues/18)-[#21](https://github.com/ThresholdOps/MotiveForce/issues/21) remain deferred or future work.
 
-## Open Draft PRs
+## M1.2.2 acceptance transition
 
-- No open Draft PR is recorded for M1.2.1 after PR #22 merge.
+- [PR #23](https://github.com/ThresholdOps/MotiveForce/pull/23), branch `design/m1-2-2-deterministic-compiler-replay`, makes the M1.2.2 acceptance and completion transitions repository-authoritative through merge. Human final review examined semantic head [`a411692f9a0b4ac754a1a0dd3cfbc3832ae3df08`](https://github.com/ThresholdOps/MotiveForce/commit/a411692f9a0b4ac754a1a0dd3cfbc3832ae3df08). The bounded-finalization source head and actual squash merge SHA remain authoritative in GitHub metadata.
 
 ## Current blockers
 
 - No current blocker is recorded for M0, M1, or M1.1.
 - No current blocker is recorded for M1.2.1 design acceptance.
+- No current blocker is recorded for M1.2.2 design acceptance.
 - Issue #19 remains open with design work not started. It is non-blocking for M1.2.1 design acceptance and exact historical/as-of derivation design, but it is a hard blocker before implementation that derives authoritative current effective status, evaluates AnalystDecision staleness, invalidation or revalidation, or performs controlled authority carry-forward.
 
 ## Next expected decision
 
-Plan the next M1.2 design item deliberately while keeping all non-M1.2.1 Issues deferred until explicitly started.
+Consciously select the next M1.2 design item. [Issue #18](https://github.com/ThresholdOps/MotiveForce/issues/18) is a candidate, but remains open, deferred, and not started.
 
-Tracking: [Issue #16](https://github.com/ThresholdOps/MotiveForce/issues/16), [M1.2](milestones/M1-2-process-ir-machine-readiness.md), and [M1.2.1](milestones/M1-2-1-record-envelope-revision-semantics.md). The broader validation-path decision remains tracked by [Issue #4](https://github.com/ThresholdOps/MotiveForce/issues/4).
+Tracking: [M1.2](milestones/M1-2-process-ir-machine-readiness.md), [Issue #18](https://github.com/ThresholdOps/MotiveForce/issues/18), and the remaining deferred open-item registry. Issue #20 remains downstream of the accepted replay identity requirements.
 
 ## Current out-of-scope areas
 
@@ -58,3 +61,5 @@ Tracking: [Issue #16](https://github.com/ThresholdOps/MotiveForce/issues/16), [M
 - Confidential source documents in the public repository.
 - Runtime implementation of M1.2.1 concepts.
 - Machine schema or executable validation for M1.2.1 concepts.
+- Semantic Compiler implementation or runtime replay logging.
+- Machine schema, executable replay verification, hashing algorithm, or canonical serialization for M1.2.2.

@@ -23,3 +23,5 @@ A review record summarizes review results. It does not replace PR discussion, co
 - [REV-0002: M1.2.1 RecordEnvelope Semantic and Design Review](M1-2-1-record-envelope-semantic-design-review.md)
 - [REV-0003: M1.2.1 RecordEnvelope Semantic and Design Re-Review](M1-2-1-record-envelope-semantic-design-review-2.md)
 - [REV-0004: M1.2.1 RecordEnvelope Final Semantic and Design Review](M1-2-1-record-envelope-semantic-design-review-3.md)
+- [REV-0005: M1.2.2 Deterministic Semantic Compiler Replay Review](M1-2-2-deterministic-semantic-compiler-replay-review.md)
+- [REV-0006: M1.2.2 Deterministic Semantic Compiler Replay Final Review](M1-2-2-deterministic-semantic-compiler-replay-review-2.md)
