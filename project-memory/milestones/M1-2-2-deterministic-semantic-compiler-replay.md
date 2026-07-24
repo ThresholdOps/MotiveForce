@@ -81,9 +81,10 @@ These completion conditions are satisfied through REV-0006 and merge of PR #23. 
 ## Related commits
 
 - Base `main`: [`034cdcd4c680d23bcd68b8ad959d0c4163532d9c`](https://github.com/ThresholdOps/MotiveForce/commit/034cdcd4c680d23bcd68b8ad959d0c4163532d9c).
-- Initial PR #23 source head before self-provenance amend: [`d8142e36077a95edb98f5089919e47d59e35356f`](https://github.com/ThresholdOps/MotiveForce/commit/d8142e36077a95edb98f5089919e47d59e35356f). The final source head is recorded in PR metadata after the amend and force-with-lease push.
+- Initial PR #23 source head before self-provenance amend: [`d8142e36077a95edb98f5089919e47d59e35356f`](https://github.com/ThresholdOps/MotiveForce/commit/d8142e36077a95edb98f5089919e47d59e35356f).
+- Final PR #23 source head: [`5c69345604c097e978f285d4be2cd85e1f397fb3`](https://github.com/ThresholdOps/MotiveForce/commit/5c69345604c097e978f285d4be2cd85e1f397fb3).
 - Human-reviewed semantic head: [`a411692f9a0b4ac754a1a0dd3cfbc3832ae3df08`](https://github.com/ThresholdOps/MotiveForce/commit/a411692f9a0b4ac754a1a0dd3cfbc3832ae3df08).
-- The actual PR #23 squash merge SHA remains authoritative in GitHub metadata and may be synchronized in a later governance-affecting update when material. This record does not predict that SHA.
+- PR #23 squash merge: [`a63858354f6e34f7b56900dd5a89d04ac0b19cb5`](https://github.com/ThresholdOps/MotiveForce/commit/a63858354f6e34f7b56900dd5a89d04ac0b19cb5), synchronized by the next governance-affecting project-memory update.
 - PR #22 final source and squash merge provenance are recorded by GitHub and synchronized in this governance update where material.
 
 ## Decisions created
@@ -108,7 +109,6 @@ Completed as accepted design-contract work through merge of PR #23. No Semantic 
 
 ## Follow-up
 
-- Close Issue #17 after successful merge of PR #23.
-- Record the actual squash merge SHA in GitHub metadata and synchronize it in a later governance-affecting update if material.
-- Issue #18 may be considered as the next candidate for a separate conscious start; it is not started here.
-- Keep Issues #8 and #18-#21 deferred and not started.
+- Issue #17 is closed as completed after merge of PR #23.
+- Issue #18 is consciously started separately as M1.2.3 diagnostic-policy design work.
+- Keep Issues #8 and #19-#21 deferred and not started.
