@@ -51,6 +51,12 @@
 - **diagnostic aggregation**: Accepted M1.2.3 collection operation that deduplicates equal semantic projections while retaining all provenance and without count-based escalation.
 - **diagnostic multiplicity**: Accepted M1.2.3 derived count of equal contributing diagnostic occurrences; non-semantic by default.
 - **diagnostic report order**: Accepted M1.2.3 deterministic presentation order that does not affect semantic equality or outcome.
+- **AnalystDecisionBasisSet**: Accepted M1.2.4 exact closure of decision, subject, evidence, context, authority, dependency, status, value-state, policy, external-basis, operation, and as-of-time references used for authority evaluation.
+- **historical validity**: Accepted M1.2.4 evaluation of whether an exact `AnalystDecision` was authoritative within its exact original basis and as-of time.
+- **current authority**: Accepted M1.2.4 evaluation of whether an exact `AnalystDecision` may authorize one exact requested current subject, context, scope, operation, policy, and as-of time.
+- **revalidation**: Accepted M1.2.4 new exact human-authorized decision or status basis evaluating a prior decision against a changed exact basis without mutation.
+- **controlled authority carry-forward**: Accepted M1.2.4 non-transitive effect of exact human revalidation on named successor revisions; never automatic inheritance.
+- **current-authority assessment**: Accepted M1.2.4 derived outcome of `current-authoritative`, `revalidation-required`, `invalidated-for-current-use`, or `unresolved`; not an M1 lifecycle state.
 - **authoritative**: Accepted within the relevant authority boundary, such as merged content, human business decision, compiler mapping eligibility, or kernel validation.
 - **proposed**: Draft or candidate content not yet accepted.
 - **accepted**: Adopted by merged repository content, accepted decision record, or authorized human decision in a stated context.
