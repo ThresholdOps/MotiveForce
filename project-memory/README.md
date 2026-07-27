@@ -61,7 +61,7 @@ A decision may be `Open` while implementation is `Deferred in current phase`. De
 - Decisions: `DEC-0001`
 - History events: `HIST-0001`
 - Changes: `CHG-0001`
-- Milestones: `M0`, `M1`, `M1.1`, `M1.2`, `M1.2.1`, `M1.2.2`, `M2`
+- Milestones: `M0`, `M1`, `M1.1`, `M1.2`, `M1.2.1`, `M1.2.2`, `M1.2.3`, `M2`
 - Reviews: `REV-0001`
 
 IDs are never reused. Later records supersede earlier ones instead of silently rewriting them.
@@ -148,6 +148,7 @@ This repository is public. Project memory MUST NOT include confidential company 
 - [DEC-0004: Project Memory Governance](decisions/DEC-0004-project-memory-governance.md)
 - [DEC-0005: Record Envelope and Revision Semantics](decisions/DEC-0005-record-envelope-revision-semantics.md)
 - [DEC-0006: Deterministic Semantic Compiler Replay](decisions/DEC-0006-deterministic-semantic-compiler-replay.md)
+- [DEC-0007: Process IR Diagnostic Severity and Aggregation Policy](decisions/DEC-0007-process-ir-diagnostic-severity-aggregation.md)
 - [Milestones](milestones/README.md)
 - [M0 Concept Definition](milestones/M0-concept-definition.md)
 - [M1 Process IR Contract](milestones/M1-process-ir-contract.md)
@@ -155,6 +156,7 @@ This repository is public. Project memory MUST NOT include confidential company 
 - [M1.2 Process IR Machine-Readiness Hardening](milestones/M1-2-process-ir-machine-readiness.md)
 - [M1.2.1 RecordEnvelope and Revision Semantics Contract](milestones/M1-2-1-record-envelope-revision-semantics.md)
 - [M1.2.2 Deterministic Semantic Compiler Replay Contract](milestones/M1-2-2-deterministic-semantic-compiler-replay.md)
+- [M1.2.3 Process IR Diagnostic Severity and Aggregation Policy](milestones/M1-2-3-diagnostic-severity-aggregation.md)
 - [M2 Machine Schema and Contract Validation](milestones/M2-machine-schema-contract-validation.md)
 - [Reviews](reviews/README.md)
 - [M1 Process IR Semantic Review](reviews/M1-process-ir-semantic-review.md)
@@ -163,6 +165,8 @@ This repository is public. Project memory MUST NOT include confidential company 
 - [M1.2.1 RecordEnvelope Final Semantic and Design Review](reviews/M1-2-1-record-envelope-semantic-design-review-3.md)
 - [M1.2.2 Deterministic Semantic Compiler Replay Review](reviews/M1-2-2-deterministic-semantic-compiler-replay-review.md)
 - [M1.2.2 Deterministic Semantic Compiler Replay Final Review](reviews/M1-2-2-deterministic-semantic-compiler-replay-review-2.md)
+- [M1.2.3 Diagnostic Severity and Aggregation Review](reviews/M1-2-3-diagnostic-severity-aggregation-review.md)
+- [M1.2.3 Diagnostic Severity and Aggregation Final Review](reviews/M1-2-3-diagnostic-severity-aggregation-review-2.md)
 - [Decision Template](templates/decision-template.md)
 - [Milestone Template](templates/milestone-template.md)
 - [Review Template](templates/review-template.md)

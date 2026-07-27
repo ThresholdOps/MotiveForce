@@ -25,3 +25,5 @@ A review record summarizes review results. It does not replace PR discussion, co
 - [REV-0004: M1.2.1 RecordEnvelope Final Semantic and Design Review](M1-2-1-record-envelope-semantic-design-review-3.md)
 - [REV-0005: M1.2.2 Deterministic Semantic Compiler Replay Review](M1-2-2-deterministic-semantic-compiler-replay-review.md)
 - [REV-0006: M1.2.2 Deterministic Semantic Compiler Replay Final Review](M1-2-2-deterministic-semantic-compiler-replay-review-2.md)
+- [REV-0007: M1.2.3 Diagnostic Severity and Aggregation Review](M1-2-3-diagnostic-severity-aggregation-review.md)
+- [REV-0008: M1.2.3 Diagnostic Severity and Aggregation Final Review](M1-2-3-diagnostic-severity-aggregation-review-2.md)

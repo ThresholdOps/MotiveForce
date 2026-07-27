@@ -45,6 +45,12 @@
 - **ReplayVerificationResult**: Accepted M1.2.2 comparison report that records the exact comparison basis and distinguishes semantic match, mismatch, incomplete closure, changed-basis non-comparability, and replay failure.
 - **semantic equivalence**: Accepted M1.2.2 equality under the minimum semantic projection defined by the exact applicable replay-contract revision, independent of serialization, presentation, and observational metadata.
 - **observational metadata**: Accepted M1.2.2 runtime information such as timings, host, process, worker, or trace identifiers that must not affect semantic output unless explicitly classified as replay-affecting.
+- **diagnostic severity**: Accepted M1.2.3 normative classification of a diagnostic condition as `error`, `warning`, or `info`; separate from operation-specific blocking.
+- **blocking status**: Accepted M1.2.3 property of a diagnostic instance evaluated against an exact operation, authoritative scope, and dependency closure.
+- **semantic diagnostic projection**: Accepted M1.2.2 and M1.2.3 identity boundary containing code, severity under exact policy, blocking status, exact affected records or scope, and semantic parameters.
+- **diagnostic aggregation**: Accepted M1.2.3 collection operation that deduplicates equal semantic projections while retaining all provenance and without count-based escalation.
+- **diagnostic multiplicity**: Accepted M1.2.3 derived count of equal contributing diagnostic occurrences; non-semantic by default.
+- **diagnostic report order**: Accepted M1.2.3 deterministic presentation order that does not affect semantic equality or outcome.
 - **authoritative**: Accepted within the relevant authority boundary, such as merged content, human business decision, compiler mapping eligibility, or kernel validation.
 - **proposed**: Draft or candidate content not yet accepted.
 - **accepted**: Adopted by merged repository content, accepted decision record, or authorized human decision in a stated context.

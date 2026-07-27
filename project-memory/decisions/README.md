@@ -53,3 +53,4 @@ Create a new decision record, set the old record's `Superseded by` field in the 
 - [DEC-0004: Project Memory Governance](DEC-0004-project-memory-governance.md)
 - [DEC-0005: Record Envelope and Revision Semantics](DEC-0005-record-envelope-revision-semantics.md), Accepted.
 - [DEC-0006: Deterministic Semantic Compiler Replay](DEC-0006-deterministic-semantic-compiler-replay.md), Accepted through merge of PR #23.
+- [DEC-0007: Process IR Diagnostic Severity and Aggregation Policy](DEC-0007-process-ir-diagnostic-severity-aggregation.md), Accepted through merge of PR #24.

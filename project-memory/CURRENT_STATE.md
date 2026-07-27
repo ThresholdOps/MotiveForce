@@ -1,7 +1,7 @@
 # Current State
 
-- Last verified: 2026-07-24T15:31:13Z
-- Verification source: GitHub PR metadata, branch ref, and commit list for [PR #23](https://github.com/ThresholdOps/MotiveForce/pull/23); repository Issues [#8](https://github.com/ThresholdOps/MotiveForce/issues/8) and [#17](https://github.com/ThresholdOps/MotiveForce/issues/17)-[#21](https://github.com/ThresholdOps/MotiveForce/issues/21); `origin/main`; accepted [M1](../docs/PROCESS_IR_CONTRACT.md) and [M1.2.1](../docs/PROCESS_IR_RECORD_ENVELOPE_CONTRACT.md) contracts; accepted [DEC-0005](decisions/DEC-0005-record-envelope-revision-semantics.md); and `project-memory/`.
+- Last verified: 2026-07-27T10:34:30Z
+- Verification source: GitHub `main`, merged [PR #23](https://github.com/ThresholdOps/MotiveForce/pull/23), [PR #24](https://github.com/ThresholdOps/MotiveForce/pull/24), repository Issues [#8](https://github.com/ThresholdOps/MotiveForce/issues/8) and [#17](https://github.com/ThresholdOps/MotiveForce/issues/17)-[#21](https://github.com/ThresholdOps/MotiveForce/issues/21), local and remote branch inventory, accepted M1, M1.2.1, and M1.2.2 contracts, accepted DEC-0005 and DEC-0006, [REV-0007](reviews/M1-2-3-diagnostic-severity-aggregation-review.md), [REV-0008](reviews/M1-2-3-diagnostic-severity-aggregation-review-2.md), and `project-memory/`.
 
 ## Project status
 
@@ -23,33 +23,38 @@ The merged README states the boundary: the LLM interprets source material, the S
 
 ## Active milestone
 
-- M1.2 Process IR Machine-Readiness Hardening: proposed and in progress at the design-program level. M1.2.1 and M1.2.2 are completed as design-contract work, no next M1.2 item is started, no runtime implementation has started, and M1.2 as a whole is not completed.
+- M1.2 Process IR Machine-Readiness Hardening: proposed and in progress at the design-program level. M1.2.1, M1.2.2, and M1.2.3 are completed as design-contract work. No runtime implementation has started, and M1.2 as a whole is not completed.
 - M1.2.1 RecordEnvelope and Revision Semantics Contract: accepted and completed as design-contract work through [PR #22](https://github.com/ThresholdOps/MotiveForce/pull/22), squash-merged as [`034cdcd4c680d23bcd68b8ad959d0c4163532d9c`](https://github.com/ThresholdOps/MotiveForce/commit/034cdcd4c680d23bcd68b8ad959d0c4163532d9c). Human final review [REV-0004](reviews/M1-2-1-record-envelope-semantic-design-review-3.md) approved semantic head [`b4c29bb8505db099feeb58afc3ec5755f90e85e8`](https://github.com/ThresholdOps/MotiveForce/commit/b4c29bb8505db099feeb58afc3ec5755f90e85e8). Runtime implementation has not started.
-- M1.2.2 Deterministic Semantic Compiler Replay Contract: accepted and completed as design-contract work through merge of [PR #23](https://github.com/ThresholdOps/MotiveForce/pull/23). Human review [REV-0005](reviews/M1-2-2-deterministic-semantic-compiler-replay-review.md) requested one bounded correction; final review [REV-0006](reviews/M1-2-2-deterministic-semantic-compiler-replay-review-2.md) approved semantic head [`a411692f9a0b4ac754a1a0dd3cfbc3832ae3df08`](https://github.com/ThresholdOps/MotiveForce/commit/a411692f9a0b4ac754a1a0dd3cfbc3832ae3df08), closed `REV5-FIND-001`, and approved DEC-0006. Runtime implementation has not started.
+- M1.2.2 Deterministic Semantic Compiler Replay Contract: accepted and completed as design-contract work through merge of [PR #23](https://github.com/ThresholdOps/MotiveForce/pull/23), squash commit [`a63858354f6e34f7b56900dd5a89d04ac0b19cb5`](https://github.com/ThresholdOps/MotiveForce/commit/a63858354f6e34f7b56900dd5a89d04ac0b19cb5). Human review [REV-0005](reviews/M1-2-2-deterministic-semantic-compiler-replay-review.md) requested one bounded correction; final review [REV-0006](reviews/M1-2-2-deterministic-semantic-compiler-replay-review-2.md) approved semantic head [`a411692f9a0b4ac754a1a0dd3cfbc3832ae3df08`](https://github.com/ThresholdOps/MotiveForce/commit/a411692f9a0b4ac754a1a0dd3cfbc3832ae3df08), closed `REV5-FIND-001`, and approved DEC-0006. Runtime implementation has not started.
+- M1.2.3 Process IR Diagnostic Severity and Aggregation Policy: accepted and completed as design-contract work through merge of [PR #24](https://github.com/ThresholdOps/MotiveForce/pull/24), the accepted [Diagnostic Policy Contract](../docs/PROCESS_IR_DIAGNOSTIC_POLICY_CONTRACT.md), [DEC-0007](decisions/DEC-0007-process-ir-diagnostic-severity-aggregation.md), and the [M1.2.3 milestone](milestones/M1-2-3-diagnostic-severity-aggregation.md). [REV-0007](reviews/M1-2-3-diagnostic-severity-aggregation-review.md) requested four bounded corrections; [REV-0008](reviews/M1-2-3-diagnostic-severity-aggregation-review-2.md) approves semantic head [`fe96e20bf927927fc6fd9e34b9c475b2ad0a1af4`](https://github.com/ThresholdOps/MotiveForce/commit/fe96e20bf927927fc6fd9e34b9c475b2ad0a1af4) and closes all findings. No implementation has started.
 - M2 Machine Schema and Contract Validation: proposed future milestone, implementation deferred in the current phase.
 
 ## Active governance work
 
 - [Issue #16](https://github.com/ThresholdOps/MotiveForce/issues/16) is closed as completed by PR #22 merge.
 - [Issue #17](https://github.com/ThresholdOps/MotiveForce/issues/17) is completed through merge of [PR #23](https://github.com/ThresholdOps/MotiveForce/pull/23) and is closed after successful merge.
-- Other open Issues [#4](https://github.com/ThresholdOps/MotiveForce/issues/4)-[#15](https://github.com/ThresholdOps/MotiveForce/issues/15) and [#18](https://github.com/ThresholdOps/MotiveForce/issues/18)-[#21](https://github.com/ThresholdOps/MotiveForce/issues/21) remain deferred or future work.
+- [Issue #18](https://github.com/ThresholdOps/MotiveForce/issues/18) is completed through merge of PR #24 and closes after successful merge.
+- Other open Issues [#4](https://github.com/ThresholdOps/MotiveForce/issues/4)-[#15](https://github.com/ThresholdOps/MotiveForce/issues/15) and [#19](https://github.com/ThresholdOps/MotiveForce/issues/19)-[#21](https://github.com/ThresholdOps/MotiveForce/issues/21) remain deferred or future work.
 
-## M1.2.2 acceptance transition
+## M1.2.3 acceptance transition
 
-- [PR #23](https://github.com/ThresholdOps/MotiveForce/pull/23), branch `design/m1-2-2-deterministic-compiler-replay`, makes the M1.2.2 acceptance and completion transitions repository-authoritative through merge. Human final review examined semantic head [`a411692f9a0b4ac754a1a0dd3cfbc3832ae3df08`](https://github.com/ThresholdOps/MotiveForce/commit/a411692f9a0b4ac754a1a0dd3cfbc3832ae3df08). The bounded-finalization source head and actual squash merge SHA remain authoritative in GitHub metadata.
+- M1.2.3 accepts a three-level severity vocabulary, scope-local blocking, a complete registry of 76 diagnostic codes, semantic identity, aggregation, deterministic non-semantic ordering, and compilation/replay outcome derivation.
+- [PR #24](https://github.com/ThresholdOps/MotiveForce/pull/24) uses branch `design/m1-2-3-diagnostic-policy`. Its initial source head before self-provenance amend is [`36d2a0208651e87f83a16fe13b42ebaa7d7a8961`](https://github.com/ThresholdOps/MotiveForce/commit/36d2a0208651e87f83a16fe13b42ebaa7d7a8961). The final source head remains in PR and Issue metadata; repository content does not predict its squash merge SHA.
+- Human review [REV-0007](reviews/M1-2-3-diagnostic-severity-aggregation-review.md) requested four bounded corrections. Final review [REV-0008](reviews/M1-2-3-diagnostic-severity-aggregation-review-2.md) approves the corrected design, closes all findings, accepts DEC-0007, and authorizes completion through merge.
 
 ## Current blockers
 
 - No current blocker is recorded for M0, M1, or M1.1.
 - No current blocker is recorded for M1.2.1 design acceptance.
 - No current blocker is recorded for M1.2.2 design acceptance.
+- No current blocker is recorded for M1.2.3 design acceptance.
 - Issue #19 remains open with design work not started. It is non-blocking for M1.2.1 design acceptance and exact historical/as-of derivation design, but it is a hard blocker before implementation that derives authoritative current effective status, evaluates AnalystDecision staleness, invalidation or revalidation, or performs controlled authority carry-forward.
 
 ## Next expected decision
 
-Consciously select the next M1.2 design item. [Issue #18](https://github.com/ThresholdOps/MotiveForce/issues/18) is a candidate, but remains open, deferred, and not started.
+Issue #19 may be considered as the next candidate for a conscious M1.2 start. It is not started by PR #24.
 
-Tracking: [M1.2](milestones/M1-2-process-ir-machine-readiness.md), [Issue #18](https://github.com/ThresholdOps/MotiveForce/issues/18), and the remaining deferred open-item registry. Issue #20 remains downstream of the accepted replay identity requirements.
+Tracking: [Issue #19](https://github.com/ThresholdOps/MotiveForce/issues/19) and [M1.2](milestones/M1-2-process-ir-machine-readiness.md). Issues #8 and #19-#21 remain open and not started.
 
 ## Current out-of-scope areas
 
@@ -63,3 +68,4 @@ Tracking: [M1.2](milestones/M1-2-process-ir-machine-readiness.md), [Issue #18](h
 - Machine schema or executable validation for M1.2.1 concepts.
 - Semantic Compiler implementation or runtime replay logging.
 - Machine schema, executable replay verification, hashing algorithm, or canonical serialization for M1.2.2.
+- Diagnostic engine, aggregation engine, machine schema, runtime logging, API, persistence, UI design, executable validation, tests, or CI for M1.2.3.
