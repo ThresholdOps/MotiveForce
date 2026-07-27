@@ -27,3 +27,5 @@ A review record summarizes review results. It does not replace PR discussion, co
 - [REV-0006: M1.2.2 Deterministic Semantic Compiler Replay Final Review](M1-2-2-deterministic-semantic-compiler-replay-review-2.md)
 - [REV-0007: M1.2.3 Diagnostic Severity and Aggregation Review](M1-2-3-diagnostic-severity-aggregation-review.md)
 - [REV-0008: M1.2.3 Diagnostic Severity and Aggregation Final Review](M1-2-3-diagnostic-severity-aggregation-review-2.md)
+- [REV-0009: M1.2.4 AnalystDecision Staleness and Revalidation Review](M1-2-4-analyst-decision-staleness-revalidation-review.md)
+- [REV-0010: M1.2.4 AnalystDecision Staleness and Revalidation Final Review](M1-2-4-analyst-decision-staleness-revalidation-review-2.md)

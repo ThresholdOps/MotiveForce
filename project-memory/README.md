@@ -61,7 +61,7 @@ A decision may be `Open` while implementation is `Deferred in current phase`. De
 - Decisions: `DEC-0001`
 - History events: `HIST-0001`
 - Changes: `CHG-0001`
-- Milestones: `M0`, `M1`, `M1.1`, `M1.2`, `M1.2.1`, `M1.2.2`, `M1.2.3`, `M2`
+- Milestones: `M0`, `M1`, `M1.1`, `M1.2`, `M1.2.1`, `M1.2.2`, `M1.2.3`, `M1.2.4`, `M2`
 - Reviews: `REV-0001`
 
 IDs are never reused. Later records supersede earlier ones instead of silently rewriting them.
@@ -149,6 +149,7 @@ This repository is public. Project memory MUST NOT include confidential company 
 - [DEC-0005: Record Envelope and Revision Semantics](decisions/DEC-0005-record-envelope-revision-semantics.md)
 - [DEC-0006: Deterministic Semantic Compiler Replay](decisions/DEC-0006-deterministic-semantic-compiler-replay.md)
 - [DEC-0007: Process IR Diagnostic Severity and Aggregation Policy](decisions/DEC-0007-process-ir-diagnostic-severity-aggregation.md)
+- [DEC-0008: AnalystDecision Staleness, Invalidation, Revalidation, and Controlled Authority Carry-Forward](decisions/DEC-0008-analyst-decision-staleness-revalidation.md)
 - [Milestones](milestones/README.md)
 - [M0 Concept Definition](milestones/M0-concept-definition.md)
 - [M1 Process IR Contract](milestones/M1-process-ir-contract.md)
@@ -157,6 +158,7 @@ This repository is public. Project memory MUST NOT include confidential company 
 - [M1.2.1 RecordEnvelope and Revision Semantics Contract](milestones/M1-2-1-record-envelope-revision-semantics.md)
 - [M1.2.2 Deterministic Semantic Compiler Replay Contract](milestones/M1-2-2-deterministic-semantic-compiler-replay.md)
 - [M1.2.3 Process IR Diagnostic Severity and Aggregation Policy](milestones/M1-2-3-diagnostic-severity-aggregation.md)
+- [M1.2.4 AnalystDecision Staleness, Invalidation, Revalidation, and Controlled Authority Carry-Forward](milestones/M1-2-4-analyst-decision-staleness-revalidation.md)
 - [M2 Machine Schema and Contract Validation](milestones/M2-machine-schema-contract-validation.md)
 - [Reviews](reviews/README.md)
 - [M1 Process IR Semantic Review](reviews/M1-process-ir-semantic-review.md)
@@ -167,6 +169,8 @@ This repository is public. Project memory MUST NOT include confidential company 
 - [M1.2.2 Deterministic Semantic Compiler Replay Final Review](reviews/M1-2-2-deterministic-semantic-compiler-replay-review-2.md)
 - [M1.2.3 Diagnostic Severity and Aggregation Review](reviews/M1-2-3-diagnostic-severity-aggregation-review.md)
 - [M1.2.3 Diagnostic Severity and Aggregation Final Review](reviews/M1-2-3-diagnostic-severity-aggregation-review-2.md)
+- [M1.2.4 AnalystDecision Staleness and Revalidation Review](reviews/M1-2-4-analyst-decision-staleness-revalidation-review.md)
+- [M1.2.4 AnalystDecision Staleness and Revalidation Final Review](reviews/M1-2-4-analyst-decision-staleness-revalidation-review-2.md)
 - [Decision Template](templates/decision-template.md)
 - [Milestone Template](templates/milestone-template.md)
 - [Review Template](templates/review-template.md)
