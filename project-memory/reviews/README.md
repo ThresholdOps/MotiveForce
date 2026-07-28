@@ -30,3 +30,4 @@ A review record summarizes review results. It does not replace PR discussion, co
 - [REV-0009: M1.2.4 AnalystDecision Staleness and Revalidation Review](M1-2-4-analyst-decision-staleness-revalidation-review.md)
 - [REV-0010: M1.2.4 AnalystDecision Staleness and Revalidation Final Review](M1-2-4-analyst-decision-staleness-revalidation-review-2.md)
 - [REV-0011: M1.2.5 Mapping Rule and Target Profile Propagation Review](M1-2-5-mapping-rule-target-profile-propagation-review.md)
+- [REV-0012: M1.2.5 Mapping Rule and Target Profile Propagation Re-Review](M1-2-5-mapping-rule-target-profile-propagation-review-2.md)

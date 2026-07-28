@@ -174,6 +174,7 @@ This repository is public. Project memory MUST NOT include confidential company 
 - [M1.2.4 AnalystDecision Staleness and Revalidation Review](reviews/M1-2-4-analyst-decision-staleness-revalidation-review.md)
 - [M1.2.4 AnalystDecision Staleness and Revalidation Final Review](reviews/M1-2-4-analyst-decision-staleness-revalidation-review-2.md)
 - [M1.2.5 Mapping Rule and Target Profile Propagation Review](reviews/M1-2-5-mapping-rule-target-profile-propagation-review.md)
+- [M1.2.5 Mapping Rule and Target Profile Propagation Re-Review](reviews/M1-2-5-mapping-rule-target-profile-propagation-review-2.md)
 - [Decision Template](templates/decision-template.md)
 - [Milestone Template](templates/milestone-template.md)
 - [Review Template](templates/review-template.md)
