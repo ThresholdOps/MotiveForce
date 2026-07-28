@@ -10,7 +10,8 @@
 - Source branch: `design/m1-2-5-mapping-profile-propagation`
 - Base: [`20f53f13938692b9c572b6f9f963e89fc22cb5b8`](https://github.com/ThresholdOps/MotiveForce/commit/20f53f13938692b9c572b6f9f963e89fc22cb5b8)
 - Human semantic and design review round 1: [REV-0011](../project-memory/reviews/M1-2-5-mapping-rule-target-profile-propagation-review.md), Request changes
-- Human semantic and design re-review: Required under REV-0012
+- Independent semantic and architectural re-review: [REV-0012](../project-memory/reviews/M1-2-5-mapping-rule-target-profile-propagation-review-2.md), Request changes
+- Proposed correction: `REV12-FIND-001` and `REV12-FIND-002` addressed for human semantic and design re-review under REV-0013
 - Acceptance: Not granted
 - Merge authorization: Not granted
 - Implementation status: Not started
@@ -56,10 +57,14 @@ Accepted semantic records
 + exact current-authority bases
 + exact CompilationPolicyContext
 + exact MappingRulesetRef
+  including its exact CandidateEnumerationPolicyRef
 + exact TargetBPMNProfileRef
         |
         v
-Mapping-rule applicability evaluation
+CandidateUniverseRecord
+        |
+        v
+MappingEvaluationResult
         |
         +--> satisfied prerequisite records
         +--> blocked or inapplicable candidate rules
@@ -100,10 +105,10 @@ Successful Kernel validation proves only that the exact compiled semantic model 
 | --- | --- | --- | --- | --- |
 | `MAP-CHOICE-001` | Separate stable logical mapping-rule identity from immutable rule revision identity. | M1.2.1-derived | Exact logical record and immutable revision semantics apply to revisioned rule bases. | Proposed |
 | `MAP-CHOICE-002` | Require `MappingRuleRef` to identify one exact immutable rule revision. | M1.2.1-derived | Authoritative revisioned mapping bases must resolve exactly. | Proposed |
-| `MAP-CHOICE-003` | Require `MappingRulesetRef` to close exact membership, imports, replay-affecting policies, and capability requirements without embedding the executing compiler identity. | M1.2.2-derived | Replay already requires one exact mapping-ruleset basis and a separate exact compiler basis. | Proposed |
+| `MAP-CHOICE-003` | Require `MappingRulesetRef` to close exact membership, imports, candidate-enumeration policy, other replay-affecting policies, and capability requirements without embedding the executing compiler identity. | M1.2.2-derived | Replay already requires one exact mapping-ruleset basis and a separate exact compiler basis. | Proposed |
 | `MAP-CHOICE-004` | Treat every membership or imported-ruleset change as a new immutable ruleset revision. | M1.2.1-derived | Released authoritative bases cannot mutate. | Proposed |
-| `MAP-CHOICE-005` | Use four exact prerequisite dispositions, require complete candidate coverage, and treat omitted prerequisites or potentially applicable rules as unresolved. | Potential semantic change | M1 defines eligibility requirements but leaves the complete prerequisite and candidate assessment model open. | Proposed |
-| `MAP-CHOICE-006` | Require one `MappingEvaluationResult` for every request and create `MappingRuleApplication` only for a rule actually applied. | Potential semantic change | M1 requires mapping provenance but leaves the exact unsuccessful-evaluation artifact and coverage boundary open. | Proposed |
+| `MAP-CHOICE-005` | Use four exact prerequisite dispositions, establish an authoritative pre-evaluation candidate universe, require complete candidate coverage against it, and treat omitted prerequisites or expected candidates as unresolved. | Potential semantic change | M1 defines eligibility requirements but leaves the complete prerequisite and candidate assessment model open. | Proposed |
+| `MAP-CHOICE-006` | Require one `MappingEvaluationResult` for every request, bind it to exactly one immutable candidate-enumeration basis and candidate-universe record, and create `MappingRuleApplication` only for a rule actually applied. | Potential semantic change | M1 requires mapping provenance but leaves the exact unsuccessful-evaluation artifact and coverage boundary open. | Proposed |
 | `MAP-CHOICE-007` | Require deterministic selection among semantically equivalent eligible candidates under an exact accepted policy. | Potential semantic change | M1 allows policy selection among equivalent representations but leaves detailed selection semantics open. | Proposed |
 | `MAP-CHOICE-008` | Forbid precedence, priority, or fallback from resolving conflicting business meaning. | M1-derived | Modeling policy cannot resolve business-semantic ambiguity. | Proposed |
 | `MAP-CHOICE-009` | Permit generic fallback only when exact rules prove semantic preservation and profile support. | Potential semantic change | M1 forbids downgrading unsupported meaning; a bounded non-degrading fallback requires explicit review. | Proposed |
@@ -123,6 +128,8 @@ All choices remain Proposed pending human semantic and design review. No classif
 - **MappingRuleRef**: an exact reference to one mapping-rule revision and its governing identity basis.
 - **mapping ruleset**: an exact closed collection of exact rule revisions, exact imported rulesets, and replay-affecting selection and prerequisite policies.
 - **MappingRulesetRef**: an exact immutable reference to one closed ruleset revision.
+- **CandidateEnumerationPolicyRef**: an exact immutable reference to the policy revision that determines the candidate universe before individual candidate evaluation.
+- **CandidateUniverseRecord**: the compiler-owned pre-evaluation provenance record that accounts for the complete expected candidate universe under one exact request, ruleset closure, and candidate-enumeration policy.
 - **prerequisite**: an exact condition that must receive an explicit disposition for a candidate rule.
 - **PrerequisiteSatisfactionRecord**: the exact assessment of one prerequisite against one mapping request and basis.
 - **candidate disposition**: an exact result of evaluating one rule revision for one requested mapping scope.
@@ -213,6 +220,7 @@ Minimum conceptual content:
 - exact imported `MappingRulesetRef` values,
 - import roles and scope,
 - exact prerequisite-policy references,
+- exact `CandidateEnumerationPolicyRef`,
 - exact candidate-selection and precedence policy references,
 - exact fallback policy references,
 - exact target-profile applicability constraints,
@@ -244,17 +252,55 @@ The closure MUST:
 
 An unresolved, cyclic, floating, or policy-conflicting closure is not an authoritative exact ruleset.
 
-For current mapping or compilation, use the applicable existing compilation diagnostic, including `UNRESOLVED_REFERENCE`, `FLOATING_EXTERNAL_BASIS`, `MODELING_POLICY_REQUIRED`, `MAPPING_NOT_ELIGIBLE`, or `UNSUPPORTED_MAPPING` according to the exact defect. `MAPPING_RULESET_UNRESOLVED` is reserved for replay and verification and MUST NOT classify a current mapping or compilation closure defect.
+For current mapping or compilation:
+
+- a mutable external closure selector emits `FLOATING_EXTERNAL_BASIS`;
+- an exact required reference that cannot resolve, or a malformed, cyclic, or impossible active reference closure, emits `UNRESOLVED_REFERENCE`;
+- resolved references whose active policy constraints are missing or contradictory emit `MODELING_POLICY_REQUIRED`.
+
+`MAPPING_NOT_ELIGIBLE` and `UNSUPPORTED_MAPPING` are candidate-eligibility and compiler-capability diagnostics, respectively; they MUST NOT classify active ruleset closure failure. `MAPPING_RULESET_UNRESOLVED` is reserved for replay and verification and MUST NOT classify a current mapping or compilation closure defect.
 
 ### 8.3 Ruleset revision
 
-Changing membership, imports, prerequisite policy, selection policy, precedence, fallback, profile constraints, capability constraints, governance basis, or effective-time behavior creates a new immutable ruleset revision.
+Changing membership, imports, candidate-enumeration policy, prerequisite policy, selection policy, precedence, fallback, profile constraints, capability constraints, governance basis, or effective-time behavior creates a new immutable ruleset revision.
 
 Two rulesets with identical member digests but different exact policies or profile constraints are not the same ruleset basis.
 
 Rule and ruleset identity may contain exact compiler capability requirements or predicates. It MUST NOT contain the identity of the executing compiler build merely because that build is used for one evaluation.
 
 A changed capability requirement creates a new rule or ruleset revision as applicable. A changed compiler implementation or changed realization of the same requirement changes the exact compiler basis, not the rule or ruleset revision.
+
+### 8.4 Candidate-enumeration policy closure
+
+This contract selects **closure membership** as the only authoritative relationship between candidate enumeration and a ruleset. The exact `CandidateEnumerationPolicyRef` is a required member of the immutable `MappingRulesetRef` closure. It is not a separate independently substitutable compilation input.
+
+The ruleset revision owns that relationship. A mapping request selects one exact ruleset revision, and that ruleset revision selects exactly one exact candidate-enumeration policy revision. A request MUST NOT override, supplement, or replace that policy revision.
+
+`CandidateEnumerationPolicyRef` separates:
+
+- stable logical policy identity, which identifies the continuing conceptual policy;
+- exact immutable policy revision identity, which identifies one released normative policy definition;
+- exact ruleset closure identity, which binds the policy revision to rule membership and imports;
+- exact mapping request identity, which identifies the scope evaluated under that closure;
+- exact mapping evaluation identity, which identifies the resulting evaluation.
+
+A policy name, logical identity, version range, mutable selector, compiler identity, or resulting candidate set is not an exact policy revision.
+
+Every immutable candidate-enumeration policy revision MUST identify the complete normative basis for:
+
+- candidate sources;
+- inclusion criteria;
+- exclusion criteria;
+- profile-sensitive filtering;
+- prerequisite-sensitive filtering;
+- ordering inputs where ordering can affect evaluation;
+- deduplication and equivalent-representation handling;
+- unavailable source handling;
+- malformed or non-evaluable candidate handling.
+
+The policy revision MUST NOT contain or imply the executing compiler build identity. The actual compiler identity and its realization of required capabilities belong to prerequisite evaluation, `CandidateUniverseRecord`, `MappingEvaluationResult`, `MappingRuleApplication`, and replay provenance.
+
+Changing the candidate-enumeration policy revision always creates a new ruleset revision and therefore a changed semantic compilation and replay basis. This remains true when the logical rules, compiler implementation, target profile, enumerated candidates, dispositions, and final output are otherwise identical. Output equality MUST NOT establish basis equality.
 
 ## 9. Prerequisite model
 
@@ -323,16 +369,41 @@ An exact priority, precedence, profile preference, or fallback policy MUST NOT t
 
 ### 10.1 Candidate enumeration and coverage
 
-Every mapping request MUST be evaluated against the complete exact ruleset closure under an exact candidate-enumeration and filter-policy revision.
+Every mapping request MUST be evaluated against the complete exact ruleset closure under the exact immutable `CandidateEnumerationPolicyRef` bound into that closure.
 
-For every rule revision in that closure that is potentially applicable to the requested mapping scope, the evaluation MUST record either:
+Before individual candidate applicability is evaluated, the Semantic Compiler MUST produce one immutable conceptual `CandidateUniverseRecord`.
+
+Minimum conceptual content:
+
+- stable record identity;
+- exact mapping request identity and requested scope;
+- exact `MappingRulesetRef` and resolved ruleset closure;
+- exact `CandidateEnumerationPolicyRef`;
+- exact candidate sources consulted;
+- complete expected candidate universe with stable candidate identities;
+- every candidate excluded before applicability evaluation;
+- exact exclusion reason, condition, scope, and supporting provenance for each pre-evaluation exclusion;
+- every unavailable, unreadable, malformed, or non-evaluable source or candidate;
+- exact deduplication and equivalent-representation decisions;
+- deterministic ordering basis where ordering can affect evaluation;
+- actual compiler implementation identity and capability realization used to enumerate the universe;
+- unresolved and excluded scope;
+- complete provenance and diagnostics.
+
+The `CandidateUniverseRecord` is authoritative for verifying candidate coverage, but it is not source evidence, business authority, rule applicability, mapping eligibility, profile compatibility, or Kernel validation.
+
+For every expected candidate identity in the authoritative universe, the evaluation MUST record exactly one of:
 
 - one of the five candidate dispositions defined below; or
-- an exact exclusion basis proving why the rule cannot be a candidate for that request.
+- an exact pre-evaluation exclusion basis proving why the rule cannot be evaluated as a candidate for that request.
 
-An exclusion basis MUST identify the exact rule revision, request, scope, filter-policy revision, exclusion condition, and exact supporting basis. It is not a sixth candidate disposition and MUST NOT be inferred from omission.
+An exclusion basis MUST identify the exact rule revision, request, scope, `CandidateEnumerationPolicyRef`, exclusion condition, and exact supporting basis. It is not a sixth candidate disposition and MUST NOT be inferred from omission.
 
-If any potentially applicable rule lacks a disposition or exact exclusion basis, candidate coverage is incomplete and the mapping evaluation is `unresolved`. Storage order, discovery order, implementation filtering, or an empty candidate collection MUST NOT establish complete coverage.
+Candidate coverage is complete only when candidate identities in `MappingEvaluationResult` reconcile exactly with the expected candidate identities and exclusions in its `CandidateUniverseRecord`. If any expected candidate lacks exactly one disposition or exclusion basis, candidate coverage is incomplete and the mapping evaluation is `unresolved`.
+
+Candidate absence is not candidate exclusion, `inapplicable`, equivalence, unsupported capability, or absence from a source. Storage order, discovery order, implementation filtering, or an empty candidate collection MUST NOT establish complete coverage.
+
+When the ruleset closure or candidate universe cannot be completed, the `CandidateUniverseRecord` MUST retain the exact attempted closure, consulted sources, known candidate identities, unresolved references, and diagnostics. It MUST NOT claim a complete authoritative universe. No `MappingRuleApplication` or authoritative output may be derived from the affected request.
 
 ### 10.2 Candidate dispositions
 
@@ -351,7 +422,8 @@ Rules:
 - a missing candidate record MUST NOT be treated as inapplicable;
 - a known-false activation condition produces `inapplicable`, not `blocked`;
 - an unresolved activation condition produces `unresolved`;
-- an unsupported required mapping produces `blocked` with `UNSUPPORTED_MAPPING`;
+- an otherwise valid mapping whose required capability is not realized by the actual compiler produces `blocked` with `UNSUPPORTED_MAPPING`;
+- a candidate that fails a non-capability eligibility condition produces `blocked` with `MAPPING_NOT_ELIGIBLE` unless a more specific inherited diagnostic owns the condition;
 - a rule that fails eligibility MUST NOT be applied;
 - an eligible rule is not selected merely because it appears first;
 - `not-selected` MUST identify the exact policy and selected alternative;
@@ -366,8 +438,9 @@ Minimum conceptual content:
 - stable evaluation identity,
 - exact mapping and compilation request,
 - requested, affected, excluded, and unresolved scope,
-- exact `MappingRulesetRef` and complete ruleset closure,
-- exact candidate-enumeration and filter-policy revision,
+- exact `MappingRulesetRef` and either its complete ruleset closure or its exact attempted closure and unresolved defect,
+- exact `CandidateEnumerationPolicyRef`,
+- exactly one `CandidateUniverseRecord`,
 - complete candidate coverage with every disposition and exact exclusion basis,
 - exact prerequisite definitions and all produced `PrerequisiteSatisfactionRecord` values,
 - exact semantic input and current-authority bases,
@@ -379,7 +452,16 @@ Minimum conceptual content:
 - evaluation outcome and relation to `CompilationResult`,
 - complete provenance and diagnostics.
 
-Prerequisite and candidate provenance MUST be retained even when no rule is applied. Missing candidate coverage, missing evaluation provenance, or an omitted potentially applicable rule makes the evaluation unresolved; omission MUST NOT produce refusal, inapplicability, or a clean no-selection result by default.
+Prerequisite and candidate provenance MUST be retained even when no rule is applied. Missing candidate coverage, missing evaluation provenance, or an omitted expected candidate makes the evaluation unresolved and emits `PROVENANCE_MISSING` for the affected current request. Omission MUST NOT produce inapplicability, eligibility failure, unsupported mapping, or a clean no-selection result.
+
+Every `MappingEvaluationResult` MUST reference exactly one authoritative candidate-enumeration basis through its `CandidateUniverseRecord`, and that record MUST reference exactly one immutable `CandidateEnumerationPolicyRef`. A verification operation MUST reject as unresolved any evaluation that:
+
+- lacks either reference;
+- cannot resolve the exact policy revision;
+- cannot reconcile expected candidate identities with dispositions and exclusions;
+- claims complete coverage while its universe record reports an unavailable or non-evaluable source that can affect the request.
+
+The `CandidateUniverseRecord` and the exact policy and ruleset references are the authoritative evidence for candidate-coverage verification. A verifier MUST NOT infer coverage from selected candidates, applications, compiler success, output equality, or Kernel success.
 
 `MappingEvaluationResult` is a conceptual provenance artifact, not a new runtime subsystem, engine, schema, or lifecycle.
 
@@ -457,10 +539,12 @@ Minimum conceptual content:
 
 - stable application identity,
 - exact `MappingEvaluationResult` reference,
+- exact `CandidateUniverseRecord` reference,
 - exact compilation request,
 - exact mapping scope,
 - exact `MappingRuleRef`,
 - exact `MappingRulesetRef`,
+- exact `CandidateEnumerationPolicyRef`,
 - exact accepted semantic input revisions,
 - exact current-authority bases,
 - exact prerequisite definitions and satisfaction records,
@@ -632,13 +716,13 @@ When a profile transformation changes semantic mapping, it MUST produce a new `M
 | Artifact | Required target-profile behavior |
 | --- | --- |
 | `CompilationPolicyContext` | Carries the exact selected `TargetBPMNProfileRef`; no implicit default. |
-| Compilation request | References the same exact target-profile revision used to evaluate the request. |
+| Compilation request | References the same exact target-profile revision used to evaluate the request and binds the exact `MappingRulesetRef` that owns the candidate-enumeration policy. |
 | `ProposedBPMNMapping` | Carries the profile reference where eligibility or representation depends on the profile; remains non-authoritative. |
-| `MappingRuleApplication` | References its `MappingEvaluationResult` and records the exact profile used for prerequisite evaluation, applicability, selection, application, and output. |
-| `CompiledSemanticModel` | Carries the exact profile governing its semantic mapping result. |
-| `CompilationResult` | Carries the same exact profile and reports mapping-evaluation, mismatch, incompatibility, exclusion, or transformation outcomes. |
-| `CompilationReplayManifest` | Captures the exact profile revision, `ProfileCompatibilityAssessment`, transformation policy, mapping-evaluation basis, and actual compiler basis where applicable. |
-| `KernelValidationReport` | References the exact validated model and exact profile actually used by the Kernel. |
+| `MappingRuleApplication` | References its `MappingEvaluationResult`, `CandidateUniverseRecord`, exact candidate-enumeration policy, and exact profile used for prerequisite evaluation, applicability, selection, application, and output. |
+| `CompiledSemanticModel` | Carries the exact profile governing its semantic mapping result and provenance references to the exact evaluation and closed candidate basis for every authoritative element. |
+| `CompilationResult` | Carries the same exact profile, exact candidate-enumeration and evaluation provenance, and every mapping-evaluation, mismatch, incompatibility, exclusion, or transformation outcome. |
+| `CompilationReplayManifest` | Captures the exact profile revision, `ProfileCompatibilityAssessment`, transformation policy, candidate-enumeration policy, candidate-universe evidence, mapping-evaluation basis, and actual compiler basis where applicable. |
+| `KernelValidationReport` | References the exact validated model, exact profile actually used by the Kernel, and the compiler provenance closure without re-running candidate enumeration. |
 
 No artifact may silently omit a required target profile, substitute a default, replace an exact revision, widen or narrow scope, infer compatibility, treat a family as an exact profile, or claim validation against a profile different from the one used.
 
@@ -652,6 +736,8 @@ Every authoritative compiled semantic element MUST trace to:
 - applicable exact current-authority bases,
 - exact `MappingRuleRef`,
 - exact `MappingRulesetRef`,
+- exact `CandidateEnumerationPolicyRef`,
+- exact `CandidateUniverseRecord`,
 - exact prerequisite satisfaction records,
 - exact `MappingEvaluationResult`,
 - exact selection, precedence, or equivalent-representation policy,
@@ -664,6 +750,7 @@ The combined `CompiledSemanticModel` and `CompilationResult` provenance MUST exp
 - supporting accepted semantic records,
 - producing or constraining rule revision,
 - containing ruleset revision,
+- candidate-enumeration policy revision and candidate-universe evidence,
 - evaluated prerequisites and dispositions,
 - alternative rules considered,
 - selection reason,
@@ -672,7 +759,11 @@ The combined `CompiledSemanticModel` and `CompilationResult` provenance MUST exp
 - profile transformation where applicable,
 - excluded and unresolved scope.
 
-Free-text rationale MAY supplement exact provenance. It MUST NOT replace exact rule, ruleset, prerequisite, selection-policy, or profile identity.
+Free-text rationale MAY supplement exact provenance. It MUST NOT replace exact rule, ruleset, candidate-enumeration policy, candidate-universe evidence, prerequisite, selection-policy, or profile identity.
+
+The exact candidate-enumeration provenance MUST propagate through the bound mapping request, `CandidateUniverseRecord`, `MappingEvaluationResult`, every resulting `MappingRuleApplication`, relevant `CompiledSemanticModel` and `CompilationResult` provenance, partial-compilation scope registers, `CompilationReplayManifest`, replay or verification evidence, and Kernel-facing provenance.
+
+The Kernel receives the closed compiler provenance reference needed to detect an unresolved mapping basis. It MUST NOT re-run enumeration, select candidates, or treat a missing or unreconciled candidate basis as valid Kernel input.
 
 ## 18. Authority boundaries
 
@@ -686,7 +777,7 @@ A `ProposedBPMNMapping` is not a `MappingRuleApplication`.
 
 ### 18.2 Semantic Compiler
 
-The Semantic Compiler MAY resolve exact rules and rulesets, produce a complete `MappingEvaluationResult`, evaluate exact prerequisites, determine applicability and eligibility, apply exact rules, select eligible equivalent rules under exact accepted policy, derive profile compatibility under a fully applicable Accepted deterministic policy, emit diagnostics and provenance, and produce `CompiledSemanticModel` and `CompilationResult`.
+The Semantic Compiler MAY resolve exact rules and rulesets, enumerate the authoritative candidate universe under the ruleset-owned exact policy, produce a complete `CandidateUniverseRecord` and `MappingEvaluationResult`, evaluate exact prerequisites, determine applicability and eligibility, apply exact rules, select eligible equivalent rules under exact accepted policy, derive profile compatibility under a fully applicable Accepted deterministic policy, emit diagnostics and provenance, and produce `CompiledSemanticModel` and `CompilationResult`.
 
 It MUST NOT reinterpret evidence, resolve business ambiguity, invent missing meaning, treat confidence as authority, use proposed meaning authoritatively, use stale or unresolved current authority, use modeling policy for business prerequisites, silently select or transform a profile, or claim BPMN validity.
 
@@ -694,7 +785,7 @@ It MUST NOT reinterpret evidence, resolve business ambiguity, invent missing mea
 
 The BPMN Kernel MAY validate the exact `CompiledSemanticModel`, apply deterministic BPMN legality and profile validation rules, and emit `KernelValidationReport`.
 
-It MUST NOT choose mapping rules, change ruleset membership, resolve prerequisites, select business mappings, modify provenance, reinterpret business semantics, repair profile mismatch by changing the profile, create `AnalystDecision`, treat successful validation as general profile compatibility, or treat successful validation as business truth.
+It MUST NOT enumerate candidates, choose mapping rules, change ruleset membership, resolve prerequisites, select business mappings, modify provenance, reinterpret business semantics, repair profile mismatch by changing the profile, create `AnalystDecision`, treat successful validation as general profile compatibility, or treat successful validation as business truth.
 
 ## 19. M1.2.4 current-authority interaction
 
@@ -719,6 +810,9 @@ Deterministic replay captures, where applicable:
 - exact rule revisions,
 - exact ruleset revision and complete membership,
 - exact imported rulesets,
+- exact `CandidateEnumerationPolicyRef` bound into the ruleset closure,
+- exact `CandidateUniverseRecord` or sufficient exact deterministic source evidence to reproduce it,
+- complete reconciliation of expected candidate identities, exclusions, and dispositions,
 - exact rule and ruleset capability requirements,
 - prerequisite-policy revisions and input bases,
 - prerequisite dispositions where part of semantic output,
@@ -731,38 +825,125 @@ Deterministic replay captures, where applicable:
 - exact `CompilationPolicyContext`,
 - exact compiler implementation identity and actual capability realization.
 
-A changed rule, ruleset, membership, import, prerequisite policy, selection policy, precedence policy, target profile, compatibility basis, or transformation basis is a changed replay basis.
+A changed rule, ruleset, membership, import, candidate-enumeration policy, prerequisite policy, selection policy, precedence policy, target profile, compatibility basis, or transformation basis is a changed replay basis. A changed candidate-enumeration policy is a changed basis even when it produces the same candidate set and semantic output.
 
 The execution is a regression, migration, compatibility comparison, or new compilation, not verification of the same replay claim. Compatible profiles remain different replay bases.
 
 Historical replay MAY use old exact rulesets and profiles. It does not establish current mapping eligibility, current profile applicability, current rule approval, or current `AnalystDecision` authority.
 
+Replay and verification distinguish:
+
+- absent or unenumerated historical candidate-universe evidence: `REPLAY_INPUT_CLOSURE_INCOMPLETE`;
+- an exact recorded candidate-enumeration policy or candidate-source dependency that cannot resolve: `REPLAY_DEPENDENCY_UNRESOLVED`;
+- an absent candidate-enumeration policy reference or incomplete frozen policy parameters: `REPLAY_POLICY_UNRESOLVED`;
+- a candidate-enumeration policy reference that uses a mutable selector: `FLOATING_REPLAY_DEPENDENCY`;
+- an exact historical ruleset closure that cannot be reconstructed: `MAPPING_RULESET_UNRESOLVED`;
+- an available exact but changed candidate-enumeration policy or other replay-affecting basis: `REPLAY_NOT_COMPARABLE`;
+- a required historical compiler identity that is missing, unavailable, mutable, or insufficiently exact: `COMPILER_IMPLEMENTATION_UNRESOLVED`;
+- a current compiler that does not realize a capability required for a current mapping: `UNSUPPORTED_MAPPING`.
+
+Replay MUST reconstruct the exact policy revision, exact ruleset closure, expected candidate universe or its sufficient deterministic source evidence, candidate exclusions and dispositions, and resulting mapping decision. Verification MUST reject a `MappingEvaluationResult` whose expected candidate identities cannot be reconciled with its exact `CandidateUniverseRecord`. Neither replay nor verification may infer an equivalent historical execution from equal candidate sets or equal outputs under different policy revisions.
+
 No Replay Verifier is created.
 
 ## 21. Diagnostic crosswalk
 
-All rows inherit severity, blocking, semantic identity, aggregation, ordering, and remediation-authority rules from the [Accepted Diagnostic Policy Contract](PROCESS_IR_DIAGNOSTIC_POLICY_CONTRACT.md). M1.2.5 refines only its owned trigger boundary.
+All rows inherit severity, blocking, semantic identity, aggregation, ordering, and remediation-authority rules from the [Accepted Diagnostic Policy Contract](PROCESS_IR_DIAGNOSTIC_POLICY_CONTRACT.md). M1.2.5 refines only the exact trigger, phase, and precedence within its owned mapping and profile scope.
 
-| Diagnostic | Exact M1.2.5 trigger boundary | Affected scope and effect | Remediation authority | Diagnostic-policy and historical boundary |
-| --- | --- | --- | --- | --- |
-| `UNRESOLVED_REFERENCE` | Required exact rule, ruleset, prerequisite, policy, profile, compatibility, transformation, model, or artifact reference cannot resolve. | Blocks dependent mapping, compilation, or Kernel scope. | Restore or correct exact reference, or exclude dependent scope. | Inherited blocking `error`; exact complete historical closure may remain replayable. |
-| `PROVENANCE_MISSING` | Required exact rule, ruleset, prerequisite, selection, profile, transformation, or semantic-input provenance is absent. | Blocks authoritative output lacking required provenance. | Compiler or governing artifact producer must emit exact provenance; business authority is unchanged. | Inherited blocking `error`; complete historical provenance remains valid. |
-| `UNSUPPORTED_MAPPING` | Requested mapping lies outside exact compiler capability, ruleset support, or target-profile behavior. | Blocks affected mapping; independent scope follows accepted partial rules. | Add later support or choose a supported semantically preserving mapping under review. | Inherited scope-local blocking `error`; historical supported output may remain replayable. |
-| `MAPPING_NOT_ELIGIBLE` | Candidate fails required semantic, authority, reference, value-state, policy, profile, capability, or dependency prerequisites. | Blocks candidate and affected mapping when no eligible candidate remains. | Resolve exact failed prerequisites through their accepted authority domains. | Inherited blocking `error`; prior eligibility does not authorize current request. |
-| `MODELING_POLICY_REQUIRED` | Accepted meaning exists but exact modeling, selection, precedence, or representation policy is missing. | Blocks affected mapping or compilation scope. | Authorized modeling policy in `CompilationPolicyContext`; never business evidence. | Inherited blocking `error`; exact historical policy may support historical replay. |
-| `EQUIVALENT_BPMN_REPRESENTATIONS` | Multiple semantically equivalent eligible candidates exist without exact accepted selection basis. | Blocks affected mapping until deterministic policy exists. | Authorized modeling decision or accepted selection/profile policy. | Inherited blocking `error`; no effect on accepted business meaning. |
-| `MODELING_MULTIPLICITY_POLICY_REQUIRED` | Accepted multiplicity lacks an exact profile-compatible representation policy. | Blocks affected multiplicity mapping. | Authorized modeling policy. | Inherited blocking `error`; does not reopen business cardinality. |
-| `PARTICIPANT_REPRESENTATION_POLICY_REQUIRED` | Accepted participant meaning lacks exact profile-compatible pool, lane, black-box, or other representation policy. | Blocks affected participant representation. | Authorized modeling policy or exact profile basis. | Inherited blocking `error`; does not decide participant identity. |
-| `TARGET_BPMN_PROFILE_REQUIRED` | Authoritative compilation, eligibility, or Kernel validation lacks an exact target profile. | Blocks affected compilation or validation. | Supply and propagate exact `TargetBPMNProfileRef`. | Inherited blocking `error`; missing profile is not mismatch. |
-| `TARGET_BPMN_PROFILE_MISMATCH` | Exact pipeline profiles are incompatible, silently substituted, or misstated. | Blocks affected mapping, compilation, transformation, or validation scope. | Align exact profiles, record exact compatible transformation, or split scope. | Inherited blocking `error`; a changed exact profile is not an unresolved original profile. |
-| `MAPPING_RULESET_UNRESOLVED` | During replay or verification, exact ruleset identity, membership, import closure, selection policy, or required historical closure cannot be established. | Replay or verification is `not replayable` for the affected scope. | Restore the complete exact historical ruleset closure. | Replay-only inherited blocking `error`; current mapping closure defects use applicable compilation diagnostics. |
-| `REPLAY_POLICY_UNRESOLVED` | Exact prerequisite, selection, compatibility, transformation, or other replay-affecting policy is missing or floating. | Replay is `not replayable` for affected scope. | Supply exact immutable policy basis. | Inherited replay effect; does not authorize policy substitution. |
-| `TARGET_PROFILE_BASIS_UNRESOLVED` | Exact target-profile identity or required profile basis cannot resolve for replay or comparison. | Replay is `not replayable`. | Restore exact profile basis. | Inherited blocking `error`; different exact profile uses `REPLAY_NOT_COMPARABLE`. |
-| `FLOATING_EXTERNAL_BASIS` | External rule, ruleset, profile, compatibility, transformation, or governance basis uses mutable selector. | Blocks affected authoritative mapping and output. | Provide immutable external locator, version, or content identity. | Inherited blocking `error`; no artificial Process IR revision is required. |
-| `FLOATING_REPLAY_DEPENDENCY` | Replay uses current/latest rule, ruleset, profile, compatibility, or transformation basis. | Replay is `not replayable`. | Replace with exact captured basis. | Inherited blocking `error`; historical exact bases remain valid. |
-| `REPLAY_NOT_COMPARABLE` | Original and new execution have available exact but different rule, ruleset, policy, profile, compatibility, or transformation bases. | Same-replay verification is `not comparable`; labeled comparison may proceed. | Restore original basis or classify the comparison correctly. | Inherited blocking `error`; changed exact basis is not unresolved. |
+The following matrix is normative. For one exact failure condition, the row selects one primary diagnostic. Another diagnostic may coexist only for a distinct condition that was actually evaluated and has separate semantic identity. A secondary diagnostic:
 
-No diagnostic code is added, removed, renamed, merged, or reclassified.
+- MUST identify its separate condition and scope;
+- MUST NOT replace the primary diagnostic;
+- MUST NOT change the primary disposition or add blocking power;
+- MUST NOT be inferred for a downstream phase that did not execute authoritatively.
+
+| Failure condition | Phase and owner | Primary diagnostic | Required evidence | Blocking and partial-compilation effect | Replay or verification boundary | Precedence and excluded alternatives |
+| --- | --- | --- | --- | --- | --- | --- |
+| A required exact current rule, ruleset, import, prerequisite, policy, profile, compatibility, transformation, model, or artifact reference cannot resolve; this includes a malformed, cyclic, or otherwise impossible active reference closure, rule-prerequisite cycle, or policy-dependency cycle. | Current basis closure; Semantic Compiler | `UNRESOLVED_REFERENCE` | Exact attempted closure, failing reference or cycle, dependency role, and affected scope. | Blocks affected request and dependent fragments; independent fragments follow accepted partial rules. | Complete historical closure may remain replayable. | Primary before candidate evaluation. Not `MAPPING_RULESET_UNRESOLVED`, `MAPPING_NOT_ELIGIBLE`, or `UNSUPPORTED_MAPPING`. |
+| Required current mapping, enumeration, selection, profile, transformation, or semantic-input provenance is absent, including an expected candidate omitted from `MappingEvaluationResult`. | Current provenance and candidate reconciliation; Semantic Compiler | `PROVENANCE_MISSING` | Exact request, `CandidateUniverseRecord`, missing candidate or provenance role, reconciliation failure, and affected scope. | Makes the affected request unresolved and blocks every dependent output; independent requests may proceed under accepted partial rules. | Complete historical provenance remains valid; replay-specific absence uses its replay row. | Primary for omission after a universe is established. Not `MAPPING_NOT_ELIGIBLE`, `UNSUPPORTED_MAPPING`, or `MAPPING_RULESET_UNRESOLVED`. |
+| The requested or selected mapping operation is valid in principle and the exact rule or ruleset requires a capability that the actual compiler implementation does not realize. | Current capability realization; Semantic Compiler | `UNSUPPORTED_MAPPING` | Exact operation, rule or ruleset requirement, compiler identity, realized capability basis, and affected scope. | Blocks affected mapping; independent fragments may proceed under accepted partial rules. | Historical supported output may remain replayable; an unresolved historical compiler identity uses `COMPILER_IMPLEMENTATION_UNRESOLVED`. | Primary only after current closure is valid. Not `MAPPING_NOT_ELIGIBLE`; policy or profile prohibition is not compiler incapability. |
+| An evaluated candidate fails a non-capability semantic, authority, reference, value-state, context, policy, profile, or dependency eligibility condition and no more specific inherited diagnostic owns that condition. | Current candidate eligibility; Semantic Compiler | `MAPPING_NOT_ELIGIBLE` | Exact candidate, failed condition and prerequisite records, target scope, and profile. | Blocks that candidate; blocks the mapping when no eligible candidate remains. | Prior eligibility does not authorize current use. | Never used for candidate omission, compiler capability absence, malformed closure, or a missing exact policy. A more specific inherited diagnostic takes precedence. |
+| Accepted meaning requires an exact modeling, enumeration, selection, precedence, representation, or other policy that is missing, or resolved active policy constraints are contradictory and cannot produce one governing policy. | Current policy closure; Semantic Compiler and authorized modeling-policy authority | `MODELING_POLICY_REQUIRED` | Exact accepted subject, required policy role, conflicting policy revisions where applicable, and affected scope. | Blocks affected mapping or request; independent scope may proceed under accepted partial rules. | An exact historical governing policy may support replay. | Primary for a missing or contradictory governing policy after references resolve. Not `UNRESOLVED_REFERENCE`, `MAPPING_NOT_ELIGIBLE`, or profile mismatch. |
+| Multiple semantically equivalent eligible candidates exist without one exact accepted selection basis. | Current selection; Semantic Compiler | `EQUIVALENT_BPMN_REPRESENTATIONS` | Complete eligible set, equivalence basis, missing selection-policy role, request, and profile. | Blocks affected mapping; independent scope may proceed. | Exact historical selection policy may support replay. | Applies only after closure, coverage, capability, and eligibility succeed. Not a business-conflict diagnostic. |
+| Accepted multiplicity lacks an exact profile-compatible representation policy. | Current prerequisite or selection policy; Semantic Compiler | `MODELING_MULTIPLICITY_POLICY_REQUIRED` | Exact accepted multiplicity, missing policy role, profile, and scope. | Blocks affected multiplicity mapping. | Exact historical policy may support replay. | More specific than `MODELING_POLICY_REQUIRED` and `MAPPING_NOT_ELIGIBLE` for this condition. |
+| Accepted participant meaning lacks exact profile-compatible pool, lane, black-box, or other representation policy. | Current prerequisite or selection policy; Semantic Compiler | `PARTICIPANT_REPRESENTATION_POLICY_REQUIRED` | Exact participant meaning, missing policy role, profile, and scope. | Blocks affected participant mapping. | Exact historical policy may support replay. | More specific than `MODELING_POLICY_REQUIRED` and `MAPPING_NOT_ELIGIBLE` for this condition. |
+| Authoritative compilation, mapping eligibility, or Kernel validation has no exact target profile. | Current request or validation basis; request authority, Semantic Compiler, or Kernel for its own input | `TARGET_BPMN_PROFILE_REQUIRED` | Exact operation, request or model, and missing profile role. | Blocks affected compilation or validation scope. | Missing historical profile basis uses `TARGET_PROFILE_BASIS_UNRESOLVED`. | Missing profile is not mismatch, candidate ineligibility, or unresolved ruleset. |
+| Exact current pipeline profile identities are incompatible, silently substituted, or misstated. | Current compatibility, transformation, or Kernel-input validation; Semantic Compiler or Kernel within its authority | `TARGET_BPMN_PROFILE_MISMATCH` | Exact artifacts, exact profiles, direction, compatibility basis, and affected scope. | Blocks affected mapping, transformation, compilation, or validation scope. | Different available exact replay profiles use `REPLAY_NOT_COMPARABLE`. | Not used for missing profile, compiler capability absence, or unresolved exact profile reference. |
+| Historical replay or verification lacks an enumerated replay-affecting input or candidate-universe evidence required by the manifest. | Replay input-closure validation; replay or verification authority | `REPLAY_INPUT_CLOSURE_INCOMPLETE` | Exact manifest, absent dependency or universe-evidence role, and affected output. | `not replayable` for affected scope; no partial verification claim for that scope. | Replay and verification only. | Not a current candidate diagnostic and not `MAPPING_RULESET_UNRESOLVED` unless exact historical ruleset closure itself is unreconstructable. |
+| An exact recorded historical candidate-enumeration policy or candidate-source dependency exists but cannot resolve. | Replay dependency resolution; replay or verification authority | `REPLAY_DEPENDENCY_UNRESOLVED` | Exact recorded dependency identity, role, resolution failure, and affected scope. | `not replayable` for affected scope. | Replay and verification only. | Specific to the exact policy or source artifact. Not `REPLAY_POLICY_UNRESOLVED`, `MAPPING_RULESET_UNRESOLVED`, or a current `UNRESOLVED_REFERENCE`. |
+| Historical replay or verification cannot establish the exact ruleset identity, exact rule membership, imports, or membership/import structure needed to reconstruct the historical closure. | Replay ruleset-closure reconstruction; replay or verification authority | `MAPPING_RULESET_UNRESOLVED` | Exact historical manifest, ruleset role, missing closure elements, and affected mappings. | `not replayable` for affected scope. | Replay and verification only. | An exact enumeration-policy artifact that alone cannot resolve uses `REPLAY_DEPENDENCY_UNRESOLVED`. Never emitted for ordinary current compilation, candidate omission, current cycles, or changed exact ruleset basis. |
+| A required replay-affecting candidate-enumeration, prerequisite, selection, compatibility, transformation, or other policy reference is absent, or its required frozen parameters are incomplete. | Replay policy-basis validation; replay or verification authority | `REPLAY_POLICY_UNRESOLVED` | Exact manifest, policy role, absent identity or incomplete parameters, and affected output. | `not replayable` for affected scope. | Replay and verification only. | A mutable selector uses `FLOATING_REPLAY_DEPENDENCY`; an exact recorded but unavailable policy uses `REPLAY_DEPENDENCY_UNRESOLVED`; changed available exact policy uses `REPLAY_NOT_COMPARABLE`. |
+| Exact historical target-profile identity or required profile basis cannot resolve. | Replay profile-basis validation; replay or verification authority | `TARGET_PROFILE_BASIS_UNRESOLVED` | Exact profile role, reference defect, manifest, and affected scope. | `not replayable` for affected scope. | Replay and verification only. | Different available exact profile uses `REPLAY_NOT_COMPARABLE`; missing current profile uses `TARGET_BPMN_PROFILE_REQUIRED`. |
+| A current external rule, ruleset, candidate-enumeration policy, profile, compatibility, transformation, or governance basis uses a mutable selector. | Current basis exactness; request authority or Semantic Compiler | `FLOATING_EXTERNAL_BASIS` | Exact selector, external dependency role, request, and affected scope. | Blocks affected current mapping and dependent output. | Replay has a separate floating-dependency diagnostic. | Primary before resolution. Not `UNRESOLVED_REFERENCE` merely because a mutable selector does not identify one revision. |
+| Replay uses current, latest, mutable, or environment-selected rule, ruleset, candidate-enumeration policy, profile, compatibility, or transformation basis. | Replay dependency exactness; replay or verification authority | `FLOATING_REPLAY_DEPENDENCY` | Exact dependency role, floating selector, manifest, and affected output. | `not replayable` for affected scope. | Replay and verification only. | The only primary code for a recorded mutable replay selector; not `REPLAY_POLICY_UNRESOLVED`. |
+| Original and new executions have available exact but different rule, ruleset, candidate-enumeration policy, compiler, selection policy, profile, compatibility, or transformation bases. | Same-replay comparability gate; verification authority | `REPLAY_NOT_COMPARABLE` | Exact original and changed basis identities and comparison classification. | Same-replay verification is `not comparable`; a labeled comparison may proceed. | Verification only after both bases resolve. | Changed basis is not unresolved, input-closure failure, current ineligibility, or semantic mismatch. |
+
+### 21.1 Diagnostic precedence
+
+Current compilation evaluates diagnostic ownership in this order:
+
+1. active-basis exactness and closure, including floating, unresolvable, malformed, cyclic, impossible, missing-policy, and contradictory-policy conditions;
+2. actual compiler capability realization;
+3. candidate-universe completeness and reconciliation;
+4. prerequisite satisfaction;
+5. non-capability candidate eligibility;
+6. profile compatibility;
+7. mapping application execution;
+8. replay or verification basis, only in a separate replay or verification operation.
+
+Within active-basis closure:
+
+- a mutable external selector selects `FLOATING_EXTERNAL_BASIS`;
+- an exact required reference that cannot resolve, or a malformed, cyclic, or impossible reference closure, selects `UNRESOLVED_REFERENCE`;
+- resolved but missing or contradictory governing modeling-policy constraints select `MODELING_POLICY_REQUIRED`.
+
+An earlier blocking phase prevents authoritative evaluation of later phases for the same scope. Implementations MUST NOT emit a speculative later-phase primary diagnostic. For example, a malformed active ruleset is primarily `UNRESOLVED_REFERENCE`; an alleged compiler capability gap discovered without a valid closure is not authoritative.
+
+A request-level diagnostic and candidate-level diagnostics MAY coexist only when their distinct conditions were actually evaluated. `PROVENANCE_MISSING` for one omitted expected candidate may coexist with `MAPPING_NOT_ELIGIBLE` for a different evaluated candidate, but the request remains unresolved and no application from that request is authoritative.
+
+Runtime or infrastructure failure during mapping application is not converted into a semantic refusal or assigned a new semantic diagnostic by M1.2.5. It follows the accepted execution-failure boundary. No semantic mapping diagnostic is inferred for work that did not complete.
+
+Replay and verification diagnostics are selected only during their own basis-validation and comparison phases. A current compilation defect MUST NOT be represented as a replay reconstruction defect.
+
+### 21.2 Partial-compilation diagnostic behavior
+
+Within one mapping request:
+
+- an explicitly excluded candidate remains visible in `CandidateUniverseRecord` and has no candidate diagnostic solely because of valid exclusion;
+- an ineligible evaluated candidate receives its exact candidate-level diagnostic;
+- an omitted expected candidate emits request-level `PROVENANCE_MISSING`, makes the request unresolved, and invalidates any provisional application or output from that request;
+- an unsupported compiler capability emits `UNSUPPORTED_MAPPING` for the affected candidate or mapping;
+- an exact profile incompatibility emits `TARGET_BPMN_PROFILE_MISMATCH`.
+
+An output from that mapping request is not authoritative merely because another candidate succeeded. No unresolved request output may be sent to the Kernel as valid input.
+
+An independent mapping request or fragment may proceed only when partial compilation is explicitly enabled, its accepted dependency closure is complete, and it does not depend on the failed request. The partial result MUST retain the failed request, candidate-universe evidence, diagnostics, unresolved and excluded scope, and exact enumeration-policy provenance.
+
+No diagnostic code is added, removed, renamed, merged, reclassified, or assigned a changed severity. The matrix partitions M1.2.5-owned triggers without changing the inherited diagnostic catalogue.
+
+### 21.3 Diagnostic fidelity
+
+The correction retains each inherited meaning and narrows only M1.2.5-owned trigger selection:
+
+| Diagnostic | Inherited meaning retained | M1.2.5 clarification | Ownership and status |
+| --- | --- | --- | --- |
+| `UNRESOLVED_REFERENCE` | A required referenced record cannot resolve. | Includes exact current closure, prerequisite, or policy-dependency cycles that prevent reference closure. | Current compilation; inherited blocking `error`, unchanged. |
+| `PROVENANCE_MISSING` | Required authoritative provenance is absent. | Owns expected-candidate omission after the authoritative universe is established. | Current compilation; inherited blocking `error`, unchanged. |
+| `UNSUPPORTED_MAPPING` | Requested mapping is outside current compiler capability or supported policy behavior. | Owns an otherwise valid operation whose exact required capability is not realized by the actual compiler. | Current compilation; inherited blocking `error`, unchanged. |
+| `MAPPING_NOT_ELIGIBLE` | A mapping fails accepted eligibility conditions. | Owns non-capability candidate eligibility failure when no more specific inherited diagnostic applies. | Current compilation; inherited blocking `error`, unchanged. |
+| `MODELING_POLICY_REQUIRED` | Accepted meaning lacks a required governing modeling policy. | Owns an absent governing policy and resolved contradictory policy constraints that leave no governing policy. | Current compilation; inherited blocking `error`, unchanged. |
+| `TARGET_BPMN_PROFILE_REQUIRED` | An exact target profile is required but absent. | Remains distinct from mismatch and replay-basis defects. | Current compilation or Kernel input; inherited blocking `error`, unchanged. |
+| `TARGET_BPMN_PROFILE_MISMATCH` | Exact pipeline profiles are incompatible. | Remains distinct from missing profile and unresolved historical profile basis. | Current compiler or Kernel scope; inherited blocking `error`, unchanged. |
+| `REPLAY_INPUT_CLOSURE_INCOMPLETE` | Replay-affecting inputs are absent or unenumerated. | Owns absent historical candidate-universe evidence. | Replay or verification; inherited blocking `error`, unchanged. |
+| `REPLAY_DEPENDENCY_UNRESOLVED` | A recorded exact replay dependency cannot resolve. | Owns an exact recorded enumeration-policy or candidate-source artifact that cannot resolve. | Replay or verification; inherited blocking `error`, unchanged. |
+| `MAPPING_RULESET_UNRESOLVED` | Exact historical mapping-ruleset closure cannot be reconstructed. | Owns ruleset identity, exact rule membership, and import-structure reconstruction only. | Replay or verification; inherited blocking `error`, unchanged. |
+| `REPLAY_POLICY_UNRESOLVED` | A required replay-affecting policy basis is missing or insufficiently frozen. | Owns absent policy identity or incomplete frozen parameters, not an exact unavailable artifact or mutable selector. | Replay or verification; inherited blocking `error`, unchanged. |
+| `FLOATING_EXTERNAL_BASIS` | A current external authoritative basis uses a mutable selector. | Includes current rule, ruleset, enumeration-policy, profile, and transformation selectors. | Current compilation; inherited blocking `error`, unchanged. |
+| `FLOATING_REPLAY_DEPENDENCY` | A replay dependency uses a mutable selector. | Is the sole primary code for a recorded floating historical policy selector. | Replay or verification; inherited blocking `error`, unchanged. |
+| `TARGET_PROFILE_BASIS_UNRESOLVED` | Exact historical target-profile basis cannot resolve. | Remains profile-specific and distinct from current profile absence or mismatch. | Replay or verification; inherited blocking `error`, unchanged. |
+| `REPLAY_NOT_COMPARABLE` | Available exact replay-affecting bases differ. | Includes a changed exact candidate-enumeration policy even when candidate sets and outputs match. | Verification; inherited blocking `error`, unchanged. |
+
+The three representation-policy diagnostics in the matrix retain their existing specific meanings and precedence over generic `MODELING_POLICY_REQUIRED`. `EQUIVALENT_BPMN_REPRESENTATIONS` also retains its existing selection-policy meaning. None is otherwise changed by the REV-0012 correction.
 
 ## 22. Issue boundaries
 
@@ -796,9 +977,26 @@ Issue #21 remains open and not started.
 
 ## 23. Synthetic examples
 
+The following bounded correction scenarios are Proposed contract examples and review acceptance tests for the REV-0012 findings:
+
+| Scenario | Exact basis and outcome | Primary diagnostic and authority boundary |
+| --- | --- | --- |
+| `SCN-C01` - Enumeration policy revision changes | The same logical rules and compiler are evaluated under `ENUM@1` and `ENUM@2`. Because each policy revision belongs to a different ruleset revision, the semantic evaluation basis changes before output comparison. | Same-replay verification uses `REPLAY_NOT_COMPARABLE`; equal output does not establish equal basis. |
+| `SCN-C02` - Same candidates, changed policy | `ENUM@1` and `ENUM@2` enumerate identical candidate identities. Each universe record preserves its exact policy and ruleset revision. | The executions remain changed-basis and `REPLAY_NOT_COMPARABLE`. |
+| `SCN-C03` - Candidate excluded before applicability | `CandidateUniverseRecord` includes rule `R7` and its exact policy exclusion basis. No candidate disposition or application is fabricated for `R7`. | No diagnostic arises solely from a valid exclusion; coverage evidence retains identity, reason, scope, and provenance. |
+| `SCN-C04` - Expected candidate omitted | The universe expects `R7`, but its evaluation has neither an exclusion nor a candidate disposition. | `PROVENANCE_MISSING` makes the current request unresolved; `MAPPING_RULESET_UNRESOLVED` is forbidden. |
+| `SCN-C05` - Compiler capability mismatch | Rule and candidate are otherwise eligible, but the exact compiler does not realize required capability `C4`. | `UNSUPPORTED_MAPPING`, not `MAPPING_NOT_ELIGIBLE`, blocks the affected mapping. |
+| `SCN-C06` - Candidate not eligible | The compiler realizes every required capability, but the candidate fails an exact non-capability eligibility prerequisite. | `MAPPING_NOT_ELIGIBLE`, or a more specific inherited prerequisite diagnostic, blocks the candidate; `UNSUPPORTED_MAPPING` is forbidden. |
+| `SCN-C07` - Cyclic active ruleset | Current ruleset `RS1@4` imports a closure that cycles back to itself. | `UNRESOLVED_REFERENCE` blocks current closure; `MAPPING_RULESET_UNRESOLVED` is forbidden. |
+| `SCN-C08` - Historical ruleset unavailable | Replay cannot reconstruct exact historical ruleset membership and imports. | `MAPPING_RULESET_UNRESOLVED` makes replay `not replayable`; no current compiler defect is inferred. |
+| `SCN-C09` - Historical enumeration policy unavailable | The manifest records exact `ENUM@1`, but that exact dependency cannot resolve. | `REPLAY_DEPENDENCY_UNRESOLVED` makes replay `not replayable`; absent policy identity uses `REPLAY_POLICY_UNRESOLVED`, while a mutable selector uses `FLOATING_REPLAY_DEPENDENCY`. |
+| `SCN-C10` - Partial candidate outcomes | One candidate provisionally succeeds, one is validly excluded, one is ineligible, and one expected candidate is omitted in the same request. | `PROVENANCE_MISSING` makes the request unresolved; the ineligible candidate retains its own diagnostic, no application is authoritative, and no result from that request reaches the Kernel. Independent requests may proceed only under accepted partial rules. |
+| `SCN-C11` - Contradictory policy requirements | Exact active policy references resolve, but their constraints cannot produce one governing modeling policy. | `MODELING_POLICY_REQUIRED` blocks policy closure; this is not candidate ineligibility or profile mismatch. |
+| `SCN-C12` - Multiple simultaneous defects | The active ruleset closure is malformed and the compiler also appears to lack a required capability. | `UNRESOLVED_REFERENCE` is primary. Capability was not authoritatively evaluated, so no speculative `UNSUPPORTED_MAPPING` is emitted for the same scope. |
+
 ### Example 1 - Exact rule and ruleset
 
-Ruleset `RS1@4` contains exact rule `RULE-A@7`. Complete candidate enumeration records every potentially applicable rule or exact exclusion basis. All prerequisites are satisfied under profile `P1@3`; the compiler records one `MappingEvaluationResult`, one `MappingRuleApplication`, and complete provenance.
+Ruleset `RS1@4` contains exact rule `RULE-A@7` and exact candidate-enumeration policy `ENUM@3`. `CandidateUniverseRecord` records every expected candidate or exact pre-evaluation exclusion basis. All prerequisites are satisfied under profile `P1@3`; the compiler records one `MappingEvaluationResult`, one `MappingRuleApplication`, and complete provenance.
 
 ### Example 2 - Floating ruleset
 
@@ -810,7 +1008,7 @@ A request uses `ruleset/latest`. The compiler emits `FLOATING_EXTERNAL_BASIS` or
 
 ### Example 4 - Membership change
 
-`RULE-B@2` is added to `RS1@4`. The resulting ruleset is `RS1@5`; `RS1@4` is not mutated.
+`RULE-B@2` is added to `RS1@4`. The resulting ruleset is `RS1@5`; `RS1@4` is not mutated. Replacing `ENUM@3` with `ENUM@4` likewise requires a new ruleset revision even if both policies produce the same candidates.
 
 ### Example 5 - Unresolved prerequisite
 
@@ -874,7 +1072,7 @@ An old exact ruleset and profile are superseded but still available. Historical 
 
 ### Example 20 - Changed ruleset comparison
 
-Original execution uses `RS1@4`; new execution uses exact `RS1@5`. `REPLAY_NOT_COMPARABLE` classifies same-replay verification as not comparable.
+Original execution uses `RS1@4` with `ENUM@3`; new execution uses exact `RS1@5` with `ENUM@4`. `REPLAY_NOT_COMPARABLE` classifies same-replay verification as not comparable even if both policies enumerate the same candidates.
 
 ### Example 21 - Profile change and business authority
 
@@ -912,6 +1110,18 @@ The target profile changes while accepted business meaning does not. The `Analys
 | Does M1.2.5 implement a profile registry or BPMN metamodel? | No. |
 | Can Issue #9 remain deferred while exact reference semantics are designed? | Yes. |
 | Can partial compilation hide an unresolved target profile? | No. |
+| Does every `MappingEvaluationResult` reference exactly one authoritative candidate-enumeration basis? | Yes. |
+| Is the candidate-enumeration policy revision a member of the exact ruleset closure? | Yes; closure membership is the only authoritative model selected by this contract. |
+| Does changing only the candidate-enumeration policy revision change the semantic evaluation and replay basis? | Yes, even when candidates and output remain identical. |
+| May a candidate absent from evaluation be treated as excluded or ineligible? | No; `PROVENANCE_MISSING` makes the current request unresolved. |
+| May Kernel success establish that candidate coverage was complete? | No. |
+| Does an otherwise valid mapping blocked only by unrealized compiler capability use `MAPPING_NOT_ELIGIBLE`? | No; it uses `UNSUPPORTED_MAPPING`. |
+| Does a non-capability eligibility failure use `UNSUPPORTED_MAPPING`? | No; it uses `MAPPING_NOT_ELIGIBLE` or a more specific inherited diagnostic. |
+| Does a cyclic active ruleset use `MAPPING_RULESET_UNRESOLVED` during current compilation? | No; it uses `UNRESOLVED_REFERENCE`. |
+| Do contradictory resolved active modeling policies use a candidate-level ineligibility diagnostic? | No; they use `MODELING_POLICY_REQUIRED` at policy closure. |
+| Does historical absence of candidate-universe evidence use a current candidate diagnostic? | No; it uses `REPLAY_INPUT_CLOSURE_INCOMPLETE`. |
+| Does an exact recorded but unavailable historical enumeration-policy revision use `REPLAY_POLICY_UNRESOLVED`? | No; it uses `REPLAY_DEPENDENCY_UNRESOLVED`; absent policy identity uses `REPLAY_POLICY_UNRESOLVED`, while a mutable selector uses `FLOATING_REPLAY_DEPENDENCY`. |
+| May a provisional successful candidate from a request with an omitted expected candidate become Kernel input? | No. |
 
 ## 25. Human-review questions
 
@@ -926,11 +1136,21 @@ The target profile changes while accepted business meaning does not. The `Analys
 
 No question is answered as Accepted in this Draft delivery.
 
-## 26. Acceptance boundary
+## 26. REV-0012 correction traceability
+
+| Finding | Corrected sections | Normative closure | Examples and tests | Status |
+| --- | --- | --- | --- | --- |
+| `REV12-FIND-001` | Sections 4, 5, 6, 8.4, 10.1, 10.3, 12, 16-18, 20, 23, and 24 | `CandidateEnumerationPolicyRef` is one immutable ruleset-closure member; `CandidateUniverseRecord` is the pre-evaluation coverage authority; every result binds exactly one policy and universe record; changed policy always changes basis; replay and verification must reconstruct and reconcile the basis. | `SCN-C01` through `SCN-C04`, `SCN-C09`, `SCN-C10`, updated Examples 1, 4, and 20, and the final twelve manual tests. | Proposed correction pending REV-0013 |
+| `REV12-FIND-002` | Sections 8.2, 10.2-10.3, 20, 21-21.3, 23, and 24 | The normative matrix assigns one phase-owned primary inherited diagnostic per failure, separates capability from eligibility, assigns omission, cycle, policy conflict, and replay reconstruction conditions, and defines precedence, partial-output behavior, and inherited-meaning fidelity. | `SCN-C04` through `SCN-C12`, updated Example 22, and the final seven diagnostic-focused manual tests. | Proposed correction pending REV-0013 |
+
+These Proposed corrections do not close either finding by review. REV-0012 remains a completed Request changes review, and human semantic and design re-review under REV-0013 must determine whether the findings are resolved.
+
+## 27. Acceptance boundary
 
 This contract remains Proposed until:
 
 - human semantic and design review evaluates the eight questions,
+- REV-0013 determines the disposition of `REV12-FIND-001` and `REV12-FIND-002`,
 - every Potential semantic change receives an explicit disposition,
 - the contract status is changed by an authorized finalization,
 - DEC-0009 is accepted,

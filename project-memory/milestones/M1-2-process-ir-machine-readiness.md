@@ -49,7 +49,7 @@ M1.2 is not completed. M1 semantic acceptance is satisfied by merged PR #2. M1.2
 - [PR #24](https://github.com/ThresholdOps/MotiveForce/pull/24), from branch `design/m1-2-3-diagnostic-policy`, completes the accepted diagnostic severity and aggregation design through merge.
 - [PR #25](https://github.com/ThresholdOps/MotiveForce/pull/25), from branch `design/m1-2-4-analyst-decision-staleness`, completes the accepted M1.2.4 design through merge.
 - M1.2.5 is Proposed and in progress for design only through Draft [PR #26](https://github.com/ThresholdOps/MotiveForce/pull/26) from branch `design/m1-2-5-mapping-profile-propagation`, opened from initial source head [`1e874144aa68e444669a55913d44d1ab0dc73538`](https://github.com/ThresholdOps/MotiveForce/commit/1e874144aa68e444669a55913d44d1ab0dc73538).
-- [REV-0011](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review.md) records Request changes against head [`1cb85a81b00bce4729bfc2ce58ad871ab67ee1d0`](https://github.com/ThresholdOps/MotiveForce/commit/1cb85a81b00bce4729bfc2ce58ad871ab67ee1d0). The architecture is retained, four bounded corrections are applied in a successor, and human re-review under REV-0012 remains required.
+- [REV-0011](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review.md) records Request changes against head [`1cb85a81b00bce4729bfc2ce58ad871ab67ee1d0`](https://github.com/ThresholdOps/MotiveForce/commit/1cb85a81b00bce4729bfc2ce58ad871ab67ee1d0). [REV-0012](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review-2.md) records Request changes against head [`7a6ec176a0fcc738a5c56a9c98a7d946446a2c01`](https://github.com/ThresholdOps/MotiveForce/commit/7a6ec176a0fcc738a5c56a9c98a7d946446a2c01). The architecture remains retained; two Proposed author corrections await human semantic and design re-review under REV-0013.
 
 ## Related commits
 
@@ -71,7 +71,7 @@ M1.2 is not completed. M1 semantic acceptance is satisfied by merged PR #2. M1.2
 
 ## Outcome
 
-Proposed and in progress at the design-program level. M1.2.1 through M1.2.4 design-contract work are completed. M1.2.5 is Proposed and in progress for design only after REV-0011 Request changes; re-review is required. M1.2 as a whole is not completed, other items remain deferred, and no runtime implementation has started.
+Proposed and in progress at the design-program level. M1.2.1 through M1.2.4 design-contract work are completed. M1.2.5 is Proposed and in progress for design only after REV-0012 Request changes; REV-0013 re-review is required. M1.2 as a whole is not completed, other items remain deferred, and no runtime implementation has started.
 
 ## Follow-up
 

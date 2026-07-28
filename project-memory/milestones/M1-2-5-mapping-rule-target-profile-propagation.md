@@ -10,7 +10,8 @@
 - Active Draft PR: [PR #26](https://github.com/ThresholdOps/MotiveForce/pull/26)
 - Exact base: [`20f53f13938692b9c572b6f9f963e89fc22cb5b8`](https://github.com/ThresholdOps/MotiveForce/commit/20f53f13938692b9c572b6f9f963e89fc22cb5b8)
 - Human semantic and design review round 1: [REV-0011](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review.md), completed with Request changes against [`1cb85a81b00bce4729bfc2ce58ad871ab67ee1d0`](https://github.com/ThresholdOps/MotiveForce/commit/1cb85a81b00bce4729bfc2ce58ad871ab67ee1d0)
-- Human semantic and design re-review: Required under REV-0012
+- Independent semantic and architectural re-review: [REV-0012](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review-2.md), completed with Request changes against [`7a6ec176a0fcc738a5c56a9c98a7d946446a2c01`](https://github.com/ThresholdOps/MotiveForce/commit/7a6ec176a0fcc738a5c56a9c98a7d946446a2c01)
+- Current correction status: `REV12-FIND-001` and `REV12-FIND-002` addressed by a Proposed correction pending human semantic and design re-review under REV-0013
 
 ## Objective
 
@@ -22,6 +23,7 @@ Define a bounded Proposed semantic and machine-readiness contract for exact, imm
 - immutable mapping-rule revisions,
 - exact `MappingRuleRef`,
 - exact closed `MappingRulesetRef`,
+- exact ruleset-owned candidate-enumeration policy and authoritative pre-evaluation candidate universe,
 - ruleset membership, imports, lifecycle, and supersession,
 - prerequisite definitions and satisfaction records,
 - complete candidate coverage and per-request `MappingEvaluationResult`,
@@ -106,6 +108,24 @@ The architecture is retained. Corrections cover:
 
 The corrected successor requires human semantic and design re-review under REV-0012. No acceptance or merge authorization is granted.
 
+## Independent re-review and bounded correction
+
+[REV-0012](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review-2.md) records `Request changes` against semantic head [`7a6ec176a0fcc738a5c56a9c98a7d946446a2c01`](https://github.com/ThresholdOps/MotiveForce/commit/7a6ec176a0fcc738a5c56a9c98a7d946446a2c01).
+
+The review retains the architecture and records:
+
+- `REV12-FIND-001`: candidate-enumeration and filter-policy identity was not unambiguously closed as an immutable compilation and replay basis;
+- `REV12-FIND-002`: current-compilation diagnostics had overlapping or incomplete trigger assignments.
+
+The Proposed correction:
+
+- makes one exact immutable candidate-enumeration policy revision a required member of each exact ruleset closure;
+- introduces conceptual pre-evaluation `CandidateUniverseRecord` provenance for complete coverage reconciliation;
+- propagates that exact basis through evaluation, compiler, replay, verification, partial-output, and Kernel-facing provenance;
+- partitions current, replay, and verification diagnostics through one normative phase and precedence matrix using inherited codes only.
+
+Both findings remain pending human semantic and design re-review under REV-0013. They are not closed by author correction. DEC-0009 and M1.2.5 remain Proposed, and no acceptance or merge authorization is granted.
+
 ## Related decisions
 
 - [DEC-0005](../decisions/DEC-0005-record-envelope-revision-semantics.md), Accepted.
@@ -125,10 +145,10 @@ Issue #9 does not block the bounded exact-reference, compatibility, and propagat
 
 ## Outcome
 
-Proposed and in progress for design only. Human semantic and design review round 1 requested four bounded changes; human re-review is required. No implementation, acceptance, completion, or merge authorization is recorded.
+Proposed and in progress for design only. REV-0012 requested two bounded changes; the Proposed correction awaits REV-0013 human semantic and design re-review. No implementation, acceptance, completion, or merge authorization is recorded.
 
 ## Follow-up
 
-1. Complete validation of the REV-0011 corrections.
-2. Obtain human semantic and design re-review under REV-0012 through Draft [PR #26](https://github.com/ThresholdOps/MotiveForce/pull/26).
+1. Complete validation of the Proposed corrections for `REV12-FIND-001` and `REV12-FIND-002`.
+2. Obtain human semantic and design re-review under REV-0013 through Draft [PR #26](https://github.com/ThresholdOps/MotiveForce/pull/26).
 3. Do not mark M1.2.5 complete or DEC-0009 Accepted in this delivery.
