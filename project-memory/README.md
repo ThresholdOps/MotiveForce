@@ -151,6 +151,8 @@ This repository is public. Project memory MUST NOT include confidential company 
 - [DEC-0007: Process IR Diagnostic Severity and Aggregation Policy](decisions/DEC-0007-process-ir-diagnostic-severity-aggregation.md)
 - [DEC-0008: AnalystDecision Staleness, Invalidation, Revalidation, and Controlled Authority Carry-Forward](decisions/DEC-0008-analyst-decision-staleness-revalidation.md)
 - [DEC-0009: Mapping Rule References and Target BPMN Profile Propagation](decisions/DEC-0009-mapping-rule-target-profile-propagation.md)
+- `DEC-0010`: allocated in active Draft PR #29; the record remains on that branch until merge.
+- [DEC-0011: Merge Strategy for Reviewed and Bounded-Finalization PRs](decisions/DEC-0011-reviewed-finalization-merge-strategy.md)
 - [Milestones](milestones/README.md)
 - [M0 Concept Definition](milestones/M0-concept-definition.md)
 - [M1 Process IR Contract](milestones/M1-process-ir-contract.md)
