@@ -1,8 +1,8 @@
 # Current State
 
-- Last verified: 2026-08-03T10:03:27Z
-- Verification source: fetched GitHub `main` and direct remote-head query, both at [`2387307f2f7a3f05b65197497b9f0945bb26bf6a`](https://github.com/ThresholdOps/MotiveForce/commit/2387307f2f7a3f05b65197497b9f0945bb26bf6a); full open-and-closed Issue search; complete project-memory ID-registry search; accepted M1 through M1.2.5 contracts and decisions.
-- Active branch: `design/m1-2-6-structured-elicitation-extraction`, based exactly on `2387307f2f7a3f05b65197497b9f0945bb26bf6a`.
+- Last verified: 2026-08-03T11:29:08Z
+- Verification source: fetched GitHub `main` and direct remote-head query at [`d0bf81770179883441389603a34915cb1bb2890b`](https://github.com/ThresholdOps/MotiveForce/commit/d0bf81770179883441389603a34915cb1bb2890b); merged [PR #30](https://github.com/ThresholdOps/MotiveForce/pull/30); closed [Issue #28](https://github.com/ThresholdOps/MotiveForce/issues/28); active Draft PR #29; and project-memory ID registries across `main` and PR #29.
+- Active branch: `design/m1-2-6-structured-elicitation-extraction`, rebased exactly onto `d0bf81770179883441389603a34915cb1bb2890b`. Its synchronized source head remains authoritative in PR #29 metadata after push.
 
 ## Project status
 
@@ -37,12 +37,12 @@ M1.2.6 Structured Elicitation Extraction is the only active semantic-design item
 - A separate human semantic and design review is required before any acceptance transition.
 - No REV-0014 record exists and none is authorized by conscious start.
 
-## Governance work
+## Completed merge-strategy governance
 
-- [Issue #28](https://github.com/ThresholdOps/MotiveForce/issues/28) tracks `OPEN-0021`, merge-strategy governance, as `Open / Not started`.
-- Issue #28 does not choose a merge strategy and does not yet decide whether the eventual result amends DEC-0004 or creates a new decision.
-- Issue #28 must be consciously started and resolved before the REV-0014 evidence package is frozen or REV-0014 begins, whichever occurs first.
-- While Issue #28 is unresolved, REV-0014 cannot record `Approve`, grant merge authorization, or authorize bounded finalization.
+- [Issue #28](https://github.com/ThresholdOps/MotiveForce/issues/28), `OPEN-0021`, is closed as completed.
+- [DEC-0011](decisions/DEC-0011-reviewed-finalization-merge-strategy.md) is Accepted through merge of [PR #30](https://github.com/ThresholdOps/MotiveForce/pull/30).
+- PR #30 reviewed head `e0020a44b0b649b711402d282d4cf5ece31708a8`, finalization head `a5304a5e5c2c122d5b8dedfcd864c5f6c4429999`, and merge commit [`d0bf81770179883441389603a34915cb1bb2890b`](https://github.com/ThresholdOps/MotiveForce/commit/d0bf81770179883441389603a34915cb1bb2890b) retain the exact governance provenance.
+- The Issue #28 gate is satisfied. DEC-0011 applies to REV-0014 and later covered reviews; no REV-0014 record is created by this synchronization.
 
 ## Deferred work
 
@@ -51,12 +51,12 @@ Issues [#4](https://github.com/ThresholdOps/MotiveForce/issues/4)-[#15](https://
 ## Current blockers and gates
 
 - No blocker prevents drafting the Proposed M1.2.6 semantic contract.
-- Issue #28 is a governance gate before REV-0014, not a semantic defect in the Proposed contract.
+- The Issue #28 governance gate is resolved and no longer blocks REV-0014.
 - Human semantic review remains required before DEC-0010, the contract, or M1.2.6 can become Accepted.
 
 ## Next expected action
 
-Review the Draft M1.2.6 proposal while keeping Issue #28 separate. Before REV-0014 begins, consciously start and resolve Issue #28 under its own governance authority.
+Conduct the separate human semantic and design review against the exact synchronized PR #29 head. Do not treat this base-and-gate synchronization as semantic acceptance.
 
 ## Current out-of-scope areas
 
@@ -68,4 +68,4 @@ Review the Draft M1.2.6 proposal while keeping Issue #28 separate. Before REV-00
 - Process Workbench UI or draw.io adapter work;
 - BPMN mapping during elicitation extraction;
 - confidential source documents or personal data in the public repository;
-- merge-strategy resolution within the M1.2.6 semantic proposal.
+- any change to accepted DEC-0011 merge-strategy governance within the M1.2.6 semantic proposal.

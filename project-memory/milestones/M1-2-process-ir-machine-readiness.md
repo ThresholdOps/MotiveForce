@@ -35,7 +35,7 @@ Convert the accepted M1 semantic contract into a machine-ready contract design w
 ## Deliverables
 
 - Proposed design outcomes tracked by Issues [#16](https://github.com/ThresholdOps/MotiveForce/issues/16)-[#21](https://github.com/ThresholdOps/MotiveForce/issues/21) and [#27](https://github.com/ThresholdOps/MotiveForce/issues/27).
-- Separate merge-strategy governance gate tracked by [Issue #28](https://github.com/ThresholdOps/MotiveForce/issues/28).
+- Accepted merge-strategy governance under [DEC-0011](../decisions/DEC-0011-reviewed-finalization-merge-strategy.md), completed through [Issue #28](https://github.com/ThresholdOps/MotiveForce/issues/28) and PR #30.
 - Project-memory updates recording accepted M1.2 decisions when they are made.
 
 ## Acceptance basis
@@ -88,4 +88,4 @@ Proposed and in progress at the design-program level. M1.2.1 through M1.2.5 desi
 - [Issue #21](https://github.com/ThresholdOps/MotiveForce/issues/21): expanded Process IR contract test matrix.
 - [Issue #8](https://github.com/ThresholdOps/MotiveForce/issues/8): detailed partial-compilation dependency policy retained from earlier open-item registration.
 - [Issue #27](https://github.com/ThresholdOps/MotiveForce/issues/27): structured elicitation extraction, active as M1.2.6 semantic-design work.
-- [Issue #28](https://github.com/ThresholdOps/MotiveForce/issues/28): merge-strategy governance, Open / Not started and required before REV-0014.
+- [Issue #28](https://github.com/ThresholdOps/MotiveForce/issues/28): merge-strategy governance, Accepted / Completed through DEC-0011 and merge commit [`d0bf8177`](https://github.com/ThresholdOps/MotiveForce/commit/d0bf81770179883441389603a34915cb1bb2890b); apply DEC-0011 to REV-0014.

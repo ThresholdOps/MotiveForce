@@ -6,9 +6,9 @@
 - Date: 2026-08-03
 - Decision authority: Proposed in the M1.2.6 Draft PR; a separate human semantic review is required before acceptance.
 - Tracking Issue: [Issue #27](https://github.com/ThresholdOps/MotiveForce/issues/27)
-- Governance dependency: [Issue #28](https://github.com/ThresholdOps/MotiveForce/issues/28), Open / Not started
+- Governance dependency: [Issue #28](https://github.com/ThresholdOps/MotiveForce/issues/28), resolved through accepted [DEC-0011](DEC-0011-reviewed-finalization-merge-strategy.md) and merge of PR #30
 - Source branch: `design/m1-2-6-structured-elicitation-extraction`
-- Exact base: [`2387307f2f7a3f05b65197497b9f0945bb26bf6a`](https://github.com/ThresholdOps/MotiveForce/commit/2387307f2f7a3f05b65197497b9f0945bb26bf6a)
+- Exact base: [`d0bf81770179883441389603a34915cb1bb2890b`](https://github.com/ThresholdOps/MotiveForce/commit/d0bf81770179883441389603a34915cb1bb2890b)
 
 ## Context
 
@@ -76,7 +76,7 @@ Rejected for M1.2.6 because machine representation and evaluation should follow 
 - M2 must decide machine representation and validation while preserving the new observation boundary.
 - Later fixture and agent work can be gated per stage, but none is authorized by this decision.
 - Public-repository work remains limited to synthetic or non-sensitive design artifacts under separate future authority.
-- Merge-strategy governance remains separate and unresolved under Issue #28.
+- Merge-strategy governance remains separate and is resolved by accepted DEC-0011; this status synchronization does not change the M1.2.6 semantic proposal.
 
 ## Related artifacts
 
@@ -99,7 +99,7 @@ None.
 
 ## Follow-up actions
 
-- Obtain a separate human semantic and design review after resolving the Issue #28 governance gate.
-- Do not create REV-0014 until Issue #28 is consciously started and resolved.
+- Obtain a separate human semantic and design review against the exact synchronized PR #29 head.
+- Apply accepted DEC-0011 to REV-0014; do not treat resolved governance or this synchronization as semantic acceptance.
 - If accepted later, route schema and machine-validation work to M2 and Issue #5.
 - Keep fixtures, tests, agent prompts, training, transcription, UI, draw.io, and implementation out of M1.2.6.

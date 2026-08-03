@@ -6,10 +6,10 @@
 - Milestone status: Proposed
 - Implementation status: In progress for semantic-design work only
 - Tracking Issue: [Issue #27](https://github.com/ThresholdOps/MotiveForce/issues/27)
-- Governance gate: [Issue #28](https://github.com/ThresholdOps/MotiveForce/issues/28), Open / Not started
+- Governance gate: [Issue #28](https://github.com/ThresholdOps/MotiveForce/issues/28), resolved through accepted [DEC-0011](../decisions/DEC-0011-reviewed-finalization-merge-strategy.md) and merge of PR #30
 - Active branch: `design/m1-2-6-structured-elicitation-extraction`
-- Exact base: [`2387307f2f7a3f05b65197497b9f0945bb26bf6a`](https://github.com/ThresholdOps/MotiveForce/commit/2387307f2f7a3f05b65197497b9f0945bb26bf6a)
-- Delivery PR: to be recorded in PR and Issue metadata after the Draft PR is opened
+- Exact base: [`d0bf81770179883441389603a34915cb1bb2890b`](https://github.com/ThresholdOps/MotiveForce/commit/d0bf81770179883441389603a34915cb1bb2890b)
+- Delivery PR: [PR #29](https://github.com/ThresholdOps/MotiveForce/pull/29)
 - Human semantic and design review: Required; no review record is created by conscious start
 
 ## Objective
@@ -39,7 +39,7 @@ Define a Proposed semantic contract for deriving evidence-backed, proposed `Atom
 - no transcription tooling, UI, draw.io, BPMN mapping, compiler, or Kernel work;
 - no changes to the accepted diagnostic registry;
 - no confidential or personal source content;
-- no merge-strategy decision;
+- no change to accepted DEC-0011 merge-strategy governance;
 - no REV-0014 during conscious start.
 
 ## Deliverables
@@ -70,14 +70,14 @@ Define a Proposed semantic contract for deriving evidence-backed, proposed `Atom
 - [ ] Source attestation is explicitly distinct from business-semantic acceptance.
 - [ ] `ExtractionValidationObservation` has a bounded authority, lifecycle, relation to accepted records, and M2 path.
 - [ ] No output or new artifact is marked Accepted before human review and authorized finalization.
-- [ ] Issue #28 is consciously started and resolved before REV-0014 begins or its evidence package is frozen.
+- [x] Issue #28 is consciously started and resolved before REV-0014 begins or its evidence package is frozen.
 - [ ] Schema, fixtures, implementation, prompts, tests, and executable validation remain deferred.
 
 ## Governance gate
 
-Issue #28 owns merge-strategy governance independently from this milestone. It must resolve when squash merge is permitted, when merge-commit ancestry is required, what compensating provenance is mandatory, and whether the result amends DEC-0004 or creates a separate decision.
+Issue #28 owned merge-strategy governance independently from this milestone. Accepted DEC-0011 resolves when squash merge is permitted, when merge-commit ancestry is required, and what compensating provenance is mandatory. It extends DEC-0004 without amendment or supersession.
 
-The M1.2.6 Draft PR does not answer those questions. REV-0014 must not begin, freeze an evidence package, record `Approve`, grant merge authorization, or authorize bounded finalization while Issue #28 remains unresolved.
+The M1.2.6 Draft PR does not answer or alter those questions. REV-0014 must apply DEC-0011, and this resolved gate does not grant semantic acceptance or merge authorization for M1.2.6.
 
 ## Related decisions
 
@@ -91,7 +91,7 @@ Proposed and in progress for semantic-design work only. No human semantic review
 
 ## Follow-up
 
-- Resolve Issue #28 through a separate consciously started governance decision before REV-0014.
-- Conduct a separate human semantic and design review only after that gate is satisfied.
+- Conduct a separate human semantic and design review against the exact synchronized PR #29 head.
+- Apply accepted DEC-0011 to REV-0014 without changing the M1.2.6 semantic contract during this synchronization.
 - Route any later machine schema and validation work to M2 and Issue #5.
 - Route any later fixture or test-matrix work to separately authorized work, including Issue #21 where applicable.

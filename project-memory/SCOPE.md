@@ -27,11 +27,12 @@ Active proposed design increment:
 - `ExtractionValidationObservation` is proposed as a non-authoritative extraction record distinct from Finding, Process IR diagnostic, and AnalystDecision.
 - Work is limited to semantic documentation and project governance. No human acceptance is claimed.
 
-Separate governance scope:
+Completed separate governance scope:
 
-- [Issue #28](https://github.com/ThresholdOps/MotiveForce/issues/28) tracks merge-strategy governance as `Open / Not started` under `OPEN-0021`.
-- It must resolve before REV-0014 begins or its evidence package is frozen.
-- It does not reopen PR #26, change M1.2.5 acceptance, resolve merge strategy in this PR, or yet decide DEC-0004 amendment versus a new decision.
+- [Issue #28](https://github.com/ThresholdOps/MotiveForce/issues/28), `OPEN-0021`, is closed as completed through merge of [PR #30](https://github.com/ThresholdOps/MotiveForce/pull/30).
+- [DEC-0011](decisions/DEC-0011-reviewed-finalization-merge-strategy.md) accepts Option A and extends DEC-0004 without amendment or supersession.
+- PR #30 merge commit [`d0bf81770179883441389603a34915cb1bb2890b`](https://github.com/ThresholdOps/MotiveForce/commit/d0bf81770179883441389603a34915cb1bb2890b) resolves the governance gate before REV-0014.
+- This synchronization does not reopen PR #26, change M1.2.5 acceptance, or change the M1.2.6 semantic contract.
 
 Future milestone:
 
@@ -61,7 +62,8 @@ Future milestone:
 - no BPMN mapping, compiler, Kernel, or process-model implementation;
 - no changes to accepted diagnostic codes;
 - no confidential sources or personal data;
-- no Accepted status, REV-0014, or merge-strategy decision during conscious start.
+- no Accepted M1.2.6 status or REV-0014 during this base-and-gate synchronization;
+- no change to accepted DEC-0011 merge-strategy governance.
 
 ## Future scope
 
@@ -86,5 +88,5 @@ Decision status and implementation status are independent. Proposed semantic doc
 | M1 Process IR contract | Accepted | Design complete; runtime not started | [PR #2](https://github.com/ThresholdOps/MotiveForce/pull/2) |
 | M1.2.1-M1.2.5 | Accepted | Design-contract work completed; runtime not started | PRs [#22](https://github.com/ThresholdOps/MotiveForce/pull/22)-[#26](https://github.com/ThresholdOps/MotiveForce/pull/26) |
 | M1.2.6 structured elicitation extraction | Proposed | In progress for semantic design only | [Issue #27](https://github.com/ThresholdOps/MotiveForce/issues/27), [DEC-0010](decisions/DEC-0010-structured-elicitation-extraction.md) |
-| Merge-strategy governance | Open | Not started | [Issue #28](https://github.com/ThresholdOps/MotiveForce/issues/28) |
+| Merge-strategy governance | Accepted | Completed | [Issue #28](https://github.com/ThresholdOps/MotiveForce/issues/28), [DEC-0011](decisions/DEC-0011-reviewed-finalization-merge-strategy.md), [PR #30](https://github.com/ThresholdOps/MotiveForce/pull/30) |
 | M2 machine schema and contract validation | Open / Proposed milestone | Deferred | [Issue #5](https://github.com/ThresholdOps/MotiveForce/issues/5), [M2](milestones/M2-machine-schema-contract-validation.md) |

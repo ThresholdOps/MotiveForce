@@ -33,5 +33,5 @@ A milestone record introduced by a PR may record the PR number, branch, reviewed
 - [M1.2.3: Process IR Diagnostic Severity and Aggregation Policy](M1-2-3-diagnostic-severity-aggregation.md), Accepted / Completed through merge of PR #24.
 - [M1.2.4: AnalystDecision Staleness, Invalidation, Revalidation, and Controlled Authority Carry-Forward](M1-2-4-analyst-decision-staleness-revalidation.md), Accepted / Completed through merge of PR #25.
 - [M1.2.5: Mapping Rule References, Ruleset Versioning, and Target BPMN Profile Propagation](M1-2-5-mapping-rule-target-profile-propagation.md), Accepted / Completed as design-contract work through merge of PR #26; REV-0013 closes both REV-0012 findings.
-- [M1.2.6: Structured Elicitation Extraction](M1-2-6-structured-elicitation-extraction.md), Proposed / In progress for semantic-design work only; Issue #28 is a separate governance gate before REV-0014.
+- [M1.2.6: Structured Elicitation Extraction](M1-2-6-structured-elicitation-extraction.md), Proposed / In progress for semantic-design work only; Issue #28 gate is resolved through accepted DEC-0011 and PR #30.
 - [M2: Machine Schema and Contract Validation](M2-machine-schema-contract-validation.md)
