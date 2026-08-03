@@ -11,7 +11,7 @@
 - Exact base: [`20f53f13938692b9c572b6f9f963e89fc22cb5b8`](https://github.com/ThresholdOps/MotiveForce/commit/20f53f13938692b9c572b6f9f963e89fc22cb5b8)
 - Human semantic and design review round 1: [REV-0011](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review.md), completed with Request changes against [`1cb85a81b00bce4729bfc2ce58ad871ab67ee1d0`](https://github.com/ThresholdOps/MotiveForce/commit/1cb85a81b00bce4729bfc2ce58ad871ab67ee1d0)
 - Independent semantic and architectural re-review: [REV-0012](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review-2.md), completed with Request changes against [`7a6ec176a0fcc738a5c56a9c98a7d946446a2c01`](https://github.com/ThresholdOps/MotiveForce/commit/7a6ec176a0fcc738a5c56a9c98a7d946446a2c01)
-- Current correction status: `REV12-FIND-001` and `REV12-FIND-002` addressed by a Proposed correction pending human semantic and design re-review under REV-0013
+- Current correction status: `REV12-FIND-001` and `REV12-FIND-002` addressed; three bounded reviewer-attention clarifications added for imported enumeration-policy authority, current candidate-source failure ownership, and replay-policy precedence; pending human semantic and design re-review under REV-0013
 
 ## Objective
 
@@ -23,7 +23,7 @@ Define a bounded Proposed semantic and machine-readiness contract for exact, imm
 - immutable mapping-rule revisions,
 - exact `MappingRuleRef`,
 - exact closed `MappingRulesetRef`,
-- exact ruleset-owned candidate-enumeration policy and authoritative pre-evaluation candidate universe,
+- one exact request-selected-ruleset-owned candidate-enumeration policy across the imported closure, inert imported-policy provenance, and an authoritative pre-evaluation candidate universe,
 - ruleset membership, imports, lifecycle, and supersession,
 - prerequisite definitions and satisfaction records,
 - complete candidate coverage and per-request `MappingEvaluationResult`,
@@ -124,6 +124,12 @@ The Proposed correction:
 - propagates that exact basis through evaluation, compiler, replay, verification, partial-output, and Kernel-facing provenance;
 - partitions current, replay, and verification diagnostics through one normative phase and precedence matrix using inherited codes only.
 
+The bounded reviewer-attention clarification additionally:
+
+- makes only the request-selected ruleset's directly owned enumeration policy operative across the complete imported closure while retaining imported policies as inert transitive identity and replay provenance;
+- assigns mutable selectors, unresolved exact references, capability-blocked valid sources, and completed source assessments that cannot establish authoritative candidate-universe provenance to distinct phases and inherited diagnostics while retaining interrupted assessment as execution failure;
+- makes `REPLAY_POLICY_UNRESOLVED` the sole primary code for absent policy identity or incomplete frozen parameters and limits `REPLAY_INPUT_CLOSURE_INCOMPLETE` to non-policy inputs and universe evidence after policy closure.
+
 Both findings remain pending human semantic and design re-review under REV-0013. They are not closed by author correction. DEC-0009 and M1.2.5 remain Proposed, and no acceptance or merge authorization is granted.
 
 ## Related decisions
@@ -145,10 +151,10 @@ Issue #9 does not block the bounded exact-reference, compatibility, and propagat
 
 ## Outcome
 
-Proposed and in progress for design only. REV-0012 requested two bounded changes; the Proposed correction awaits REV-0013 human semantic and design re-review. No implementation, acceptance, completion, or merge authorization is recorded.
+Proposed and in progress for design only. REV-0012 requested two bounded changes; the Proposed correction and three bounded reviewer-attention clarifications await REV-0013 human semantic and design re-review. No implementation, acceptance, completion, or merge authorization is recorded.
 
 ## Follow-up
 
-1. Complete validation of the Proposed corrections for `REV12-FIND-001` and `REV12-FIND-002`.
+1. Complete validation of the Proposed corrections for `REV12-FIND-001`, `REV12-FIND-002`, and the three bounded reviewer-attention clarifications.
 2. Obtain human semantic and design re-review under REV-0013 through Draft [PR #26](https://github.com/ThresholdOps/MotiveForce/pull/26).
 3. Do not mark M1.2.5 complete or DEC-0009 Accepted in this delivery.

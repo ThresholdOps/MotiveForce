@@ -14,7 +14,7 @@
 - Final source head: Recorded in PR and Issue metadata after the final self-provenance amend
 - Human review round 1: [REV-0011](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review.md), Request changes against [`1cb85a81b00bce4729bfc2ce58ad871ab67ee1d0`](https://github.com/ThresholdOps/MotiveForce/commit/1cb85a81b00bce4729bfc2ce58ad871ab67ee1d0)
 - Independent re-review: [REV-0012](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review-2.md), Request changes against [`7a6ec176a0fcc738a5c56a9c98a7d946446a2c01`](https://github.com/ThresholdOps/MotiveForce/commit/7a6ec176a0fcc738a5c56a9c98a7d946446a2c01)
-- Proposed correction: `REV12-FIND-001` and `REV12-FIND-002` addressed; pending human semantic and design re-review under REV-0013
+- Proposed correction: `REV12-FIND-001` and `REV12-FIND-002` addressed; bounded reviewer-attention clarifications for imported enumeration-policy authority, current candidate-source failure ownership, and replay-policy precedence are included; pending human semantic and design re-review under REV-0013
 - Supersedes: None
 - Superseded by: None
 
@@ -68,7 +68,9 @@ One exact ruleset revision closes:
 - profile and capability constraints,
 - governance and effective-time bases.
 
-The ruleset owns the candidate-enumeration relationship. This proposal selects closure membership, not a separately substitutable enumeration input. Any replay-affecting membership, import, candidate-enumeration policy, or other policy change creates a new ruleset revision. A changed candidate-enumeration policy changes the semantic evaluation and replay basis even when candidate identities and output remain identical.
+The request-selected top-level ruleset owns the one operative candidate-enumeration relationship for a mapping request. Its directly owned policy enumerates the complete imported closure. Imported rulesets retain their exact policies as immutable transitive identity and replay provenance, but those policies are inert for the importing request and neither override nor supplement the request-selected policy. A policy difference alone is not a conflict; claiming more than one operative policy for the same request is.
+
+Any replay-affecting membership, import, candidate-enumeration policy, or other policy change creates a new ruleset revision. Changing an imported policy creates a new imported ruleset revision and therefore a new importing ruleset revision when that import is selected. A changed candidate-enumeration policy changes the semantic evaluation and replay basis even when candidate identities and output remain identical.
 
 Rule and ruleset identity contains exact capability requirements or predicates, not the identity of the executing compiler build. A changed requirement creates a new rule or ruleset revision; a changed implementation changes the compiler basis.
 
@@ -86,6 +88,8 @@ Omission is not satisfaction or non-applicability. Modeling policy cannot satisf
 Every mapping request first produces a `CandidateUniverseRecord` under the ruleset-owned exact candidate-enumeration policy and then produces a `MappingEvaluationResult`. The universe record identifies consulted sources, complete expected candidate identities, pre-evaluation exclusions, unavailable or non-evaluable candidates, deduplication or equivalence decisions, ordering basis, provenance, and diagnostics.
 
 Every expected candidate receives exactly one candidate disposition or exact pre-evaluation exclusion basis. `MappingEvaluationResult` references exactly one universe record and policy revision. Omission of an expected candidate emits `PROVENANCE_MISSING`, makes the request unresolved, and cannot be interpreted as exclusion, inapplicability, or ineligibility.
+
+Current candidate-source failures are phase-owned: a mutable selector uses `FLOATING_EXTERNAL_BASIS`; an exact required source reference that cannot resolve uses `UNRESOLVED_REFERENCE`; an otherwise valid and evaluable source blocked only by unrealized compiler capability uses `UNSUPPORTED_MAPPING`; and, after the exact source reference resolves, a completed deterministic assessment that cannot establish required authoritative candidate-universe provenance uses `PROVENANCE_MISSING`. A runtime or infrastructure failure that prevents the assessment from completing remains an execution failure and emits no semantic mapping diagnostic for that interrupted assessment.
 
 ## Proposed mapping application and selection
 
@@ -138,11 +142,13 @@ The proposal uses only inherited diagnostics and does not change their severity,
 
 Historical input absence, exact dependency unavailability, missing or floating policy, and available but changed exact basis retain their distinct inherited replay diagnostics.
 
+For replay, `REPLAY_POLICY_UNRESOLVED` is the sole primary code for an absent policy identity or incomplete frozen policy parameters. `REPLAY_INPUT_CLOSURE_INCOMPLETE` is limited to absent non-policy inputs and candidate-universe evidence after the exact applicable policy identity and parameters are present. The same missing policy basis does not emit both codes.
+
 ## Rationale
 
 Exact references without complete membership and policy closure are insufficient for replay. Deterministic selection without semantic and authority boundaries could silently resolve business ambiguity. Profile names without exact identity or transformation provenance could make compiler and Kernel artifacts disagree about the validation basis.
 
-An immutable ruleset-owned candidate-enumeration policy and pre-evaluation universe record prevent a compiler from changing the candidate population while claiming the same ruleset basis. Complete per-request evaluation provenance prevents unsuccessful evaluations from disappearing. Deterministic phase-owned diagnostics prevent the same failure from acquiring different replay-semantic codes. Separating capability requirements from actual compiler identity prevents implementation changes from mutating ruleset identity. Exact compatibility authority prevents agent proposals, Kernel results, or transformation records from becoming unsupported general proof.
+An immutable request-selected-ruleset-owned candidate-enumeration policy and pre-evaluation universe record prevent a compiler from changing the candidate population while claiming the same ruleset basis. Explicit imported-policy inertness prevents one import graph from acquiring multiple operative enumeration policies. Complete per-request evaluation provenance prevents unsuccessful evaluations from disappearing. Deterministic phase-owned diagnostics, including candidate-source and replay-policy precedence, prevent the same failure from acquiring different replay-semantic codes. Separating capability requirements from actual compiler identity prevents implementation changes from mutating ruleset identity. Exact compatibility authority prevents agent proposals, Kernel results, or transformation records from becoming unsupported general proof.
 
 The proposal closes those gaps while preserving accepted authority domains and deferring implementation.
 
@@ -233,11 +239,11 @@ Costs and constraints:
 
 ## Follow-up actions
 
-1. Complete author structural and consistency validation of the Proposed corrections for `REV12-FIND-001` and `REV12-FIND-002`.
+1. Complete author structural and consistency validation of the Proposed corrections for `REV12-FIND-001`, `REV12-FIND-002`, and the three bounded reviewer-attention clarifications.
 2. Obtain human semantic and design re-review under REV-0013 through Draft [PR #26](https://github.com/ThresholdOps/MotiveForce/pull/26).
 3. Keep DEC-0009 Proposed until an authorized later finalization and merge.
 4. Do not start implementation, Issue #8, Issue #9, or Issue #21.
 
 ## Decision effect
 
-REV-0012 retains the overall architecture and requests two bounded changes. This Proposed correction addresses them for REV-0013 re-review but does not close them by review. No acceptance, implementation authorization, ready-for-review transition, or merge authorization is granted.
+REV-0012 retains the overall architecture and requests two bounded changes. This Proposed correction addresses them and records three bounded reviewer-attention clarifications for REV-0013 re-review, but does not close any item by review. No acceptance, implementation authorization, ready-for-review transition, or merge authorization is granted.
