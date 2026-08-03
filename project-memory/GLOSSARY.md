@@ -41,7 +41,16 @@
 - **replay input closure**: Accepted M1.2.2 complete set of exact semantic records, policies, compiler identity, mapping rules, target profile, and execution parameters that can affect Semantic Compiler output.
 - **CompilationReplayManifest**: Accepted M1.2.2 artifact identifying one complete exact replay input closure and the original compiler outputs to compare.
 - **CompilerImplementationRef**: Accepted M1.2.2 immutable reference sufficient to identify the compiler implementation and semantic build basis used by an execution.
-- **MappingRulesetRef**: Accepted M1.2.2 exact immutable identity of the mapping rules used for replay; detailed rule semantics remain Issue #20.
+- **logical mapping rule**: Proposed M1.2.5 concept; one conceptual mapping rule across immutable revisions.
+- **mapping-rule revision**: Proposed M1.2.5 concept; one released immutable semantic definition of a logical mapping rule.
+- **MappingRuleRef**: Proposed M1.2.5 exact reference to one immutable mapping-rule revision and its governing identity basis.
+- **MappingRulesetRef**: Accepted M1.2.2 exact immutable replay identity, refined by Proposed M1.2.5 to close exact rule membership, imported rulesets, prerequisite policies, selection policies, profile constraints, and governance bases.
+- **PrerequisiteSatisfactionRecord**: Proposed M1.2.5 exact assessment of one rule prerequisite against one mapping request and basis.
+- **candidate disposition**: Proposed M1.2.5 applicability and eligibility result of `eligible`, `inapplicable`, `blocked`, `unresolved`, or `not-selected` for one exact candidate rule revision.
+- **MappingRuleApplication**: Proposed M1.2.5 compiler-owned provenance record for applying one exact selected rule to exact inputs under exact ruleset, prerequisite, selection, policy, authority, and profile bases.
+- **TargetBPMNProfileRef**: Proposed M1.2.5 exact immutable target-profile identity used for authoritative mapping eligibility and Kernel validation.
+- **profile compatibility assessment**: Proposed M1.2.5 exact directional, scoped, version-specific result of `compatible`, `incompatible`, or `unresolved` between exact profile revisions.
+- **ProfileTransformationBasis**: Proposed M1.2.5 exact basis for producing a new artifact under a different exact target profile while preserving source and target profile provenance.
 - **ReplayVerificationResult**: Accepted M1.2.2 comparison report that records the exact comparison basis and distinguishes semantic match, mismatch, incomplete closure, changed-basis non-comparability, and replay failure.
 - **semantic equivalence**: Accepted M1.2.2 equality under the minimum semantic projection defined by the exact applicable replay-contract revision, independent of serialization, presentation, and observational metadata.
 - **observational metadata**: Accepted M1.2.2 runtime information such as timings, host, process, worker, or trace identifiers that must not affect semantic output unless explicitly classified as replay-affecting.

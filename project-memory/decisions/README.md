@@ -55,3 +55,4 @@ Create a new decision record, set the old record's `Superseded by` field in the 
 - [DEC-0006: Deterministic Semantic Compiler Replay](DEC-0006-deterministic-semantic-compiler-replay.md), Accepted through merge of PR #23.
 - [DEC-0007: Process IR Diagnostic Severity and Aggregation Policy](DEC-0007-process-ir-diagnostic-severity-aggregation.md), Accepted through merge of PR #24.
 - [DEC-0008: AnalystDecision Staleness, Invalidation, Revalidation, and Controlled Authority Carry-Forward](DEC-0008-analyst-decision-staleness-revalidation.md), Accepted through merge of PR #25; REV-0010 closes all REV-0009 findings.
+- [DEC-0009: Mapping Rule References and Target BPMN Profile Propagation](DEC-0009-mapping-rule-target-profile-propagation.md), Accepted through merge of PR #26; REV-0013 closes both REV-0012 findings and approves all three section 26.1 clarifications.
