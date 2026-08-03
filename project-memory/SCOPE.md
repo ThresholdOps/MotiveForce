@@ -23,13 +23,13 @@ Current product scope remains conceptual and pre-MVP:
 
 [Issue #27](https://github.com/ThresholdOps/MotiveForce/issues/27) and Draft [PR #29](https://github.com/ThresholdOps/MotiveForce/pull/29) contain the Proposed M1.2.6 structured-elicitation contract and `DEC-0010`.
 
-This standalone governance branch does not contain or modify that contract. REV-0014 remains blocked until Issue #28 is resolved.
+This standalone governance work does not contain or modify that contract. REV-0014 remains unstarted until PR #29 is synchronized only to the new `main` base and resolved Issue #28 gate.
 
 ### Merge-strategy governance
 
-[Issue #28](https://github.com/ThresholdOps/MotiveForce/issues/28), `OPEN-0021`, is active as a small standalone governance decision.
+[Issue #28](https://github.com/ThresholdOps/MotiveForce/issues/28), `OPEN-0021`, is completed through merge of PR #30.
 
-[DEC-0011](decisions/DEC-0011-reviewed-finalization-merge-strategy.md) proposes Option A:
+[DEC-0011](decisions/DEC-0011-reviewed-finalization-merge-strategy.md) accepts Option A:
 
 - squash merge is eligible only when the exact reviewed head equals the final PR head and no post-approval commit exists;
 - merge commit is required whenever bounded finalization or another authorized post-approval commit separates the reviewed and final heads;
@@ -40,15 +40,7 @@ This standalone governance branch does not contain or modify that contract. REV-
 
 ## Governance acceptance boundary
 
-The project owner's selection of Option A authorizes this Proposed draft. It does not itself mark DEC-0011 Accepted or authorize merge.
-
-A separate human governance decision must:
-
-- identify the exact reviewed source head;
-- approve, request changes, or reject DEC-0011;
-- state finding disposition if findings exist;
-- explicitly grant or withhold merge authorization;
-- remain internally consistent.
+The project owner personally reviewed exact head [`e0020a44b0b649b711402d282d4cf5ece31708a8`](https://github.com/ThresholdOps/MotiveForce/commit/e0020a44b0b649b711402d282d4cf5ece31708a8), approved Option A with no findings, authorized the bounded finalization allowlist, and authorized merge after successful diff-scope validation in the [human governance decision](https://github.com/ThresholdOps/MotiveForce/pull/30#issuecomment-5165269810). Acceptance is granted by the human and completed through merge of PR #30, not inferred by the agent.
 
 ## Explicit non-goals
 
@@ -58,7 +50,7 @@ A separate human governance decision must:
 - no GitHub automation or branch-protection implementation;
 - no retrospective change to PR #26 or M1.2.5;
 - no DEC-0004 amendment or supersession;
-- no Accepted status before human governance decision and authorized finalization.
+- no normative DEC-0011 change during bounded finalization.
 
 ## Future transition
 

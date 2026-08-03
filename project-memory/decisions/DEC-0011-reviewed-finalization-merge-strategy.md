@@ -2,13 +2,14 @@
 
 - ID: `DEC-0011`
 - Title: Merge strategy for exact-head-reviewed and bounded-finalization pull requests
-- Status: Proposed
+- Status: Accepted through merge of PR #30
 - Date: 2026-08-03
-- Decision authority: Option A was explicitly selected by the project owner as the direction to draft. This record remains Proposed until a separate human governance decision and merge.
+- Decision authority: The project owner personally reviewed exact head [`e0020a44b0b649b711402d282d4cf5ece31708a8`](https://github.com/ThresholdOps/MotiveForce/commit/e0020a44b0b649b711402d282d4cf5ece31708a8), approved Option A with no findings, authorized bounded finalization within a closed allowlist, and authorized merge after successful validation in the [human governance decision](https://github.com/ThresholdOps/MotiveForce/pull/30#issuecomment-5165269810). Acceptance is completed through merge of PR #30.
 - Tracking Issue: [Issue #28](https://github.com/ThresholdOps/MotiveForce/issues/28), `OPEN-0021`
+- Source PR: [PR #30](https://github.com/ThresholdOps/MotiveForce/pull/30)
 - Source branch: `agent/merge-strategy-governance`
 - Exact base: [`2387307f2f7a3f05b65197497b9f0945bb26bf6a`](https://github.com/ThresholdOps/MotiveForce/commit/2387307f2f7a3f05b65197497b9f0945bb26bf6a)
-- Related active design PR: [PR #29](https://github.com/ThresholdOps/MotiveForce/pull/29), unchanged by this proposal
+- Related active design PR: [PR #29](https://github.com/ThresholdOps/MotiveForce/pull/29), unchanged by this finalization
 
 ## Context
 
@@ -224,7 +225,7 @@ None.
 
 ## Follow-up actions
 
-- Obtain a separate human governance decision against an exact source head.
-- Do not start or freeze REV-0014 while Issue #28 remains unresolved.
-- After this governance PR merges, update PR #29 only for the new base and resolved governance-gate status; do not improve the M1.2.6 semantic contract before review.
+- Close Issue #28 after merge-commit and ancestry validation complete.
+- Update PR #29 only for the new base and resolved governance-gate status; do not improve the M1.2.6 semantic contract before review.
+- Do not start or freeze REV-0014 until PR #29 has that bounded synchronization.
 - Record this PR's actual merge SHA in the next governance-affecting project-memory update when material; do not predict it here.
