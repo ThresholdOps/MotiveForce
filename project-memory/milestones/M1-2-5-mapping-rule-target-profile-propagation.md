@@ -2,20 +2,20 @@
 
 - Milestone ID: `M1.2.5`
 - Title: Mapping Rule References, Ruleset Versioning, and Target BPMN Profile Propagation Policy
-- Decision status: Proposed
-- Milestone status: Proposed
-- Implementation status: In progress for design only
+- Decision status: Accepted through merge of PR #26
+- Milestone status: Completed as design-contract work through merge of PR #26
+- Implementation status: Design contract completed through merge; runtime implementation not started
 - Tracking Issue: [Issue #20](https://github.com/ThresholdOps/MotiveForce/issues/20)
 - Active branch: `design/m1-2-5-mapping-profile-propagation`
-- Active Draft PR: [PR #26](https://github.com/ThresholdOps/MotiveForce/pull/26)
+- Delivery PR: [PR #26](https://github.com/ThresholdOps/MotiveForce/pull/26), approved for merge after bounded-finalization validation
 - Exact base: [`20f53f13938692b9c572b6f9f963e89fc22cb5b8`](https://github.com/ThresholdOps/MotiveForce/commit/20f53f13938692b9c572b6f9f963e89fc22cb5b8)
 - Human semantic and design review round 1: [REV-0011](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review.md), completed with Request changes against [`1cb85a81b00bce4729bfc2ce58ad871ab67ee1d0`](https://github.com/ThresholdOps/MotiveForce/commit/1cb85a81b00bce4729bfc2ce58ad871ab67ee1d0)
 - Independent semantic and architectural re-review: [REV-0012](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review-2.md), completed with Request changes against [`7a6ec176a0fcc738a5c56a9c98a7d946446a2c01`](https://github.com/ThresholdOps/MotiveForce/commit/7a6ec176a0fcc738a5c56a9c98a7d946446a2c01)
-- Current correction status: `REV12-FIND-001` and `REV12-FIND-002` addressed; three bounded reviewer-attention clarifications added for imported enumeration-policy authority, current candidate-source failure ownership, and replay-policy precedence; pending human semantic and design re-review under REV-0013
+- Final human semantic and design review: [REV-0013](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review-3.md), Approve against frozen semantic head [`f8d2249e4693305b57bf021c76bdd78b010da24b`](https://github.com/ThresholdOps/MotiveForce/commit/f8d2249e4693305b57bf021c76bdd78b010da24b); both REV-0012 findings closed and all three section 26.1 clarifications approved
 
 ## Objective
 
-Define a bounded Proposed semantic and machine-readiness contract for exact, immutable, replayable, deterministic, profile-scoped Semantic Compiler mapping decisions.
+Define an Accepted semantic and machine-readiness contract for exact, immutable, replayable, deterministic, profile-scoped Semantic Compiler mapping decisions.
 
 ## Scope
 
@@ -56,11 +56,11 @@ Define a bounded Proposed semantic and machine-readiness contract for exact, imm
 
 ## Deliverables
 
-- Proposed [mapping and target-profile contract](../../docs/MAPPING_RULE_TARGET_PROFILE_PROPAGATION_CONTRACT.md).
-- Proposed [DEC-0009](../decisions/DEC-0009-mapping-rule-target-profile-propagation.md).
+- Accepted [mapping and target-profile contract](../../docs/MAPPING_RULE_TARGET_PROFILE_PROPAGATION_CONTRACT.md).
+- Accepted [DEC-0009](../decisions/DEC-0009-mapping-rule-target-profile-propagation.md).
 - This milestone record.
 - M1.2 parent and materially affected project-memory synchronization.
-- Updated Issue #20 and Draft PR metadata.
+- Updated Issue #20 and PR #26 metadata.
 
 ## Accepted dependencies
 
@@ -74,26 +74,26 @@ Define a bounded Proposed semantic and machine-readiness contract for exact, imm
 
 ## Acceptance criteria
 
-- [ ] Human semantic and design review is completed.
-- [ ] Rule logical identity and immutable revision model are accepted.
-- [ ] Exact ruleset identity, membership, imports, and closure are accepted.
-- [ ] Prerequisite categories, dispositions, and satisfaction semantics are accepted.
-- [ ] `MappingRuleApplication` and complete mapping provenance are accepted.
-- [ ] Deterministic applicability, selection, precedence, equivalence, and fallback boundaries are accepted.
-- [ ] Exact target-profile identity is accepted.
-- [ ] Directional compatibility and explicit transformation semantics are accepted.
-- [ ] Profile propagation across compiler, replay, and Kernel artifacts is accepted.
-- [ ] Diagnostic and deferred-Issue boundaries are accepted.
-- [ ] Contract status changes to Accepted through authorized finalization.
-- [ ] DEC-0009 changes to Accepted through authorized finalization.
+- [x] Human semantic and design review is completed.
+- [x] Rule logical identity and immutable revision model are accepted.
+- [x] Exact ruleset identity, membership, imports, and closure are accepted.
+- [x] Prerequisite categories, dispositions, and satisfaction semantics are accepted.
+- [x] `MappingRuleApplication` and complete mapping provenance are accepted.
+- [x] Deterministic applicability, selection, precedence, equivalence, and fallback boundaries are accepted.
+- [x] Exact target-profile identity is accepted.
+- [x] Directional compatibility and explicit transformation semantics are accepted.
+- [x] Profile propagation across compiler, replay, and Kernel artifacts is accepted.
+- [x] Diagnostic and deferred-Issue boundaries are accepted.
+- [x] Contract status changes to Accepted through authorized finalization.
+- [x] DEC-0009 changes to Accepted through authorized finalization.
 - [ ] Delivery PR is merged.
-- [ ] Project memory is synchronized with completion.
+- [x] Project memory is synchronized with the approved through-merge transition.
 
-None of these criteria is completed in this Draft delivery.
+All design-contract and finalization criteria are complete. The final repository transition and Issue closure remain conditioned on merge of PR #26.
 
 ## Related PR
 
-Draft [PR #26](https://github.com/ThresholdOps/MotiveForce/pull/26) was opened from initial source head [`1e874144aa68e444669a55913d44d1ab0dc73538`](https://github.com/ThresholdOps/MotiveForce/commit/1e874144aa68e444669a55913d44d1ab0dc73538). The final source head remains in PR and Issue metadata.
+[PR #26](https://github.com/ThresholdOps/MotiveForce/pull/26) was opened from initial source head [`1e874144aa68e444669a55913d44d1ab0dc73538`](https://github.com/ThresholdOps/MotiveForce/commit/1e874144aa68e444669a55913d44d1ab0dc73538). REV-0013 reviewed semantic head [`f8d2249e4693305b57bf021c76bdd78b010da24b`](https://github.com/ThresholdOps/MotiveForce/commit/f8d2249e4693305b57bf021c76bdd78b010da24b). The final bounded-finalization source head remains in PR and Issue metadata; this record does not predict its own commit SHA or future squash merge SHA.
 
 ## Human review round 1
 
@@ -130,7 +130,17 @@ The bounded reviewer-attention clarification additionally:
 - assigns mutable selectors, unresolved exact references, capability-blocked valid sources, and completed source assessments that cannot establish authoritative candidate-universe provenance to distinct phases and inherited diagnostics while retaining interrupted assessment as execution failure;
 - makes `REPLAY_POLICY_UNRESOLVED` the sole primary code for absent policy identity or incomplete frozen parameters and limits `REPLAY_INPUT_CLOSURE_INCOMPLETE` to non-policy inputs and universe evidence after policy closure.
 
-Both findings remain pending human semantic and design re-review under REV-0013. They are not closed by author correction. DEC-0009 and M1.2.5 remain Proposed, and no acceptance or merge authorization is granted.
+## Final human review
+
+[REV-0013](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review-3.md) records `Approve` against frozen semantic head [`f8d2249e4693305b57bf021c76bdd78b010da24b`](https://github.com/ThresholdOps/MotiveForce/commit/f8d2249e4693305b57bf021c76bdd78b010da24b).
+
+The review:
+
+- closes `REV12-FIND-001` and `REV12-FIND-002`;
+- approves all three section 26.1 reviewer-attention clarifications;
+- accepts all 15 design choices, including every Potential semantic change;
+- approves the contract, DEC-0009, and M1.2.5 design-contract completion through merge of PR #26;
+- authorizes bounded finalization and merge after validation without authorizing implementation.
 
 ## Related decisions
 
@@ -138,7 +148,7 @@ Both findings remain pending human semantic and design re-review under REV-0013.
 - [DEC-0006](../decisions/DEC-0006-deterministic-semantic-compiler-replay.md), Accepted.
 - [DEC-0007](../decisions/DEC-0007-process-ir-diagnostic-severity-aggregation.md), Accepted.
 - [DEC-0008](../decisions/DEC-0008-analyst-decision-staleness-revalidation.md), Accepted.
-- [DEC-0009](../decisions/DEC-0009-mapping-rule-target-profile-propagation.md), Proposed.
+- [DEC-0009](../decisions/DEC-0009-mapping-rule-target-profile-propagation.md), Accepted through merge of PR #26.
 
 ## Deferred boundaries
 
@@ -151,10 +161,10 @@ Issue #9 does not block the bounded exact-reference, compatibility, and propagat
 
 ## Outcome
 
-Proposed and in progress for design only. REV-0012 requested two bounded changes; the Proposed correction and three bounded reviewer-attention clarifications await REV-0013 human semantic and design re-review. No implementation, acceptance, completion, or merge authorization is recorded.
+Accepted and completed as design-contract work through merge of PR #26. REV-0013 closes both REV-0012 findings, approves the three section 26.1 clarifications, and authorizes bounded finalization and merge after validation. No runtime implementation is authorized or started.
 
 ## Follow-up
 
-1. Complete validation of the Proposed corrections for `REV12-FIND-001`, `REV12-FIND-002`, and the three bounded reviewer-attention clarifications.
-2. Obtain human semantic and design re-review under REV-0013 through Draft [PR #26](https://github.com/ThresholdOps/MotiveForce/pull/26).
-3. Do not mark M1.2.5 complete or DEC-0009 Accepted in this delivery.
+1. Merge [PR #26](https://github.com/ThresholdOps/MotiveForce/pull/26) after bounded-finalization validation and close Issue #20 after merge.
+2. Keep M1.2 incomplete while Issue #8 and Issue #21 remain deferred.
+3. Do not start runtime implementation or any deferred Issue through this finalization.

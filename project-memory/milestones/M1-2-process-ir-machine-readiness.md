@@ -38,7 +38,7 @@ Convert the accepted M1 semantic contract into a machine-ready contract design w
 
 ## Acceptance basis
 
-M1.2 is not completed. M1 semantic acceptance is satisfied by merged PR #2. M1.2.1 through M1.2.4 are accepted and completed as design-contract work through PRs #22 through #25. M1.2.5 is Proposed and is the only active narrow M1.2 design item. Other M1.2 Issues remain deferred.
+M1.2 is not completed. M1 semantic acceptance is satisfied by merged PR #2. M1.2.1 through M1.2.4 are accepted and completed as design-contract work through PRs #22 through #25. M1.2.5 is accepted and approved for completion as design-contract work through merge of PR #26. Issue #8 and Issue #21 remain deferred, so M1.2 as a whole remains incomplete.
 
 ## Related PRs
 
@@ -48,8 +48,8 @@ M1.2 is not completed. M1 semantic acceptance is satisfied by merged PR #2. M1.2
 - [PR #23](https://github.com/ThresholdOps/MotiveForce/pull/23) completes the accepted M1.2.2 deterministic replay design through merge.
 - [PR #24](https://github.com/ThresholdOps/MotiveForce/pull/24), from branch `design/m1-2-3-diagnostic-policy`, completes the accepted diagnostic severity and aggregation design through merge.
 - [PR #25](https://github.com/ThresholdOps/MotiveForce/pull/25), from branch `design/m1-2-4-analyst-decision-staleness`, completes the accepted M1.2.4 design through merge.
-- M1.2.5 is Proposed and in progress for design only through Draft [PR #26](https://github.com/ThresholdOps/MotiveForce/pull/26) from branch `design/m1-2-5-mapping-profile-propagation`, opened from initial source head [`1e874144aa68e444669a55913d44d1ab0dc73538`](https://github.com/ThresholdOps/MotiveForce/commit/1e874144aa68e444669a55913d44d1ab0dc73538).
-- [REV-0011](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review.md) records Request changes against head [`1cb85a81b00bce4729bfc2ce58ad871ab67ee1d0`](https://github.com/ThresholdOps/MotiveForce/commit/1cb85a81b00bce4729bfc2ce58ad871ab67ee1d0). [REV-0012](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review-2.md) records Request changes against head [`7a6ec176a0fcc738a5c56a9c98a7d946446a2c01`](https://github.com/ThresholdOps/MotiveForce/commit/7a6ec176a0fcc738a5c56a9c98a7d946446a2c01). The architecture remains retained; two Proposed author corrections and three bounded reviewer-attention clarifications await human semantic and design re-review under REV-0013.
+- M1.2.5 is accepted and approved for completion as design-contract work through merge of [PR #26](https://github.com/ThresholdOps/MotiveForce/pull/26) from branch `design/m1-2-5-mapping-profile-propagation`.
+- [REV-0011](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review.md) and [REV-0012](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review-2.md) recorded Request changes. Final human review [REV-0013](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review-3.md) approves frozen semantic head [`f8d2249e4693305b57bf021c76bdd78b010da24b`](https://github.com/ThresholdOps/MotiveForce/commit/f8d2249e4693305b57bf021c76bdd78b010da24b), closes both REV-0012 findings, and authorizes bounded finalization and merge without authorizing implementation.
 
 ## Related commits
 
@@ -67,11 +67,11 @@ M1.2 is not completed. M1 semantic acceptance is satisfied by merged PR #2. M1.2
 - [DEC-0006](../decisions/DEC-0006-deterministic-semantic-compiler-replay.md), Accepted through merge of PR #23.
 - [DEC-0007](../decisions/DEC-0007-process-ir-diagnostic-severity-aggregation.md), Accepted through merge of PR #24.
 - [DEC-0008](../decisions/DEC-0008-analyst-decision-staleness-revalidation.md), Accepted through merge of PR #25.
-- [DEC-0009](../decisions/DEC-0009-mapping-rule-target-profile-propagation.md), Proposed.
+- [DEC-0009](../decisions/DEC-0009-mapping-rule-target-profile-propagation.md), Accepted through merge of PR #26.
 
 ## Outcome
 
-Proposed and in progress at the design-program level. M1.2.1 through M1.2.4 design-contract work are completed. M1.2.5 is Proposed and in progress for design only after REV-0012 Request changes; REV-0013 re-review is required. M1.2 as a whole is not completed, other items remain deferred, and no runtime implementation has started.
+Proposed and in progress at the design-program level. M1.2.1 through M1.2.4 design-contract work are completed, and M1.2.5 is accepted and approved for completion through merge of PR #26. M1.2 as a whole is not completed because Issue #8 and Issue #21 remain deferred. No runtime implementation has started.
 
 ## Follow-up
 
@@ -79,6 +79,6 @@ Proposed and in progress at the design-program level. M1.2.1 through M1.2.4 desi
 - [Issue #17](https://github.com/ThresholdOps/MotiveForce/issues/17): deterministic compiler replay contract, completed through merge of PR #23.
 - [Issue #18](https://github.com/ThresholdOps/MotiveForce/issues/18): diagnostic severity and aggregation, completed as M1.2.3 design-contract work through merge of PR #24.
 - [Issue #19](https://github.com/ThresholdOps/MotiveForce/issues/19): AnalystDecision staleness, invalidation, revalidation, and controlled authority carry-forward, completed as M1.2.4 design work through merge of PR #25.
-- [Issue #20](https://github.com/ThresholdOps/MotiveForce/issues/20): mapping-rule references, ruleset versioning, and target-profile propagation, consciously started as M1.2.5 design work.
+- [Issue #20](https://github.com/ThresholdOps/MotiveForce/issues/20): mapping-rule references, ruleset versioning, and target-profile propagation, approved as completed M1.2.5 design work through merge of PR #26; close after merge.
 - [Issue #21](https://github.com/ThresholdOps/MotiveForce/issues/21): expanded Process IR contract test matrix.
 - [Issue #8](https://github.com/ThresholdOps/MotiveForce/issues/8): detailed partial-compilation dependency policy retained from earlier open-item registration.

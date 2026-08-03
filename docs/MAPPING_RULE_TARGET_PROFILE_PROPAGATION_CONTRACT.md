@@ -4,19 +4,19 @@
 
 - Project: MøtiveFōrce
 - Milestone: `M1.2.5`
-- Contract status: `Proposed`
+- Contract status: `Accepted`
 - Decision record: [DEC-0009](../project-memory/decisions/DEC-0009-mapping-rule-target-profile-propagation.md)
 - Tracking Issue: [Issue #20](https://github.com/ThresholdOps/MotiveForce/issues/20)
 - Source branch: `design/m1-2-5-mapping-profile-propagation`
 - Base: [`20f53f13938692b9c572b6f9f963e89fc22cb5b8`](https://github.com/ThresholdOps/MotiveForce/commit/20f53f13938692b9c572b6f9f963e89fc22cb5b8)
 - Human semantic and design review round 1: [REV-0011](../project-memory/reviews/M1-2-5-mapping-rule-target-profile-propagation-review.md), Request changes
 - Independent semantic and architectural re-review: [REV-0012](../project-memory/reviews/M1-2-5-mapping-rule-target-profile-propagation-review-2.md), Request changes
-- Proposed correction: `REV12-FIND-001` and `REV12-FIND-002` addressed; bounded reviewer-attention clarifications for imported enumeration-policy authority, current candidate-source failure ownership, and replay-policy precedence are included for human semantic and design re-review under REV-0013
-- Acceptance: Not granted
-- Merge authorization: Not granted
+- Final human semantic and design review: [REV-0013](../project-memory/reviews/M1-2-5-mapping-rule-target-profile-propagation-review-3.md), Approve against frozen semantic head [`f8d2249e4693305b57bf021c76bdd78b010da24b`](https://github.com/ThresholdOps/MotiveForce/commit/f8d2249e4693305b57bf021c76bdd78b010da24b)
+- Acceptance: Granted; repository-authoritative through merge of PR #26
+- Merge authorization: Granted after bounded-finalization validation
 - Implementation status: Not started
 
-This document is a Proposed semantic and machine-readiness design contract. It is not a machine schema, mapping-rule implementation, rules engine, Semantic Compiler, BPMN Kernel, profile registry, generated metamodel, parser, validator, API, persistence model, UI specification, runtime component, test suite, or CI workflow.
+This document is an Accepted semantic and machine-readiness design contract through REV-0013. Repository-authoritative acceptance becomes effective through merge of PR #26. It is not a machine schema, mapping-rule implementation, rules engine, Semantic Compiler, BPMN Kernel, profile registry, generated metamodel, parser, validator, API, persistence model, UI specification, runtime component, test suite, or CI workflow.
 
 ## 2. Purpose
 
@@ -103,23 +103,23 @@ Successful Kernel validation proves only that the exact compiled semantic model 
 
 | Choice ID | Proposed choice | Classification | Accepted basis or escalation reason | Status |
 | --- | --- | --- | --- | --- |
-| `MAP-CHOICE-001` | Separate stable logical mapping-rule identity from immutable rule revision identity. | M1.2.1-derived | Exact logical record and immutable revision semantics apply to revisioned rule bases. | Proposed |
-| `MAP-CHOICE-002` | Require `MappingRuleRef` to identify one exact immutable rule revision. | M1.2.1-derived | Authoritative revisioned mapping bases must resolve exactly. | Proposed |
-| `MAP-CHOICE-003` | Require `MappingRulesetRef` to close exact membership, imports, candidate-enumeration policy, other replay-affecting policies, and capability requirements without embedding the executing compiler identity. | M1.2.2-derived | Replay already requires one exact mapping-ruleset basis and a separate exact compiler basis. | Proposed |
-| `MAP-CHOICE-004` | Treat every membership or imported-ruleset change as a new immutable ruleset revision. | M1.2.1-derived | Released authoritative bases cannot mutate. | Proposed |
-| `MAP-CHOICE-005` | Use four exact prerequisite dispositions, establish an authoritative pre-evaluation candidate universe, require complete candidate coverage against it, and treat omitted prerequisites or expected candidates as unresolved. | Potential semantic change | M1 defines eligibility requirements but leaves the complete prerequisite and candidate assessment model open. | Proposed |
-| `MAP-CHOICE-006` | Require one `MappingEvaluationResult` for every request, bind it to exactly one immutable candidate-enumeration basis and candidate-universe record, and create `MappingRuleApplication` only for a rule actually applied. | Potential semantic change | M1 requires mapping provenance but leaves the exact unsuccessful-evaluation artifact and coverage boundary open. | Proposed |
-| `MAP-CHOICE-007` | Require deterministic selection among semantically equivalent eligible candidates under an exact accepted policy. | Potential semantic change | M1 allows policy selection among equivalent representations but leaves detailed selection semantics open. | Proposed |
-| `MAP-CHOICE-008` | Forbid precedence, priority, or fallback from resolving conflicting business meaning. | M1-derived | Modeling policy cannot resolve business-semantic ambiguity. | Proposed |
-| `MAP-CHOICE-009` | Permit generic fallback only when exact rules prove semantic preservation and profile support. | Potential semantic change | M1 forbids downgrading unsupported meaning; a bounded non-degrading fallback requires explicit review. | Proposed |
-| `MAP-CHOICE-010` | Require one exact immutable `TargetBPMNProfileRef` for authoritative compilation and validation. | M1.2.1-derived | M1 requires propagation; M1.2.1 requires exact external bases. | Proposed |
-| `MAP-CHOICE-011` | Define `ProfileCompatibilityAssessment` as directional, exact, scoped, version-specific, and authorized under an exact governance basis with three outcomes. | Potential semantic change | M1 requires compatible profiles but leaves compatibility semantics and authority open. | Proposed |
-| `MAP-CHOICE-012` | Require an explicit immutable `ProfileTransformationBasis` for every profile substitution while forbidding that basis alone from proving semantic preservation. | Potential semantic change | M1 permits explicit compatible transformation but leaves its proof and authority boundary open. | Proposed |
-| `MAP-CHOICE-013` | Propagate exact source and target profile provenance across compiler, replay, and Kernel artifacts. | M1-derived | M1 requires the same profile across the pipeline unless explicitly transformed. | Proposed |
-| `MAP-CHOICE-014` | Treat every rule, ruleset, policy, compatibility, profile, or transformation change as a changed replay basis. | M1.2.2-derived | Same-replay verification requires the same exact replay-affecting basis. | Proposed |
-| `MAP-CHOICE-015` | Limit future deterministic verification and Kernel outputs to their own authority domains. | M1-derived | Compilation, replay comparison, Kernel validation, business truth, and human authority remain separate. | Proposed |
+| `MAP-CHOICE-001` | Separate stable logical mapping-rule identity from immutable rule revision identity. | M1.2.1-derived | Exact logical record and immutable revision semantics apply to revisioned rule bases. | Accepted |
+| `MAP-CHOICE-002` | Require `MappingRuleRef` to identify one exact immutable rule revision. | M1.2.1-derived | Authoritative revisioned mapping bases must resolve exactly. | Accepted |
+| `MAP-CHOICE-003` | Require `MappingRulesetRef` to close exact membership, imports, candidate-enumeration policy, other replay-affecting policies, and capability requirements without embedding the executing compiler identity. | M1.2.2-derived | Replay already requires one exact mapping-ruleset basis and a separate exact compiler basis. | Accepted |
+| `MAP-CHOICE-004` | Treat every membership or imported-ruleset change as a new immutable ruleset revision. | M1.2.1-derived | Released authoritative bases cannot mutate. | Accepted |
+| `MAP-CHOICE-005` | Use four exact prerequisite dispositions, establish an authoritative pre-evaluation candidate universe, require complete candidate coverage against it, and treat omitted prerequisites or expected candidates as unresolved. | Potential semantic change | M1 defines eligibility requirements but leaves the complete prerequisite and candidate assessment model open. | Accepted |
+| `MAP-CHOICE-006` | Require one `MappingEvaluationResult` for every request, bind it to exactly one immutable candidate-enumeration basis and candidate-universe record, and create `MappingRuleApplication` only for a rule actually applied. | Potential semantic change | M1 requires mapping provenance but leaves the exact unsuccessful-evaluation artifact and coverage boundary open. | Accepted |
+| `MAP-CHOICE-007` | Require deterministic selection among semantically equivalent eligible candidates under an exact accepted policy. | Potential semantic change | M1 allows policy selection among equivalent representations but leaves detailed selection semantics open. | Accepted |
+| `MAP-CHOICE-008` | Forbid precedence, priority, or fallback from resolving conflicting business meaning. | M1-derived | Modeling policy cannot resolve business-semantic ambiguity. | Accepted |
+| `MAP-CHOICE-009` | Permit generic fallback only when exact rules prove semantic preservation and profile support. | Potential semantic change | M1 forbids downgrading unsupported meaning; a bounded non-degrading fallback requires explicit review. | Accepted |
+| `MAP-CHOICE-010` | Require one exact immutable `TargetBPMNProfileRef` for authoritative compilation and validation. | M1.2.1-derived | M1 requires propagation; M1.2.1 requires exact external bases. | Accepted |
+| `MAP-CHOICE-011` | Define `ProfileCompatibilityAssessment` as directional, exact, scoped, version-specific, and authorized under an exact governance basis with three outcomes. | Potential semantic change | M1 requires compatible profiles but leaves compatibility semantics and authority open. | Accepted |
+| `MAP-CHOICE-012` | Require an explicit immutable `ProfileTransformationBasis` for every profile substitution while forbidding that basis alone from proving semantic preservation. | Potential semantic change | M1 permits explicit compatible transformation but leaves its proof and authority boundary open. | Accepted |
+| `MAP-CHOICE-013` | Propagate exact source and target profile provenance across compiler, replay, and Kernel artifacts. | M1-derived | M1 requires the same profile across the pipeline unless explicitly transformed. | Accepted |
+| `MAP-CHOICE-014` | Treat every rule, ruleset, policy, compatibility, profile, or transformation change as a changed replay basis. | M1.2.2-derived | Same-replay verification requires the same exact replay-affecting basis. | Accepted |
+| `MAP-CHOICE-015` | Limit future deterministic verification and Kernel outputs to their own authority domains. | M1-derived | Compilation, replay comparison, Kernel validation, business truth, and human authority remain separate. | Accepted |
 
-All choices remain Proposed pending human semantic and design review. No classification in this register constitutes acceptance.
+All 15 choices are Accepted by human semantic and design review under REV-0013. The classification column remains provenance for how each choice entered review.
 
 ## 6. Core terms
 
@@ -997,7 +997,7 @@ Issue #21 remains open and not started.
 
 ## 23. Synthetic examples
 
-The following bounded correction scenarios are Proposed contract examples and review acceptance tests for the REV-0012 findings and the three pre-REV-0013 reviewer-attention clarifications:
+The following bounded correction scenarios are Accepted contract examples and review tests for the REV-0012 findings and the three REV-0013 reviewer-attention clarifications:
 
 | Scenario | Exact basis and outcome | Primary diagnostic and authority boundary |
 | --- | --- | --- |
@@ -1160,40 +1160,31 @@ The target profile changes while accepted business meaning does not. The `Analys
 7. Are authority, diagnostic, Issue #9, partial-compilation, and replay boundaries clean?
 8. Is the Proposed M1.2.5 design ready for acceptance?
 
-No question is answered as Accepted in this Draft delivery.
+REV-0013 answers all eight questions affirmatively and records human semantic and design acceptance against the frozen semantic head.
 
 ## 26. REV-0012 correction traceability
 
 | Finding | Corrected sections | Normative closure | Examples and tests | Status |
 | --- | --- | --- | --- | --- |
-| `REV12-FIND-001` | Sections 4, 5, 6, 8.4, 10.1, 10.3, 12, 16-18, 20, 23, and 24 | `CandidateEnumerationPolicyRef` is one immutable ruleset-closure member; `CandidateUniverseRecord` is the pre-evaluation coverage authority; every result binds exactly one policy and universe record; changed policy always changes basis; replay and verification must reconstruct and reconcile the basis. | `SCN-C01` through `SCN-C04`, `SCN-C09`, `SCN-C10`, updated Examples 1, 4, and 20, and the manual tests for exact enumeration basis, changed basis, coverage, and Kernel boundary. | Proposed correction pending REV-0013 |
-| `REV12-FIND-002` | Sections 8.2, 10.2-10.3, 20, 21-21.3, 23, and 24 | The normative matrix assigns one phase-owned primary inherited diagnostic per failure, separates capability from eligibility, assigns omission, cycle, policy conflict, and replay reconstruction conditions, and defines precedence, partial-output behavior, and inherited-meaning fidelity. | `SCN-C04` through `SCN-C12`, updated Example 22, and the manual tests for diagnostic phase ownership and replay separation. | Proposed correction pending REV-0013 |
+| `REV12-FIND-001` | Sections 4, 5, 6, 8.4, 10.1, 10.3, 12, 16-18, 20, 23, and 24 | `CandidateEnumerationPolicyRef` is one immutable ruleset-closure member; `CandidateUniverseRecord` is the pre-evaluation coverage authority; every result binds exactly one policy and universe record; changed policy always changes basis; replay and verification must reconstruct and reconcile the basis. | `SCN-C01` through `SCN-C04`, `SCN-C09`, `SCN-C10`, updated Examples 1, 4, and 20, and the manual tests for exact enumeration basis, changed basis, coverage, and Kernel boundary. | Closed by REV-0013 |
+| `REV12-FIND-002` | Sections 8.2, 10.2-10.3, 20, 21-21.3, 23, and 24 | The normative matrix assigns one phase-owned primary inherited diagnostic per failure, separates capability from eligibility, assigns omission, cycle, policy conflict, and replay reconstruction conditions, and defines precedence, partial-output behavior, and inherited-meaning fidelity. | `SCN-C04` through `SCN-C12`, updated Example 22, and the manual tests for diagnostic phase ownership and replay separation. | Closed by REV-0013 |
 
-These Proposed corrections do not close either finding by review. REV-0012 remains a completed Request changes review, and human semantic and design re-review under REV-0013 must determine whether the findings are resolved.
+REV-0013 reviewed the corrections against frozen semantic head `f8d2249e4693305b57bf021c76bdd78b010da24b`, closed both findings, and recorded human semantic and design approval. REV-0012 remains immutable Request changes provenance.
 
 ### 26.1 Pre-REV-0013 reviewer-attention clarifications
 
 | Attention item | Corrected sections | Normative resolution | Examples and tests | Status |
 | --- | --- | --- | --- | --- |
-| Imported enumeration-policy authority | Sections 8.2, 8.4, 23, and 24 | The request-selected ruleset's directly owned policy is the sole operative policy across the complete closure. Imported policies remain inert transitive identity and replay provenance for that request; difference alone is not conflict. | `SCN-C13` and the imported-policy manual test. | Proposed clarification pending REV-0013 |
-| Current candidate-source failure ownership | Sections 10.1, 21-21.3, 23, and 24 | A mutable selector maps to `FLOATING_EXTERNAL_BASIS`; an exact reference that cannot resolve maps to `UNRESOLVED_REFERENCE`; an otherwise valid and evaluable source blocked only by unrealized compiler capability maps to `UNSUPPORTED_MAPPING`; and a completed deterministic assessment of a resolved source that cannot establish required authoritative candidate-universe provenance maps to `PROVENANCE_MISSING`. An interrupted assessment remains an execution failure. | `SCN-C14` and the candidate-source manual test. | Proposed clarification pending REV-0013 |
-| Missing replay-policy precedence | Sections 20, 21-21.3, 23, and 24 | `REPLAY_POLICY_UNRESOLVED` solely owns absent policy identity or incomplete frozen parameters; `REPLAY_INPUT_CLOSURE_INCOMPLETE` is limited to non-policy inputs and universe evidence after policy closure. | `SCN-C15` and the replay-policy manual test. | Proposed clarification pending REV-0013 |
+| Imported enumeration-policy authority | Sections 8.2, 8.4, 23, and 24 | The request-selected ruleset's directly owned policy is the sole operative policy across the complete closure. Imported policies remain inert transitive identity and replay provenance for that request; difference alone is not conflict. | `SCN-C13` and the imported-policy manual test. | Approved by REV-0013 |
+| Current candidate-source failure ownership | Sections 10.1, 21-21.3, 23, and 24 | A mutable selector maps to `FLOATING_EXTERNAL_BASIS`; an exact reference that cannot resolve maps to `UNRESOLVED_REFERENCE`; an otherwise valid and evaluable source blocked only by unrealized compiler capability maps to `UNSUPPORTED_MAPPING`; and a completed deterministic assessment of a resolved source that cannot establish required authoritative candidate-universe provenance maps to `PROVENANCE_MISSING`. An interrupted assessment remains an execution failure. | `SCN-C14` and the candidate-source manual test. | Approved by REV-0013 |
+| Missing replay-policy precedence | Sections 20, 21-21.3, 23, and 24 | `REPLAY_POLICY_UNRESOLVED` solely owns absent policy identity or incomplete frozen parameters; `REPLAY_INPUT_CLOSURE_INCOMPLETE` is limited to non-policy inputs and universe evidence after policy closure. | `SCN-C15` and the replay-policy manual test. | Approved by REV-0013 |
 
-These clarifications record no review outcome, finding disposition, human acceptance, or merge authorization. They remain part of the Proposed semantic head that REV-0013 must evaluate.
+REV-0013 approves all three clarifications within the frozen semantic head. Human acceptance and bounded merge authorization are recorded by the review record; no implementation authorization is created.
 
 ## 27. Acceptance boundary
 
-This contract remains Proposed until:
+Human semantic and design review under REV-0013 approved the eight review questions, closed `REV12-FIND-001` and `REV12-FIND-002`, approved the three section 26.1 clarifications, and accepted all 15 design choices including every Potential semantic change.
 
-- human semantic and design review evaluates the eight questions,
-- REV-0013 determines the disposition of `REV12-FIND-001` and `REV12-FIND-002`,
-- REV-0013 evaluates the three bounded reviewer-attention clarifications in section 26.1,
-- every Potential semantic change receives an explicit disposition,
-- the contract status is changed by an authorized finalization,
-- DEC-0009 is accepted,
-- M1.2.5 completion criteria are satisfied,
-- the delivery PR is merged.
+The contract and DEC-0009 are Accepted; repository-authoritative acceptance and M1.2.5 design-contract completion become effective through merge of PR #26. The bounded-finalization diff from frozen semantic head `f8d2249e4693305b57bf021c76bdd78b010da24b` MUST remain status- and governance-only as defined by REV-0013. Any normative semantic change invalidates the approval and requires a new semantic review.
 
-Author self-review, structural validation, a clean Git diff, Draft PR creation, compiler feasibility, or successful future Kernel validation does not constitute human semantic acceptance.
-
-No implementation or merge authorization is granted by this proposal.
+No implementation authorization is granted.

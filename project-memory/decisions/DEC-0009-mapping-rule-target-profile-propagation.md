@@ -2,19 +2,20 @@
 
 - Decision ID: `DEC-0009`
 - Title: Mapping Rule References and Target BPMN Profile Propagation
-- Status: Proposed
+- Status: Accepted through merge of PR #26
 - Date: 2026-07-27T12:35:18Z
-- Decision authority: Pending human semantic and design review
+- Decision authority: Human semantic and design approval recorded by REV-0013
 - Related Issue: [Issue #20](https://github.com/ThresholdOps/MotiveForce/issues/20)
 - Related milestone: [M1.2.5](../milestones/M1-2-5-mapping-rule-target-profile-propagation.md)
 - Source branch: `design/m1-2-5-mapping-profile-propagation`
-- Draft PR: [PR #26](https://github.com/ThresholdOps/MotiveForce/pull/26)
+- Delivery PR: [PR #26](https://github.com/ThresholdOps/MotiveForce/pull/26), approved for merge after bounded-finalization validation
 - Exact base: [`20f53f13938692b9c572b6f9f963e89fc22cb5b8`](https://github.com/ThresholdOps/MotiveForce/commit/20f53f13938692b9c572b6f9f963e89fc22cb5b8)
 - Initial source head: [`1e874144aa68e444669a55913d44d1ab0dc73538`](https://github.com/ThresholdOps/MotiveForce/commit/1e874144aa68e444669a55913d44d1ab0dc73538)
-- Final source head: Recorded in PR and Issue metadata after the final self-provenance amend
+- Reviewed semantic head: [`f8d2249e4693305b57bf021c76bdd78b010da24b`](https://github.com/ThresholdOps/MotiveForce/commit/f8d2249e4693305b57bf021c76bdd78b010da24b)
+- Final bounded-finalization source head: Recorded in PR and Issue metadata after push; repository content does not predict its own commit SHA
 - Human review round 1: [REV-0011](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review.md), Request changes against [`1cb85a81b00bce4729bfc2ce58ad871ab67ee1d0`](https://github.com/ThresholdOps/MotiveForce/commit/1cb85a81b00bce4729bfc2ce58ad871ab67ee1d0)
 - Independent re-review: [REV-0012](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review-2.md), Request changes against [`7a6ec176a0fcc738a5c56a9c98a7d946446a2c01`](https://github.com/ThresholdOps/MotiveForce/commit/7a6ec176a0fcc738a5c56a9c98a7d946446a2c01)
-- Proposed correction: `REV12-FIND-001` and `REV12-FIND-002` addressed; bounded reviewer-attention clarifications for imported enumeration-policy authority, current candidate-source failure ownership, and replay-policy precedence are included; pending human semantic and design re-review under REV-0013
+- Final human review: [REV-0013](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review-3.md), Approve against the frozen semantic head; both REV-0012 findings closed and all three section 26.1 clarifications approved
 - Supersedes: None
 - Superseded by: None
 
@@ -24,11 +25,11 @@ Accepted M1 assigns mapping eligibility and mapping application to the Semantic 
 
 The remaining M1.2 gap is a bounded contract for exact mapping-rule and ruleset identity, prerequisite assessment, deterministic selection, profile compatibility and transformation, propagation, and provenance.
 
-## Proposed decision
+## Decision
 
-Adopt the Proposed [Mapping Rule References and Target BPMN Profile Propagation Contract](../../docs/MAPPING_RULE_TARGET_PROFILE_PROPAGATION_CONTRACT.md) for human review.
+Adopt the [Mapping Rule References and Target BPMN Profile Propagation Contract](../../docs/MAPPING_RULE_TARGET_PROFILE_PROPAGATION_CONTRACT.md) as an Accepted semantic and machine-readiness design contract through merge of PR #26.
 
-The proposal defines:
+The decision defines:
 
 - logical and immutable revision identity for mapping rules,
 - exact `MappingRuleRef`,
@@ -53,7 +54,7 @@ The proposal defines:
 - inherited diagnostic behavior,
 - Issue #8, Issue #9, and Issue #21 boundaries.
 
-## Proposed rule and ruleset identity
+## Rule and ruleset identity
 
 One stable logical rule identity may have multiple immutable revisions. Authoritative use requires one exact revision, not a logical identifier, version range, latest selector, or mutable locator.
 
@@ -74,7 +75,7 @@ Any replay-affecting membership, import, candidate-enumeration policy, or other 
 
 Rule and ruleset identity contains exact capability requirements or predicates, not the identity of the executing compiler build. A changed requirement creates a new rule or ruleset revision; a changed implementation changes the compiler basis.
 
-## Proposed prerequisite model
+## Prerequisite model
 
 Every applicable prerequisite receives exactly one disposition:
 
@@ -91,7 +92,7 @@ Every expected candidate receives exactly one candidate disposition or exact pre
 
 Current candidate-source failures are phase-owned: a mutable selector uses `FLOATING_EXTERNAL_BASIS`; an exact required source reference that cannot resolve uses `UNRESOLVED_REFERENCE`; an otherwise valid and evaluable source blocked only by unrealized compiler capability uses `UNSUPPORTED_MAPPING`; and, after the exact source reference resolves, a completed deterministic assessment that cannot establish required authoritative candidate-universe provenance uses `PROVENANCE_MISSING`. A runtime or infrastructure failure that prevents the assessment from completing remains an execution failure and emits no semantic mapping diagnostic for that interrupted assessment.
 
-## Proposed mapping application and selection
+## Mapping application and selection
 
 `MappingRuleApplication` is compiler-owned provenance for applying one exact selected rule to exact semantic inputs under exact ruleset, evaluation, prerequisite, selection, policy, profile, authority, and compiler bases. It references the `MappingEvaluationResult` and exists only when the rule was actually applied.
 
@@ -104,7 +105,7 @@ Selection:
 - cannot override prerequisites,
 - cannot silently degrade unsupported meaning through generic fallback.
 
-## Proposed target-profile policy
+## Target-profile policy
 
 `TargetBPMNProfileRef` identifies one exact immutable target profile. Names, mutable URLs, latest selectors, and version labels that can denote multiple contents are insufficient.
 
@@ -112,7 +113,7 @@ Selection:
 
 Profile substitution requires an exact `ProfileTransformationBasis`, preserves source and target identities, produces a new result, and remains replay-affecting. The basis alone does not prove semantic preservation; a semantic-changing transformation requires a new mapping evaluation, application, compiled model, and compilation result.
 
-## Proposed propagation and provenance
+## Propagation and provenance
 
 The same exact profile propagates through:
 
@@ -131,7 +132,7 @@ Compiler outputs must retain exact semantic inputs, current-authority bases, rul
 
 Changed rule, ruleset, membership, import, candidate-enumeration policy, other policy, profile, compatibility, transformation, or actual compiler basis is a changed replay basis, not verification of the same replay claim.
 
-The proposal uses only inherited diagnostics and does not change their severity, blocking, aggregation, ordering, or authority rules. Its normative trigger and precedence matrix assigns:
+The decision uses only inherited diagnostics and does not change their severity, blocking, aggregation, ordering, or authority rules. Its normative trigger and precedence matrix assigns:
 
 - `UNRESOLVED_REFERENCE` to unresolvable, malformed, cyclic, or impossible current reference closure;
 - `PROVENANCE_MISSING` to current candidate-coverage omission;
@@ -150,13 +151,13 @@ Exact references without complete membership and policy closure are insufficient
 
 An immutable request-selected-ruleset-owned candidate-enumeration policy and pre-evaluation universe record prevent a compiler from changing the candidate population while claiming the same ruleset basis. Explicit imported-policy inertness prevents one import graph from acquiring multiple operative enumeration policies. Complete per-request evaluation provenance prevents unsuccessful evaluations from disappearing. Deterministic phase-owned diagnostics, including candidate-source and replay-policy precedence, prevent the same failure from acquiring different replay-semantic codes. Separating capability requirements from actual compiler identity prevents implementation changes from mutating ruleset identity. Exact compatibility authority prevents agent proposals, Kernel results, or transformation records from becoming unsupported general proof.
 
-The proposal closes those gaps while preserving accepted authority domains and deferring implementation.
+The decision closes those gaps while preserving accepted authority domains and deferring implementation.
 
 ## Alternatives considered
 
 ### Rule version labels only
 
-Rejected for the proposal because one label may identify multiple contents and cannot guarantee immutable replay identity.
+Rejected because one label may identify multiple contents and cannot guarantee immutable replay identity.
 
 ### Mutable latest ruleset
 
@@ -234,16 +235,16 @@ Costs and constraints:
 - [M1.2 parent milestone](../milestones/M1-2-process-ir-machine-readiness.md)
 - [REV-0011](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review.md)
 - [REV-0012](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review-2.md)
+- [REV-0013](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review-3.md)
 - [Issue #20](https://github.com/ThresholdOps/MotiveForce/issues/20)
-- Draft [PR #26](https://github.com/ThresholdOps/MotiveForce/pull/26)
+- [PR #26](https://github.com/ThresholdOps/MotiveForce/pull/26)
 
 ## Follow-up actions
 
-1. Complete author structural and consistency validation of the Proposed corrections for `REV12-FIND-001`, `REV12-FIND-002`, and the three bounded reviewer-attention clarifications.
-2. Obtain human semantic and design re-review under REV-0013 through Draft [PR #26](https://github.com/ThresholdOps/MotiveForce/pull/26).
-3. Keep DEC-0009 Proposed until an authorized later finalization and merge.
-4. Do not start implementation, Issue #8, Issue #9, or Issue #21.
+1. Merge [PR #26](https://github.com/ThresholdOps/MotiveForce/pull/26) after bounded-finalization validation and close Issue #20 after merge.
+2. Keep M1.2 incomplete while Issue #8 and Issue #21 remain deferred.
+3. Do not start implementation, Issue #8, Issue #9, or Issue #21 through this decision.
 
 ## Decision effect
 
-REV-0012 retains the overall architecture and requests two bounded changes. This Proposed correction addresses them and records three bounded reviewer-attention clarifications for REV-0013 re-review, but does not close any item by review. No acceptance, implementation authorization, ready-for-review transition, or merge authorization is granted.
+REV-0013 closes `REV12-FIND-001` and `REV12-FIND-002`, approves the three section 26.1 clarifications, accepts all 15 design choices including every Potential semantic change, and approves this decision for repository-authoritative acceptance through merge of PR #26. Bounded finalization and merge are authorized after validation. No implementation authorization is granted.
