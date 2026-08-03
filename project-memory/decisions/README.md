@@ -56,5 +56,5 @@ Create a new decision record, set the old record's `Superseded by` field in the 
 - [DEC-0007: Process IR Diagnostic Severity and Aggregation Policy](DEC-0007-process-ir-diagnostic-severity-aggregation.md), Accepted through merge of PR #24.
 - [DEC-0008: AnalystDecision Staleness, Invalidation, Revalidation, and Controlled Authority Carry-Forward](DEC-0008-analyst-decision-staleness-revalidation.md), Accepted through merge of PR #25; REV-0010 closes all REV-0009 findings.
 - [DEC-0009: Mapping Rule References and Target BPMN Profile Propagation](DEC-0009-mapping-rule-target-profile-propagation.md), Accepted through merge of PR #26; REV-0013 closes both REV-0012 findings and approves all three section 26.1 clarifications.
-- `DEC-0010` is allocated in active Draft PR #29 and is not duplicated by this standalone governance branch.
-- [DEC-0011: Merge Strategy for Reviewed and Bounded-Finalization PRs](DEC-0011-reviewed-finalization-merge-strategy.md), Accepted through merge of PR #30; human governance decision approved exact reviewed head `e0020a44b0b649b711402d282d4cf5ece31708a8` with no findings.
+- [DEC-0010: Structured Elicitation Extraction](DEC-0010-structured-elicitation-extraction.md), Proposed in the M1.2.6 Draft work; separate human semantic review required.
+- [DEC-0011: Merge Strategy for Reviewed and Bounded-Finalization PRs](DEC-0011-reviewed-finalization-merge-strategy.md), Accepted through merge of PR #30 at `d0bf81770179883441389603a34915cb1bb2890b`.
