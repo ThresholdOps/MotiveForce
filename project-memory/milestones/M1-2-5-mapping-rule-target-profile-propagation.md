@@ -7,7 +7,7 @@
 - Implementation status: Design contract completed through merge; runtime implementation not started
 - Tracking Issue: [Issue #20](https://github.com/ThresholdOps/MotiveForce/issues/20)
 - Active branch: `design/m1-2-5-mapping-profile-propagation`
-- Delivery PR: [PR #26](https://github.com/ThresholdOps/MotiveForce/pull/26), approved for merge after bounded-finalization validation
+- Delivery PR: [PR #26](https://github.com/ThresholdOps/MotiveForce/pull/26), squash-merged as [`2387307f2f7a3f05b65197497b9f0945bb26bf6a`](https://github.com/ThresholdOps/MotiveForce/commit/2387307f2f7a3f05b65197497b9f0945bb26bf6a)
 - Exact base: [`20f53f13938692b9c572b6f9f963e89fc22cb5b8`](https://github.com/ThresholdOps/MotiveForce/commit/20f53f13938692b9c572b6f9f963e89fc22cb5b8)
 - Human semantic and design review round 1: [REV-0011](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review.md), completed with Request changes against [`1cb85a81b00bce4729bfc2ce58ad871ab67ee1d0`](https://github.com/ThresholdOps/MotiveForce/commit/1cb85a81b00bce4729bfc2ce58ad871ab67ee1d0)
 - Independent semantic and architectural re-review: [REV-0012](../reviews/M1-2-5-mapping-rule-target-profile-propagation-review-2.md), completed with Request changes against [`7a6ec176a0fcc738a5c56a9c98a7d946446a2c01`](https://github.com/ThresholdOps/MotiveForce/commit/7a6ec176a0fcc738a5c56a9c98a7d946446a2c01)
@@ -86,14 +86,14 @@ Define an Accepted semantic and machine-readiness contract for exact, immutable,
 - [x] Diagnostic and deferred-Issue boundaries are accepted.
 - [x] Contract status changes to Accepted through authorized finalization.
 - [x] DEC-0009 changes to Accepted through authorized finalization.
-- [ ] Delivery PR is merged.
+- [x] Delivery PR is merged.
 - [x] Project memory is synchronized with the approved through-merge transition.
 
 All design-contract and finalization criteria are complete. The final repository transition and Issue closure remain conditioned on merge of PR #26.
 
 ## Related PR
 
-[PR #26](https://github.com/ThresholdOps/MotiveForce/pull/26) was opened from initial source head [`1e874144aa68e444669a55913d44d1ab0dc73538`](https://github.com/ThresholdOps/MotiveForce/commit/1e874144aa68e444669a55913d44d1ab0dc73538). REV-0013 reviewed semantic head [`f8d2249e4693305b57bf021c76bdd78b010da24b`](https://github.com/ThresholdOps/MotiveForce/commit/f8d2249e4693305b57bf021c76bdd78b010da24b). The final bounded-finalization source head remains in PR and Issue metadata; this record does not predict its own commit SHA or future squash merge SHA.
+[PR #26](https://github.com/ThresholdOps/MotiveForce/pull/26) was opened from initial source head [`1e874144aa68e444669a55913d44d1ab0dc73538`](https://github.com/ThresholdOps/MotiveForce/commit/1e874144aa68e444669a55913d44d1ab0dc73538). REV-0013 reviewed semantic head [`f8d2249e4693305b57bf021c76bdd78b010da24b`](https://github.com/ThresholdOps/MotiveForce/commit/f8d2249e4693305b57bf021c76bdd78b010da24b). The bounded-finalization source head is [`04d1db644bab4ab0e30973cda57a57d6065ec019`](https://github.com/ThresholdOps/MotiveForce/commit/04d1db644bab4ab0e30973cda57a57d6065ec019), and the squash merge on `main` is [`2387307f2f7a3f05b65197497b9f0945bb26bf6a`](https://github.com/ThresholdOps/MotiveForce/commit/2387307f2f7a3f05b65197497b9f0945bb26bf6a).
 
 ## Human review round 1
 
